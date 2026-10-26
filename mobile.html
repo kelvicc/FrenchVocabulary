@@ -68007,9 +68007,9 @@
     </div>
 
     <nav class="thumb-nav-bar">
-      <button id="nav-prev-sentence" class="thumb-tab nav-arrow">
-        <span class="thumb-icon">◀</span>
-        <span>前文へ</span>
+      <button id="nav-prev-section" class="thumb-tab nav-arrow" title="前のセクションへ">
+        <span class="thumb-icon">⏮</span>
+        <span>前Sec</span>
       </button>
       <button id="btn-open-sections" class="thumb-tab">
         <span class="thumb-icon">📑</span>
@@ -68023,9 +68023,9 @@
         <span class="thumb-icon">🔍</span>
         <span>検索・マスク</span>
       </button>
-      <button id="nav-next-sentence" class="thumb-tab nav-arrow">
-        <span class="thumb-icon">▶</span>
-        <span>次文へ</span>
+      <button id="nav-next-section" class="thumb-tab nav-arrow" title="次のセクションへ">
+        <span class="thumb-icon">⏭</span>
+        <span>次Sec</span>
       </button>
     </nav>
   </div>
@@ -68165,8 +68165,25 @@
         showSentenceByIndex(currentIndex + delta, delta > 0 ? 'next' : 'prev');
       }
 
-      document.getElementById('nav-prev-sentence').addEventListener('click', () => stepSentence(-1));
-      document.getElementById('nav-next-sentence').addEventListener('click', () => stepSentence(1));
+      function stepSection(delta) {
+        let curSec = parseInt(currentSectionNum, 10) || 1;
+        let targetSec = curSec + delta;
+        if (targetSec < 1) targetSec = 1;
+        if (targetSec > 45) targetSec = 45;
+        const secEl = document.getElementById(`section-${String(targetSec).padStart(2, '0')}`);
+        if (secEl) {
+          const firstCard = secEl.querySelector('.duo-card');
+          if (firstCard && firstCard.dataset.id) {
+            showSentenceById(firstCard.dataset.id, delta > 0 ? 'next' : 'prev');
+          }
+        }
+      }
+
+      const navPrevSec = document.getElementById('nav-prev-section');
+      if (navPrevSec) navPrevSec.addEventListener('click', () => stepSection(-1));
+
+      const navNextSec = document.getElementById('nav-next-section');
+      if (navNextSec) navNextSec.addEventListener('click', () => stepSection(1));
       const topSecBtn = document.getElementById('btn-open-sections-top');
       if (topSecBtn) {
         topSecBtn.addEventListener('click', () => {
