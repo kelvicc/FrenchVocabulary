@@ -1,0 +1,1315 @@
+======================================================================
+DETAILED AUDIT: DUO 3.0 Audio Sentences vs French Edition (Sec 01-29)
+======================================================================
+
+
+######################################################################
+### SECTION 01 (Audio segments: 8 | French sentences: 9)
+######################################################################
+--- Audio Segments ---
+  [01] (00:00:00.000 --> 00:00:07.440) 2. Section 1 We must respect the will of the individual.
+  [02] (00:00:07.440 --> 00:00:12.960) Take it easy. I can assure you that everything will turn out fine.
+  [03] (00:00:12.960 --> 00:00:20.160) Let go of your negative outlook on life. Always maintain a positive attitude.
+  [04] (00:00:20.160 --> 00:00:27.500) You should be fair to everyone regardless of national origin, gender, or creed.
+  [05] (00:00:27.500 --> 00:00:37.500) He is guaranteed by the Constitution. He leaned against the pillar and gazed at the statue of Liberty.
+  [06] (00:00:37.500 --> 00:00:45.400) A woman passed by me giving off a subtle scent of perfume. It reminded me of my ex-girlfriend.
+  [07] (00:00:45.400 --> 00:00:51.720) Natto smells awful but tastes terrific. I'm soaked with sweat.
+  [08] (00:00:51.720 --> 00:00:56.720) Stand back. You stink. Take a shower.
+
+--- French Edition Sentences ---
+  [FR No.001] 個々の人間の意志は尊重されなければならない。
+         FR: **Il faut respecter la volonté de chaque individu.**...
+  [FR No.002] 気楽にいけよ。大丈夫、最後にはすべてうまくいくと保証するよ。
+         FR: **Ne t'en fais pas, je t'assure que tout finira par s'arranger.**...
+  [FR No.003] 悲観的な考えは追い払って、常に建設的で前向きな心構えを保ち続けよう。
+         FR: **Chasse tes idées noires et garde toujours un état d'esprit constructif.**...
+  [FR No.004] 生まれた国、性別、信条に関係なく、誰に対しても公平でなくてはならない。
+         FR: **Sois équitable envers chacun, sans distinction d'origine, de sexe ni de croyan...
+  [FR No.005] すべての市民の平等は、憲法によって厳粛に保証されている。
+         FR: **L'égalité de tous les citoyens est solennellement garantie par la Constitution...
+  [FR No.006] 彼は柱に寄り掛かって、自由の女神像をじっと見つめていた。
+         FR: **Adossé contre un pilier, il contemplait la statue de la Liberté.**...
+  [FR No.007] 香水のほのかな香りが漂い、昔の恋人の思い出を呼び覚ましていた。
+         FR: **Un parfum délicat flottait dans l'air, m'évoquant le souvenir de mon ancienne ...
+  [FR No.008] — このチーズは嫌な匂いがするけれど味は絶品だよ。 — 私はそうは思わないわ。
+         FR: **— Ce fromage sent mauvais mais il est savoureux. — Je ne suis pas de ton avis....
+  [FR No.009] — 汗でびしょ濡れだよ。 — 離れて、ひどい悪臭がするわ、シャワーを浴びてきなさい。
+         FR: **— Je suis trempé de sueur. — Éloigne-toi, tu empestes, va prendre une douche.*...
+
+######################################################################
+### SECTION 02 (Audio segments: 16 | French sentences: 12)
+######################################################################
+--- Audio Segments ---
+  [01] (00:00:01.960 --> 00:00:07.880) Bob was so beside himself that he could scarcely tell fact from fiction.
+  [02] (00:00:07.880 --> 00:00:15.000) His new novel, which combines prose with his gift for poetry, is going to be published.
+  [03] (00:00:15.000 --> 00:00:20.640) An up-to-date edition of the Encyclopedia will come out next month.
+  [04] (00:00:20.640 --> 00:00:27.200) Miziamara translated the fascinating fairy tale into plain Japanese.
+  [05] (00:00:27.200 --> 00:00:32.560) The following passage is quoted from a well-known fable.
+  [06] (00:00:32.560 --> 00:00:35.560) Are you familiar with contemporary literature?
+  [07] (00:00:35.560 --> 00:00:38.840) I know next to nothing about it.
+  [08] (00:00:38.840 --> 00:00:43.760) At times, I confuse "curve" with "carve".
+  [09] (00:00:43.760 --> 00:00:49.360) Don't be shy. Your pronunciation is more or less correct.
+  [10] (00:00:49.360 --> 00:00:55.680) This article contains tips for those who are eager to increase their vocabulary.
+  [11] (00:00:55.680 --> 00:00:58.880) His latest works are on display at the city hall.
+  [12] (00:00:58.880 --> 00:01:02.960) They are fabulous beyond description.
+  [13] (00:01:02.960 --> 00:01:04.720) Could you move over a little?
+  [14] (00:01:04.720 --> 00:01:09.440) Oh, sorry. I didn't realize I was taking up so much space.
+  [15] (00:01:09.440 --> 00:01:11.760) What's this ugly object?
+  [16] (00:01:11.760 --> 00:01:14.080) This is a piece of abstract art.
+
+--- French Edition Sentences ---
+  [FR No.013] この際立った一節は、ラ・フォンテーヌの有名な寓話から引用されたものだ。
+         FR: **Ce passage remarquable est extrait d'une fable célèbre de La Fontaine.**...
+  [FR No.014] — 現代文学に関心はある？ — 正直に言って、それについてはほとんど何も知らないんだ。
+         FR: **— Tu t'intéresses à la littérature contemporaine ? — Honnêtement, je n'y conna...
+  [FR No.015] 時々、私はこれほどよく似た2つの動詞を混同してしまう傾向がある。
+         FR: **Parfois, j'ai tendance à confondre ces deux verbes si semblables.**...
+  [FR No.016] 恥ずかしがらないで、あなたの発音は申し分なく合っているわよ。
+         FR: **Ne sois pas timide, ta prononciation est tout à fait convenable.**...
+  [FR No.017] この記事は、語彙を効果的に豊かにするための貴重なアドバイスを提供している。
+         FR: **Cet article fournit des conseils précieux pour enrichir son vocabulaire effica...
+  [FR No.018] 彼の最新の作品群が市役所で展示されているが、言葉にできないほど美しい。
+         FR: **Ses dernières œuvres sont exposées à la mairie ; elles sont d'une beauté indes...
+  [FR No.019] — 少し詰めて［横にずれて］いただけますか？ — すみません、こんなに場所を取っているとは気づいていませんでした。
+         FR: **— Pourriez-vous vous décaler un peu ? — Pardon, je n'avais pas conscience de p...
+  [FR No.020] 要するに、この実用的な著作は心を奪われるほど面白く、実に読む価値がある。
+         FR: **Bref, cet ouvrage pratique est captivant et vaut vraiment la peine d'être lu.*...
+  [FR No.021] 知的好奇心に突き動かされ、彼は毎日自らの知識を深めようと努めている。
+         FR: **Poussé par sa curiosité intellectuelle, il s'efforce d'approfondir ses connais...
+  [FR No.022] 打ち解ける［緊張をほぐす］ために、彼は同僚の女性の自然なエレガンスを褒めた。
+         FR: **Pour briser la glace, il a complimenté sa collègue sur son élégance naturelle....
+  [FR No.023] 一目見た最初の出会いから、彼の温かい眼差しは私に完全な信頼感を抱かせた。
+         FR: **Dès le premier abord, son regard chaleureux m'a inspiré une totale confiance.*...
+  [FR No.024] — 彼のこと、お人好し［純真すぎる］だと思う？ — どちらかと言えば、残酷なほど経験が足りないと言うべきね。
+         FR: **— Tu le trouves naïf ? — Disons plutôt qu'il manque cruellement d'expérience.*...
+
+######################################################################
+### SECTION 03 (Audio segments: 17 | French sentences: 12)
+######################################################################
+--- Audio Segments ---
+  [01] (00:00:00.000 --> 00:00:08.000) I begged Richie to lend me a hundred bucks, but he shook his head, saying, "I'm broke, too."
+  [02] (00:00:08.000 --> 00:00:13.000) I'm apt to buy things on impulse whenever something is on sale.
+  [03] (00:00:13.000 --> 00:00:15.000) So am I.
+  [04] (00:00:15.000 --> 00:00:21.000) As it is, ordinary people cannot afford to purchase such luxuries.
+  [05] (00:00:21.000 --> 00:00:27.000) As we anticipated, the unemployment rate has risen three-quarters in a row.
+  [06] (00:00:27.000 --> 00:00:36.000) I have to cut down on my expenses, so from now on, I'm going to keep track of them on a daily basis.
+  [07] (00:00:36.000 --> 00:00:42.000) In any case, the Union has to compromise to a certain extent.
+  [08] (00:00:42.000 --> 00:00:48.000) Competent mechanics are in great demand, so they earn decent wages.
+  [09] (00:00:48.000 --> 00:00:54.000) The President announced a concrete plan to carry out welfare reform.
+  [10] (00:00:54.000 --> 00:00:58.000) His policy will no doubt lead to dismal consequences.
+  [11] (00:00:58.000 --> 00:01:01.000) It needs a thorough review.
+  [12] (00:01:01.000 --> 00:01:06.000) It goes without saying that the aging of society is inevitable.
+  [13] (00:01:06.000 --> 00:01:09.000) Please take a look at this chart.
+  [14] (00:01:09.000 --> 00:01:15.000) It indicates that juvenile delinquency is on the increase at an alarming rate.
+  [15] (00:01:15.000 --> 00:01:22.000) In many business districts, there are a lot of vacant lots which have been for sale for years.
+  [16] (00:01:22.000 --> 00:01:27.000) The population density in the metropolis is gradually decreasing.
+  [17] (00:01:27.000 --> 00:01:33.000) In all likelihood, the birth rate will continue to decline steadily for years to come.
+
+--- French Edition Sentences ---
+  [FR No.025] 友人に100ユーロ貸してくれと頼み込んだが、彼も一文無しだと打ち明けてきた。
+         FR: **J'ai supplié mon ami de me prêter cent euros, mais il m'a avoué être fauché.**...
+  [FR No.026] — セールがあるとすぐに、私、衝動買いしてしまうの。 — 僕もだよ。
+         FR: **— Dès qu'il y a des soldes, j'achète sur un coup de tête. — Moi aussi.**...
+  [FR No.027] 実際のところ、普通の一般人にはそんな贅沢を手に入れる資力などない。
+         FR: **En réalité, les gens ordinaires n'ont pas les moyens de s'offrir de tels luxes...
+  [FR No.028] 予測通り、失業率は3四半期連続で上昇した。
+         FR: **Conformément aux prévisions, le taux de chômage a augmenté pour le troisième t...
+  [FR No.029] 出費を減らすため、これからは日々の買い物を毎日記録していくつもりだ。
+         FR: **Pour réduire mes dépenses, je vais désormais noter chaque achat au jour le jou...
+  [FR No.030] いずれにせよ、労働組合はある程度まで妥協を受け入れざるを得ないだろう。
+         FR: **De toute façon, le syndicat devra accepter un compromis dans une certaine mesu...
+  [FR No.031] 有能な技術者は引く手あまたであり、きわめて相応な報酬を受け取っている。
+         FR: **Les techniciens compétents sont très recherchés et touchent une rémunération t...
+  [FR No.032] 政府は社会福祉援助を改革するための具体的な計画を提示している。
+         FR: **Le gouvernement présente un plan concret pour réformer l'aide sociale.**...
+  [FR No.033] この不手際な政策は破滅的な結果をもたらすはずであり、徹底的な再検討を要求している。
+         FR: **Cette politique maladroite aura des conséquences désastreuses et exige un réex...
+  [FR No.034] 人口の高齢化が不可避の課題であり続けていることは、言うまでもない。
+         FR: **Il va de soi que le vieillissement de la population demeure un défi inévitable...
+  [FR No.035] このグラフは、都市部の非行・犯罪が気がかりなペースで増加していることを示している。
+         FR: **Ce graphique indique que la délinquance urbaine augmente à un rythme inquiétan...
+  [FR No.036] ビジネス街の中心で、多数の空き店舗・物件が何カ月も売りに出されたままだ。
+         FR: **Au cœur du quartier d'affaires, de nombreux locaux vacants restent en vente de...
+
+######################################################################
+### SECTION 04 (Audio segments: 11 | French sentences: 12)
+######################################################################
+--- Audio Segments ---
+  [01] (00:00:00.000 --> 00:00:06.660) The power plant supplies the remote county with electricity.
+  [02] (00:00:06.660 --> 00:00:11.560) You are not allowed to operate this device without permission.
+  [03] (00:00:11.560 --> 00:00:16.520) In fact, the inhabitants have been exposed to radiation.
+  [04] (00:00:16.520 --> 00:00:22.520) One cannot emphasize too much the potential danger of nuclear energy.
+  [05] (00:00:22.520 --> 00:00:29.960) For years, the press overlooked the problem, but now if anything, they are making too much of it.
+  [06] (00:00:29.960 --> 00:00:35.920) As well as cultivating grain, the farmer runs a grocery store.
+  [07] (00:00:35.920 --> 00:00:41.960) The research institute was established in the late 1960s.
+  [08] (00:00:41.960 --> 00:00:44.840) Why don't you consult star and person?
+  [09] (00:00:44.840 --> 00:00:49.280) He's by far the most prominent attorney around here.
+  [10] (00:00:49.280 --> 00:00:54.440) I'll write it down just in case because I have a bad memory.
+  [11] (00:00:54.440 --> 00:01:00.560) The lawyer recommended that his client take legal action against the insurance company.
+
+--- French Edition Sentences ---
+  [FR No.037] 大都市の中心部において、人口密度は徐々に低下している。
+         FR: **La densité de population diminue progressivement au cœur de la métropole.**...
+  [FR No.038] 十中八九［ほぼ間違いなく］、出生率は今後も規則的に低下し続けるだろう。
+         FR: **Selon toute vraisemblance, le taux de natalité va continuer de baisser réguliè...
+  [FR No.039] その発電所は、もっとも孤立した遠隔の村々にエネルギーを供給している。
+         FR: **Cette centrale électrique alimente en énergie les villages les plus isolés.**...
+  [FR No.040] 事前の許可なしにこの機器を作動させることは、厳格に禁止されている。
+         FR: **Il est strictement interdit de faire fonctionner cet appareil sans autorisatio...
+  [FR No.041] 実のところ、周辺地域の住民たちは放射性物質にさらされていた。
+         FR: **En vérité, les habitants des environs ont été exposés à des substances radioac...
+  [FR No.042] 原子力エネルギーの潜在的な危険性は、いくら強調してもし過ぎることはない。
+         FR: **On ne saurait trop insister sur les dangers potentiels de l'énergie nucléaire....
+  [FR No.043] この危機を無視し続けてきた後、メディアはむしろ状況を大げさに騒ぎ立てる傾向がある。
+         FR: **Après avoir ignoré cette crise, les médias ont plutôt tendance à dramatiser la...
+  [FR No.044] 穀物を栽培するのに加えて、この農業従事者は小さな村の食料品店も切り盛りしている。
+         FR: **En plus de cultiver des céréales, cet agriculteur gère une petite épicerie de ...
+  [FR No.045] その高名な研究所は、前世紀の末に設立された。
+         FR: **Cet institut de recherche prestigieux a été fondé à la fin du siècle dernier.*...
+  [FR No.046] — その評判の弁護士に直接会って相談してみなさいよ。 — この弁護士会でずば抜けて最高の法律家だよ。
+         FR: **— Consulte cet avocat réputé en personne. — C'est de loin le meilleur juriste ...
+  [FR No.047] 念のために書き留めておこう、何しろ私の記憶力は絶望的だからね。
+         FR: **Je vais le noter par précaution, car j'ai une mémoire désastreuse.**...
+  [FR No.048] 弁護士は依頼人に対し、保険会社に対して法的追及［提訴］に踏み切るよう助言している。
+         FR: **L'avocat conseille à son client d'engager des poursuites judiciaires contre la...
+
+######################################################################
+### SECTION 05 (Audio segments: 19 | French sentences: 12)
+######################################################################
+--- Audio Segments ---
+  [01] (00:00:02.300 --> 00:00:06.740) They are entitled to be compensated for their injuries.
+  [02] (00:00:06.740 --> 00:00:12.700) So far, no less than 200 people have died of the flu epidemic.
+  [03] (00:00:12.700 --> 00:00:17.140) The effect of those pills is intense but brief.
+  [04] (00:00:17.140 --> 00:00:22.980) He has a habit of biting his nails. It's absolutely disgusting.
+  [05] (00:00:22.980 --> 00:00:28.100) My grandma strained her back when she bent down to hug my son.
+  [06] (00:00:28.100 --> 00:00:32.500) If you have a stiff neck, try an herbal remedy.
+  [07] (00:00:32.500 --> 00:00:38.380) Medical breakthroughs have brought about great benefits for humanity as a whole.
+  [08] (00:00:38.380 --> 00:00:45.380) We can't apply cloning techniques to cattle, let alone human beings. It's forbidden.
+  [09] (00:00:45.380 --> 00:00:49.020) Whales are classified as mammals.
+  [10] (00:00:49.020 --> 00:00:54.860) The theory of evolution is beyond the reach of my imagination.
+  [11] (00:00:54.860 --> 00:01:01.660) The biologist is proud of his historic discovery and doesn't mind boasting about it.
+  [12] (00:01:01.660 --> 00:01:07.580) On ethical grounds, they are opposed to so-called gene therapy.
+  [13] (00:01:07.580 --> 00:01:12.940) The initial symptoms of the disease are fever and a sore throat.
+  [14] (00:01:12.940 --> 00:01:16.860) The structure of the brain is complex.
+  [15] (00:01:16.860 --> 00:01:23.420) Owing to illness, some representatives were absent from the annual conference.
+  [16] (00:01:23.420 --> 00:01:30.940) Little by little, my son-in-law is recovering from stomach cancer, and now he isn't good spirits.
+  [17] (00:01:30.940 --> 00:01:32.780) This is fake, isn't it?
+  [18] (00:01:32.780 --> 00:01:35.180) Hey, it's a genuine antique.
+  [19] (00:01:35.180 --> 00:01:36.180) No way.
+
+--- French Edition Sentences ---
+  [FR No.049] これらの被害者たちには、重傷に対して賠償を受ける権利がある。
+         FR: **Ces victimes ont le droit d'être indemnisées pour leurs graves blessures.**...
+  [FR No.050] 現在までのところ、このインフルエンザの流行は200人以上の死者をもたらしている。
+         FR: **Jusqu'à présent, cette épidémie de grippe a causé plus de deux cents décès.**...
+  [FR No.051] これらの錠剤の効果は強力だが、あくまで一時的なものにとどまる。
+         FR: **L'effet de ces comprimés est puissant mais reste purement temporaire.**...
+  [FR No.052] 彼は爪を噛む嫌な癖があるが、あれはまったく実に胸が悪くなるよ。
+         FR: **Il a la fâcheuse habitude de se ronger les ongles ; c'est tout simplement dégo...
+  [FR No.053] 祖母は息子を抱きしめようと身をかがめたときに、背中［腰］を痛めてしまった。
+         FR: **Ma grand-mère s'est fait mal au dos en se penchant pour embrasser mon fils.**...
+  [FR No.054] — 首筋に凝りがあるの？ — ああ、この薬草ベースの治療法［ハーブ薬］を試してみるべきだな。
+         FR: **— Tu as des raideurs dans la nuque ? — Oui, je devrais essayer ce remède à bas...
+  [FR No.055] 医学の目覚ましい進歩［突破口］は、全人類に計り知れない恩恵をもたらした。
+         FR: **Les percées de la médecine ont apporté d'immenses bienfaits à l'humanité entiè...
+  [FR No.056] 家畜のクローン化は厳禁されており、人間に至っては言うまでもない。
+         FR: **Le clonage du bétail est proscrit, sans même parler des êtres humains.**...
+  [FR No.057] 海洋に生息しているものの、クジラは哺乳類に分類されている。
+         FR: **Bien qu'elles vivent dans l'océan, les baleines sont classées parmi les mammif...
+  [FR No.058] 歴史的な大発見に誇りを抱き、その生物学者はそれを自慢してやまない。
+         FR: **Fier de sa découverte historique, ce biologiste ne cesse de s'en vanter.**...
+  [FR No.059] 倫理的な理由から、これらの研究者たちは遺伝子治療に反対している。
+         FR: **Pour des motifs éthiques, ces chercheurs s'opposent à la thérapie génique.**...
+  [FR No.060] この壮大な科学プロジェクトの初期段階は、首尾よく成功裏に完了した。
+         FR: **La phase initiale de ce vaste projet scientifique a été menée à bien.**...
+
+######################################################################
+### SECTION 06 (Audio segments: 20 | French sentences: 12)
+######################################################################
+--- Audio Segments ---
+  [01] (00:00:00.000 --> 00:00:03.360) - Section 6. - Anything else?
+  [02] (00:00:03.360 --> 00:00:04.440) - That's it.
+  [03] (00:00:04.440 --> 00:00:06.720) - For hero to go. - To go.
+  [04] (00:00:07.720 --> 00:00:11.760) - How much is this rug? - $100 including tax.
+  [05] (00:00:11.760 --> 00:00:13.360) - Okay, I'll take it.
+  [06] (00:00:14.720 --> 00:00:17.680) I don't think those pants look good on you.
+  [07] (00:00:17.680 --> 00:00:20.520) Try these on. They're really in now.
+  [08] (00:00:22.000 --> 00:00:25.880) He got out of the cab in haste, saying, "Keep the change."
+  [09] (00:00:27.600 --> 00:00:32.600) Delivery service is available to our customers for a slight extra charge.
+  [10] (00:00:33.000 --> 00:00:37.600) - It's on me. - No, you treat me every time we eat out.
+  [11] (00:00:37.600 --> 00:00:41.360) - Well, okay. Let's split the check then.
+  [12] (00:00:42.400 --> 00:00:46.400) - While I was hanging out at the mall, I ran into Ken.
+  [13] (00:00:47.360 --> 00:00:54.160) I was short of cash, so I withdrew the $100 that I had deposited in my bank account last week.
+  [14] (00:00:55.440 --> 00:00:58.640) On our way home, she was robbed of her purse.
+  [15] (00:01:00.160 --> 00:01:03.120) That's odd. Tell me how it happened.
+  [16] (00:01:03.120 --> 00:01:05.280) - I'll explain it to you later.
+  [17] (00:01:06.240 --> 00:01:12.240) - My parents gave me a 6 p.m. curfew as a punishment because I broke my promise.
+  [18] (00:01:13.840 --> 00:01:18.080) As the proverb goes, "The end justifies the means."
+  [19] (00:01:19.840 --> 00:01:22.880) Now that I've found that there's no one to turn to,
+  [20] (00:01:22.880 --> 00:01:25.500) I'll have to stand on my own two feet.
+
+--- French Edition Sentences ---
+  [FR No.061] 人間の脳の構造は、極めて複雑であり続けている。
+         FR: **La structure du cerveau humain demeure d'une extrême complexité.**...
+  [FR No.062] 健康上の問題［病気］のため、数名の代表者が年次総会を欠席した。
+         FR: **En raison d'ennuis de santé, plusieurs délégués ont manqué la conférence annue...
+  [FR No.063] 少しずつ、私の娘婿は病気から回復しつつあり、素晴らしい気力を取り戻している。
+         FR: **Peu à peu, mon gendre se remet de sa maladie et retrouve un excellent moral.**...
+  [FR No.064] — これ、偽物［模造品］でしょ？ — とんでもない、本物のアンティーク骨董品だよ。
+         FR: **— C'est une contrefaçon, non ? — Pas du tout, c'est une véritable antiquité.**...
+  [FR No.065] — 店内でお召し上がりですか、お持ち帰りですか？ — 持ち帰りで、以上でお願いします。
+         FR: **— C'est à consommer sur place ou à emporter ? — À emporter, ce sera tout.**...
+  [FR No.066] 税込100ユーロと表示されているし、この素敵な絨毯で申し分ないわ。
+         FR: **Affiché à cent euros toutes taxes comprises, ce beau tapis fera l'affaire.**...
+  [FR No.067] そのパンツ、あなたに全然似合ってないわよ。むしろこっちを試着してみて、今すごく流行ってるから。
+         FR: **Ce pantalon ne te va pas du tout. Essaie plutôt celui-ci, il est très tendance...
+  [FR No.068] 時間に追われていた彼は、運転手にチップを残して急いでタクシーを降りた。
+         FR: **Pressé par le temps, il a quitté le taxi en laissant un pourboire au chauffeur...
+  [FR No.069] わずかな追加料金にて、お客様に自宅配送サービスをご提供しております。
+         FR: **La livraison à domicile est proposée aux clients moyennant un léger supplément...
+  [FR No.070] — 僕のおごりだよ。 — とんでもない、外食のたびにご馳走になってるもの。割り勘にしましょう。
+         FR: **— C'est pour moi. — Hors de question, tu m'invites à chaque fois. Partageons l...
+  [FR No.071] ショッピングモール［アーケード街］をぶらぶら歩いていたら、偶然昔の仲間にばったり出くわした。
+         FR: **En flânant dans la galerie marchande, j'ai croisé par hasard un ancien camarad...
+  [FR No.072] 手持ちの現金が底をついたので、前日に口座に預け入れたお金をATMから引き出した。
+         FR: **À court de liquide, j'ai retiré au distributeur l'argent déposé la veille sur ...
+
+######################################################################
+### SECTION 07 (Audio segments: 19 | French sentences: 12)
+######################################################################
+--- Audio Segments ---
+  [01] (00:00:02.000 --> 00:00:08.000) The chairman cut me off saying, "Time to wind things up. Let's take a vote."
+  [02] (00:00:08.000 --> 00:00:15.000) We exchanged frank opinions in the meeting, but consensus has yet to be reached regarding this matter.
+  [03] (00:00:15.000 --> 00:00:18.000) Do you agree or disagree with him?
+  [04] (00:00:18.000 --> 00:00:21.000) I'm on his side.
+  [05] (00:00:21.000 --> 00:00:25.000) Strictly speaking, his view differs somewhat from mine.
+  [06] (00:00:25.000 --> 00:00:31.000) Could you go over it again? I couldn't make out what you were getting at.
+  [07] (00:00:31.000 --> 00:00:38.000) No one backed me up at first, but eventually I talked everyone into going along with my plan.
+  [08] (00:00:38.000 --> 00:00:42.000) I admire your perseverance, courage, and wisdom.
+  [09] (00:00:42.000 --> 00:00:45.000) You flatter me.
+  [10] (00:00:45.000 --> 00:00:51.000) In making a decision, I rely not on logic, but on instinct.
+  [11] (00:00:51.000 --> 00:00:58.000) He came up with an ingenious, sensible solution and immediately put it into practice.
+  [12] (00:00:58.000 --> 00:01:04.000) From an objective viewpoint, the former is inferior to the latter.
+  [13] (00:01:04.000 --> 00:01:11.000) Your idea sounds marvelous in theory, yet I don't think it will work in practice.
+  [14] (00:01:11.000 --> 00:01:18.000) We expected him to defeat his opponent, but he failed to live up to our expectations.
+  [15] (00:01:18.000 --> 00:01:26.000) Ironically, despite their best endeavors, their mission resulted in complete failure.
+  [16] (00:01:26.000 --> 00:01:31.000) Her genius makes up for her lack of first-hand experience.
+  [17] (00:01:31.000 --> 00:01:36.000) She possesses a great capacity for overcoming any obstacle.
+  [18] (00:01:36.000 --> 00:01:40.000) Without your solid support, the deal would have fallen through.
+  [19] (00:01:40.000 --> 00:01:43.000) I'm grateful to you.
+
+--- French Edition Sentences ---
+  [FR No.073] 家に帰る途中、彼女は路上でハンドバッグを盗まれて［ひったくられて］しまった。
+         FR: **En rentrant chez elle, elle s'est fait dérober son sac à main dans la rue.**...
+  [FR No.074] — 変ね、どうしてそんなことになったのか話して。 — 後で全部説明するよ。
+         FR: **— C'est bizarre, raconte-moi comment c'est arrivé. — Je t'expliquerai tout cel...
+  [FR No.075] 約束を破った罰として、両親は彼に厳格な門限を課した。
+         FR: **Pour avoir manqué à sa parole, ses parents lui ont imposé un couvre-feu strict...
+  [FR No.076] 民衆のことわざが断言しているように、しばしば目的は手段を正当化する。
+         FR: **Comme l'affirme le proverbe populaire, la fin justifie souvent les moyens.**...
+  [FR No.077] 誰も私を助けてくれない以上、私はこれからは自力でやっていかなければ［自立しなければ］ならない。
+         FR: **Puisque personne ne peut m'aider, je dois désormais voler de mes propres ailes...
+  [FR No.078] 議長は私の言葉を遮り、議論を結審して即座の採決へ移行させた。
+         FR: **Le président m'a interrompu pour clore le débat et procéder au vote immédiat.*...
+  [FR No.079] 非常に率直な意見交換にもかかわらず、いまだいかなる合意［コンセンサス］も見出されていない。
+         FR: **Malgré un échange de vues très franc, aucun consensus n'a encore été trouvé.**...
+  [FR No.080] — 彼の意見に賛同しているの、それとも反対なの？ — 彼の味方につくよ。
+         FR: **— Tu partages son avis ou tu t'y opposes ? — Je me range de son côté.**...
+  [FR No.081] 実を言えば、彼の観点は私たちの包括的アプローチといくらか食い違っている。
+         FR: **À vrai dire, son point de vue diverge légèrement de notre approche globale.**...
+  [FR No.082] もう一度繰り返していただけますか？ どこを落としどころにしたいのか［何を意図されているのか］よく理解できませんでした。
+         FR: **Pourriez-vous répéter ? Je n'ai pas bien saisi où vous vouliez en venir.**...
+  [FR No.083] 当初は一人きりだったが、最後には共同経営者たちを説得して私の計画を支持してもらうことができた。
+         FR: **Seul au départ, j'ai fini par convaincre mes associés de soutenir mon projet.*...
+  [FR No.084] — あなたの不屈の粘り強さと大きな勇気には感服するわ。 — お世辞がお上手ね、身に余る光栄よ。
+         FR: **— J'admire ta persévérance et ton grand courage. — Tu me flattes, c'est trop d...
+
+######################################################################
+### SECTION 08 (Audio segments: 9 | French sentences: 12)
+######################################################################
+--- Audio Segments ---
+  [01] (00:00:00.000 --> 00:00:05.960) Bringing flammable items into the cabin is prohibited.
+  [02] (00:00:06.600 --> 00:00:11.440) Our flight to Vienna was delayed on account of a minor accident.
+  [03] (00:00:12.320 --> 00:00:18.160) The plane blew up and plunged into the ocean, killing all the people on board.
+  [04] (00:00:18.960 --> 00:00:23.840) They are working around the clock, looking into the cause of the crash.
+  [05] (00:00:24.320 --> 00:00:29.000) Unfortunately, few passengers survived the catastrophe.
+  [06] (00:00:30.000 --> 00:00:34.320) The aviation expert analyzed the statistics in detail.
+  [07] (00:00:35.720 --> 00:00:40.760) On behalf of all the staff, I'd like to express our sympathy for the victims.
+  [08] (00:00:42.200 --> 00:00:45.200) In a sense, he is to blame for the disaster.
+  [09] (00:00:46.560 --> 00:00:50.080) The vehicles are inspected for defects every three months.
+
+--- French Edition Sentences ---
+  [FR No.085] この百科事典の最新の増補改訂版が、来月書店に並ぶ予定だ。
+         FR: **La nouvelle édition enrichie de cette encyclopédie paraîtra en librairie le mo...
+  [FR No.086] この著者の言外の意図を把握するためには、行間を読む必要がある。
+         FR: **Il faut lire entre les lignes pour saisir l'intention implicite de cet auteur....
+  [FR No.087] その飛行機は飛行中に空中爆発し、乗客を乗せたまま海面へと墜落水没した。
+         FR: **L'avion a explosé en plein vol avant de s'abîmer en mer avec ses passagers.**...
+  [FR No.088] 調査官たちは、墜落事故の原因を究明すべく不眠不休で調査を続けている。
+         FR: **Les enquêteurs travaillent d'arrache-pied afin d'élucider les causes du crash....
+  [FR No.089] 不運にも、この恐ろしい大惨事を生き延びた乗客はごくわずかだった。
+         FR: **Par malheur, très peu de passagers ont survécu à cette terrible catastrophe.**...
+  [FR No.090] 当局は、このような悲惨な出来事の再発を防ぐために全力を注ぎ直している。
+         FR: **Les autorités redoublent d'efforts afin d'éviter la récidive d'un tel drame.**...
+  [FR No.091] 無差別な暴力は、国際的な安全保障に対する極めて恐るべき脅威を構成している。
+         FR: **La violence aveugle constitue une menace redoutable pour la sécurité internati...
+  [FR No.092] すべての車両は、潜在的な欠陥を早期発見するために定期的な法定点検を受ける。
+         FR: **Tous les véhicules subissent un contrôle technique régulier pour déceler d'éve...
+  [FR No.093] — 今月の電気代の請求額、法外なほど高くなっているわ。 — 冬の暖房はどうしても高くつくからね。
+         FR: **— La facture d'électricité est exorbitante ce mois-ci. — Le chauffage hivernal...
+  [FR No.094] 「無駄遣いにうんざり！」母親はすぐに蛇口を閉めるよう命じた
+         FR: **"Exaspérée par le gaspillage!" La mère a ordonné de fermer immédiatement le ro...
+  [FR No.095] 食材が腐ってしまわないように、このガラス瓶の蓋をしっかり回して閉めなさい。
+         FR: **Vissez bien le couvercle de ce bocal pour que les aliments ne pourrissent pas....
+  [FR No.096] — 賞味期限の切れた食料品は迷わず捨てなさい。 — あなたの言う通りね、衛生が何より最優先よ。
+         FR: **— Jette sans hésiter ces denrées périmées. — Tu as raison, l'hygiène passe ava...
+
+######################################################################
+### SECTION 09 (Audio segments: 15 | French sentences: 12)
+######################################################################
+--- Audio Segments ---
+  [01] (00:00:02.000 --> 00:00:07.000) I was amazed to see that our utility bills came to so much.
+  [02] (00:00:07.000 --> 00:00:12.000) Turn the faucet off, Mom yelled in a rage.
+  [03] (00:00:12.000 --> 00:00:16.000) Tighten the lid so the food doesn't go bad.
+  [04] (00:00:16.000 --> 00:00:18.000) Can I borrow your scissors?
+  [05] (00:00:18.000 --> 00:00:21.000) Sure, here you are.
+  [06] (00:00:21.000 --> 00:00:26.000) You can substitute some transparent glue for a needle in thread.
+  [07] (00:00:26.000 --> 00:00:31.000) I dyed this fabric and it shrank.
+  [08] (00:00:31.000 --> 00:00:37.000) I'm getting rid of this leather jacket because it's worn out at the elbows.
+  [09] (00:00:37.000 --> 00:00:42.000) Add some flour to the mixture and stir it until it becomes thick.
+  [10] (00:00:42.000 --> 00:00:45.000) What should we do with the leftovers?
+  [11] (00:00:45.000 --> 00:00:51.000) Keep them in the fridge for now. I'll heat them in the microwave later.
+  [12] (00:00:51.000 --> 00:00:59.000) I could have laid out all that money on a new PC, but on second thought I decided to put some aside for a rainy day.
+  [13] (00:00:59.000 --> 00:01:06.000) A cell phone has become something of a necessity, and I can't do without one.
+  [14] (00:01:06.000 --> 00:01:12.000) No sooner had I sat back and relaxed than my wife asked me to do the chores.
+  [15] (00:01:12.000 --> 00:01:22.000) She laid the baby down and lay down beside him.
+
+--- French Edition Sentences ---
+  [FR No.097] — ハサミを貸してもらえる？ — もちろん、はいどうぞ、気をつけて使ってね。
+         FR: **— Peux-tu me prêter tes ciseaux ? — Bien sûr, les voici, fais attention.**...
+  [FR No.098] 針と糸の代わりに、透明な接着剤で代用することができます。
+         FR: **Vous pouvez remplacer le fil et l'aiguille par de la colle transparente.**...
+  [FR No.099] この繊細な布地を染めようとしたのですが、あいにく洗濯で縮んでしまいました。
+         FR: **J'ai voulu teindre ce tissu délicat, mais il a malheureusement rétréci au lava...
+  [FR No.100] 肘のところが擦り切れてしまったので、この革のジャケットを手放すことにする。
+         FR: **Je me sépare de cette veste en cuir, car ses coudes sont râpés.**...
+  [FR No.101] これらの古い衣類を捨ててしまう代わりに、慈善団体に寄付しなさい。
+         FR: **Au lieu de jeter ces vieux vêtements, donnez-les à une association caritative....
+  [FR No.102] 混ぜ合わせたものに小麦粉を加え、とろみのある生地になるまでよくかき混ぜてください。
+         FR: **Ajoutez de la farine au mélange et remuez jusqu'à obtenir une pâte épaisse.**...
+  [FR No.103] — 夕食の残り物のおかずはどうする？ — 冷蔵庫に入れておいて、後で温め直すよ。
+         FR: **— Que fait-on des restes du dîner ? — Mets-les au frais, je les réchaufferai.*...
+  [FR No.104] その機器を購入する代わりに、予期せぬ出費に備えて貯金することを選んだ。
+         FR: **Au lieu d'acheter cet appareil, j'ai préféré épargner en prévision de dépenses...
+  [FR No.105] スマートフォンは不可欠な道具となり、もはや誰もそれなしでは済まされない。
+         FR: **Le smartphone est devenu un outil indispensable dont nul ne peut désormais se ...
+  [FR No.106] 一息ついて寛いだ途端、家事を片付けるよう頼まれた。
+         FR: **À peine m'étais-je détendu qu'on m'a sollicité pour effectuer les tâches ménag...
+  [FR No.107] 彼女は赤ん坊を優しく寝かせると、その隣に自ら穏やかに身を横たえた。
+         FR: **Elle a délicatement couché son nourrisson avant de s'allonger paisiblement à s...
+  [FR No.108] 家の中には静寂が広がり、家族を心地よい疲労回復の眠りへと誘っていた。
+         FR: **Le silence régnait dans la maison, berçant la famille dans un profond sommeil ...
+
+######################################################################
+### SECTION 10 (Audio segments: 14 | French sentences: 12)
+######################################################################
+--- Audio Segments ---
+  [01] (00:00:00.000 --> 00:00:05.500) Put this stuff away. It's in the way!
+  [02] (00:00:06.000 --> 00:00:11.000) When the kids made believe they were dinosaurs, they were scolded by their mother.
+  [03] (00:00:12.000 --> 00:00:18.000) After he bumped into the shelf, the priceless China fell and shattered into fragments.
+  [04] (00:00:19.000 --> 00:00:24.000) Can you keep an eye on my kids for a while? I need to pick up Ken.
+  [05] (00:00:24.000 --> 00:00:25.000) No problem.
+  [06] (00:00:26.000 --> 00:00:29.000) Our neighbor told us all for making a mess in his yard.
+  [07] (00:00:30.000 --> 00:00:36.000) Dolly resembles her big sister in every way. You can't tell them apart.
+  [08] (00:00:37.000 --> 00:00:40.000) As a rule, twins have a lot in common.
+  [09] (00:00:42.000 --> 00:00:46.000) I'm tired of doing the dishes, doing the laundry, and so on.
+  [10] (00:00:48.000 --> 00:00:53.000) My favorite pastime is strolling along the shore. It's pleasant.
+  [11] (00:00:54.000 --> 00:00:58.000) I'm exhausted. Let's take a break in the shade.
+  [12] (00:00:58.000 --> 00:01:03.000) Why not? Bob, this vending machine is out of order.
+  [13] (00:01:03.000 --> 00:01:06.000) Oh no! I'm dying of thirst.
+  [14] (00:01:07.000 --> 00:01:11.000) He fainted with hunger and fatigue, but came too after a while.
+
+--- French Edition Sentences ---
+  [FR No.109] 廊下の通路を塞いでいる邪魔な荷物を、今すぐ片付けなさい。
+         FR: **Rangez immédiatement ces affaires encombrantes qui bloquent le passage dans le...
+  [FR No.110] 太古の怪物のふりをして暴れていた子供たちは、母親から厳しく叱られた。
+         FR: **En feignant d'être des monstres préhistoriques, les enfants se sont fait grond...
+  [FR No.111] 飾り棚にぶつかった拍子に、この高価な磁器の花瓶は粉々に割れてしまった。
+         FR: **En heurtant l'étagère, ce vase précieux en porcelaine s'est brisé en mille mor...
+  [FR No.112] — 少しの間、子供たちの面倒を見ていてくれる？ — 心配いらないよ、僕が引き受けるよ。
+         FR: **— Peux-tu surveiller mes enfants un instant ? — Aucun souci, je m'en occupe.**...
+  [FR No.113] 花壇の庭を荒らしたことで、激怒した隣人から激しく叱責された。
+         FR: **Le voisin furieux nous a réprimandés pour avoir saccagé son jardin fleuri.**...
+  [FR No.114] 彼女は姉にあまりにもよく似ているため、二人を見分けるのは不可能だ。
+         FR: **Elle ressemble tellement à son aînée qu'il est impossible de les distinguer.**...
+  [FR No.115] 概して、一卵性の双子は多くの共通点や似通った特徴を共有している。
+         FR: **En règle générale, les vrais jumeaux partagent de nombreux points communs.**...
+  [FR No.116] 毎日の食器洗いやアイロンがけを休みなく延々と続けることには、すっかりうんざりしている。
+         FR: **Je suis lasse d'enchaîner sans répit la vaisselle et le repassage quotidien.**...
+  [FR No.117] 私の何よりのお気に入りの気晴らしは、日没の海岸沿いをのんびり散策することだ。
+         FR: **Mon passe-temps favori consiste à flâner sur le rivage au coucher du soleil.**...
+  [FR No.118] — 歩き疲れてへとへとよ、木陰で少し休みましょう。 — 賛成だ、一息入れよう。
+         FR: **— Épuisée par la marche, reposons-nous à l'ombre. — Bonne idée, faisons une pa...
+  [FR No.119] — この自動販売機は故障しているみたいだよ。 — 残念だわ、運動の後で喉がカラカラなのに。
+         FR: **— Ce distributeur semble en panne. — Dommage, je meurs de soif après l'effort....
+  [FR No.120] 空腹と疲労でめまいを起こしたものの、その旅人は間もなく意識を取り戻した。
+         FR: **Étourdi par le jeûne et la fatigue, le voyageur a vite repris connaissance.**...
+
+######################################################################
+### SECTION 11 (Audio segments: 12 | French sentences: 11)
+######################################################################
+--- Audio Segments ---
+  [01] (00:00:02.040 --> 00:00:07.760) The auditorium was empty except for a single piece of furniture.
+  [02] (00:00:07.760 --> 00:00:10.960) Any apartment will do as long as the rent is low.
+  [03] (00:00:10.960 --> 00:00:14.280) I'm not particular about it.
+  [04] (00:00:14.280 --> 00:00:19.920) His 60-year-old cousin inherited a piece of real estate by a lake.
+  [05] (00:00:19.920 --> 00:00:25.120) So much for small talk, let's get down to business.
+  [06] (00:00:25.120 --> 00:00:31.280) Lucy resented the aggressive salesman trying to make her sign the contract.
+  [07] (00:00:31.280 --> 00:00:37.480) There are a number of factors discouraging us from investing in stocks.
+  [08] (00:00:37.480 --> 00:00:44.320) Japan imports various raw materials and exports manufactured goods.
+  [09] (00:00:44.320 --> 00:00:51.520) In the course of its economic development, Japan has abandoned its traditional values.
+  [10] (00:00:51.520 --> 00:00:56.400) The world is faced with an unprecedented crisis.
+  [11] (00:00:56.400 --> 00:01:03.480) In short, the purpose of the regulations is to protect domestic industries.
+  [12] (00:01:03.480 --> 00:01:10.800) In order to keep up its competitiveness in the world, Japan must undertake sweeping deregulation in earnest.
+
+--- French Edition Sentences ---
+  [FR No.121] その広大な会議場には、たった一つの家具を除いて人影もなくがらんとしていた。
+         FR: **La vaste salle de conférence était déserte, à l'exception d'un unique meuble.*...
+  [FR No.122] — 家賃が安ければどんなワンルームでも構わないよ。 — そうね、私も好みにうるさくはないわ。
+         FR: **— N'importe quel studio conviendra si le loyer est bas. — Je ne suis pas diffi...
+  [FR No.123] 彼の高齢のいとこは、風光明媚な湖のほとりにある素晴らしい屋敷を相続した。
+         FR: **Son cousin âgé a hérité d'une superbe propriété située au bord d'un lac.**...
+  [FR No.124] — 世間話はこれくらいにして本題に入ろう。 — 了解です、議事日程の検討に入りましょう。
+         FR: **— Trêve de bavardages, venons-en aux faits. — Très bien, abordons l'ordre du j...
+  [FR No.125] 無理に署名させようと迫るその執拗な勧誘員に対し、彼女は強い憤りを覚えた。
+         FR: **Elle s'est indignée face à ce démarcheur insistant qui la poussait à signer.**...
+  [FR No.126] 様々な不利な要因のせいで、私たちは株式市場へ巨額の投資を行うのを躊躇している。
+         FR: **Divers facteurs défavorables nous dissuadent d'investir massivement sur le mar...
+  [FR No.127] その国は多様な原材料を輸入する一方で、高度に洗練された工業製品を輸出している。
+         FR: **Le pays importe des matières premières et exporte des produits manufacturés so...
+  [FR No.128] 経済的拡張の時代に、その国家は自らの伝統的な道徳的価値観をなおざりにしてしまった。
+         FR: **Durant son expansion économique, cette nation a délaissé ses valeurs morales t...
+  [FR No.129] 国際社会は今や、かつてない未曾有の規模の深刻な危機に直面している。
+         FR: **La communauté internationale est désormais confrontée à une crise d'une ampleu...
+  [FR No.130] 要するに、これらの一連の規制は、脆弱な国内産業を保護することを本質的に目指している。
+         FR: **En somme, ces réglementations visent essentiellement à préserver les industrie...
+  [FR No.131] 国際競争力を維持するために、国家は果敢に抜本的な規制緩和に着手しなければならない。
+         FR: **Pour maintenir sa compétitivité, l'État doit engager résolument une vaste déré...
+
+######################################################################
+### SECTION 12 (Audio segments: 11 | French sentences: 9)
+######################################################################
+--- Audio Segments ---
+  [01] (00:00:00.000 --> 00:00:07.680) We cannot turn our backs on desperate people who are at risk.
+  [02] (00:00:07.680 --> 00:00:14.000) The Parliament decided to provide developing countries with financial aid.
+  [03] (00:00:14.000 --> 00:00:17.360) Some say the British monarchy should be abolished.
+  [04] (00:00:17.360 --> 00:00:20.100) What do you think?
+  [05] (00:00:20.100 --> 00:00:26.080) They sought shelter from the attack, but found no place to hide.
+  [06] (00:00:26.080 --> 00:00:32.680) There's little prospect that the two countries will make significant progress and disarmament.
+  [07] (00:00:32.680 --> 00:00:35.540) The negotiations are underway.
+  [08] (00:00:35.540 --> 00:00:39.840) Before long, they will enter a crucial phase.
+  [09] (00:00:39.840 --> 00:00:44.440) The slaves were anxious to alter their destinies.
+  [10] (00:00:44.440 --> 00:00:50.320) The aristocrats abused their privileges to their heart's content.
+  [11] (00:00:50.320 --> 00:00:56.940) The revolution in itself bore no fruit after all.
+
+--- French Edition Sentences ---
+  [FR No.132] 危機に直面している絶望的な人々に対し、私たちは背を向けて見捨てることなどできない。
+         FR: **Nous ne pouvons pas tourner le dos à ces personnes désespérées en danger.**...
+  [FR No.133] 議会は、発展途上国に対して財政援助を提供することを決定した。
+         FR: **Le Parlement a décidé d'accorder une aide financière aux pays en développement...
+  [FR No.134] — イギリスの君主制を廃止すべきだと提唱する者もいるよ。 — あなたはどう思う？
+         FR: **— Certains préconisent d'abolir la monarchie britannique. — Qu'en penses-tu ?*...
+  [FR No.135] この激しい攻撃から逃れようと、彼らは身を寄せる場を求めたが避難場所は見つからなかった。
+         FR: **Fuyant cette violente attaque, ils cherchaient un abri sans trouver de refuge....
+  [FR No.136] これら二国が軍縮に向けて大きく前進する見込みはほとんどない。
+         FR: **Il y a peu d'espoir que ces deux nations progressent vers le désarmement.**...
+  [FR No.137] — 交渉は現在進行中だ。 — 間もなく決定的な正念場の局面に入るわね。
+         FR: **— Les négociations sont en cours. — Elles vont bientôt entrer dans une phase c...
+  [FR No.138] 虐げられた奴隷たちは、自らの暗い運命を変えたいと焦がれるように熱望していた。
+         FR: **Ces esclaves opprimés brûlaient d'impatience de changer leur sombre destin.**...
+  [FR No.139] アンシャン・レジーム下において、貴族たちは排他的な特権を悪びれもせず欲しいままに濫用していた。
+         FR: **Les aristocrates abusaient sans scrupule de leurs privilèges exclusifs sous l'...
+  [FR No.140] 結局のところ、革命それ自体は何ら永続的な実を結ぶことはなかった。
+         FR: **En fin de compte, la révolution en elle-même n'a porté aucun fruit durable.**...
+
+######################################################################
+### SECTION 13 (Audio segments: 10 | French sentences: 8)
+######################################################################
+--- Audio Segments ---
+  [01] (00:00:00.000 --> 00:00:08.080) Bob cut in on our conversation saying, "I'm against it, but everybody ignored him."
+  [02] (00:00:09.520 --> 00:00:16.240) We skipped his turn on purpose. He saw someone being bullied, but he turned a blind eye.
+  [03] (00:00:18.080 --> 00:00:24.640) When Nick and I cheated on an exam, I was suspended from school. As for Nick, he got away with it.
+  [04] (00:00:26.640 --> 00:00:30.640) They are hostile to Richard because they are jealous of his wealth and status.
+  [05] (00:00:32.080 --> 00:00:35.360) I hate him. He behaves as if he were somebody.
+  [06] (00:00:37.200 --> 00:00:42.160) In spite of our compliments, he frowned and turned away. He was so rude.
+  [07] (00:00:43.840 --> 00:00:46.880) He claimed that the enormous property was at his disposal.
+  [08] (00:00:49.200 --> 00:00:52.560) The more stubborn you are, the more isolated you become.
+  [09] (00:00:54.240 --> 00:00:58.000) Don't beat around the bush. What am I supposed to do?
+  [10] (00:00:58.000 --> 00:01:01.120) Just wait and see. Time will tell.
+
+--- French Edition Sentences ---
+  [FR No.141] ジュリアンは「僕は反対だ！」と言って私たちの会話に口を挟んできたが、みんな彼を無視した。
+         FR: **Julien s'est immiscé dans notre conversation en disant « Je suis contre ! », m...
+  [FR No.142] 私たちはわざと彼の順番を飛ばした。
+         FR: **Nous avons délibérément sauté son tour.**...
+  [FR No.143] 彼は誰かがいじめられているのを見かけたが、見て見ぬふりをした。
+         FR: **Il a vu quelqu'un se faire harceler, mais il a fermé les yeux.**...
+  [FR No.144] ニコラと僕が試験でカンニングしたとき、僕は停学になった。一方ニコラはといえば、うまくお咎めなしで切り抜けた。
+         FR: **Quand Nicolas et moi avons triché à l'examen, j'ai été suspendu. Quant à Nicol...
+  [FR No.145] 私たちの賛辞にもかかわらず、彼は眉をひそめて顔を背けた。何て無礼だったのだろう！
+         FR: **En dépit de nos compliments, il a froncé les sourcils et s'est détourné. Il ét...
+  [FR No.146] 彼は、その広大な邸宅・地所が自らの自由になるものだと主張した。
+         FR: **Il a prétendu que cette immense propriété était à son entière disposition.**...
+  [FR No.147] 頑固になればなるほど、人はますます孤立していくものだ。
+         FR: **Plus on est obstiné, plus on se retrouve isolé.**...
+  [FR No.148] — 遠回しな言い方はやめて！私はどうすればいいっていうの？ — 成り行きを見守るんだよ。時が経てばわかるさ。
+         FR: **— Arrête de tourner autour du pot ! Qu'est-ce que je suis censée faire ? — Att...
+
+######################################################################
+### SECTION 14 (Audio segments: 13 | French sentences: 10)
+######################################################################
+--- Audio Segments ---
+  [01] (00:00:00.000 --> 00:00:10.000) Please hand in your assignment via email no later than 5 p.m. on June 10th.
+  [02] (00:00:10.000 --> 00:00:15.000) Joe is anything but diligent. That's why he flunked math again.
+  [03] (00:00:15.000 --> 00:00:21.000) His thesis doesn't make sense. To begin with, its theme is obscure.
+  [04] (00:00:21.000 --> 00:00:26.000) His essay was concise and to the point.
+  [05] (00:00:26.000 --> 00:00:29.000) How are you going to deal with this complicated problem?
+  [06] (00:00:29.000 --> 00:00:33.000) Leave it to me. It's a piece of cake.
+  [07] (00:00:33.000 --> 00:00:37.000) Nick, I want you to look this over before I turn it in.
+  [08] (00:00:37.000 --> 00:00:41.000) Sorry, but I have my hands full right now.
+  [09] (00:00:41.000 --> 00:00:44.000) What if I don't meet the deadline?
+  [10] (00:00:44.000 --> 00:00:46.000) I bet he'll get mad at you.
+  [11] (00:00:46.000 --> 00:00:52.000) Your summary leaves nothing to be desired, apart from the terrible handwriting.
+  [12] (00:00:52.000 --> 00:00:57.000) You ought to think over whether the premise is valid or not.
+  [13] (00:00:57.000 --> 00:01:02.000) Above all, scientific terms call for precise definitions.
+
+--- French Edition Sentences ---
+  [FR No.149] 課題は6月10日の午後5時までにメールで提出してください。
+         FR: **Veuillez rendre votre devoir par courriel au plus tard le 10 juin à 17 heures....
+  [FR No.150] リュカは決して勤勉ではない。だからまた数学を落としたんだ。
+         FR: **Lucas est tout sauf diligent ; voilà pourquoi il a encore raté ses maths.**...
+  [FR No.151] 彼の論文はまったく意味をなさない。そもそもテーマが曖昧だ。
+         FR: **Sa thèse n'a aucun sens. Pour commencer, son thème est obscur.**...
+  [FR No.152] 彼の小論文は簡潔で要領を得ていた。
+         FR: **Son essai était concis et pertinent.**...
+  [FR No.153] — この複雑な問題にどう対処するつもり？ — 僕に任せて！朝飯前さ。
+         FR: **— Comment vas-tu régler ce problème compliqué ? — Laisse-moi faire ! C'est du ...
+  [FR No.154] — ニック、提出する前にこれにざっと目を通してほしいんだ。 — すまないが、今完全に手一杯なんだ。
+         FR: **— Nick, j'aimerais que tu jettes un coup d'œil à ceci avant que je le rende. —...
+  [FR No.155] — 締め切りに間に合わなかったらどうしよう？ — 絶対あいつ君に激怒するよ！
+         FR: **— Et si je ne respecte pas le délai ? — Je parie qu'il va se mettre en colère ...
+  [FR No.156] 君の要約は、そのひどい悪筆を除けば申し分ない。
+         FR: **Votre résumé ne laisse rien à désirer, mis à part cette écriture épouvantable....
+  [FR No.157] その前提が妥当であるかどうか、よく熟考すべきです。
+         FR: **Vous devriez mûrement réfléchir pour savoir si la prémisse est valide ou non.*...
+  [FR No.158] とりわけ、科学用語には厳密な定義が求められる。
+         FR: **Avant tout, les termes scientifiques exigent des définitions précises.**...
+
+######################################################################
+### SECTION 15 (Audio segments: 14 | French sentences: 11)
+######################################################################
+--- Audio Segments ---
+  [01] (00:00:02.160 --> 00:00:06.480) First of all, learn the formula by heart.
+  [02] (00:00:06.480 --> 00:00:12.560) To calculate the volume, multiply the length by the width by the depth.
+  [03] (00:00:12.560 --> 00:00:16.720) Tiny cracks were found in the bottom of the barrel.
+  [04] (00:00:16.720 --> 00:00:21.560) This chapter will focus on the concepts of geometry.
+  [05] (00:00:21.560 --> 00:00:26.960) Phil is much more interested in academic subjects than in practical skills.
+  [06] (00:00:26.960 --> 00:00:29.760) Something's gone wrong with this microscope.
+  [07] (00:00:29.760 --> 00:00:32.000) I need to have it repaired.
+  [08] (00:00:32.000 --> 00:00:36.160) Let me see it, maybe I can fix it.
+  [09] (00:00:36.160 --> 00:00:38.480) What is an instrument?
+  [10] (00:00:38.480 --> 00:00:44.720) For instance, a gauge, such as a thermometer or a barometer.
+  [11] (00:00:44.720 --> 00:00:50.240) The minute particles are barely visible to the naked eye.
+  [12] (00:00:50.240 --> 00:00:55.840) Muscle tissue consists of a vast number of cells.
+  [13] (00:00:55.840 --> 00:01:01.360) This substance is mostly composed of hydrogen and oxygen.
+  [14] (00:01:01.360 --> 00:01:07.040) The exact temperature is 22.68 degrees Celsius.
+
+--- French Edition Sentences ---
+  [FR No.159] まず第一に、この公式を暗記しなさい。
+         FR: **Tout d'abord, apprenez cette formule par cœur.**...
+  [FR No.160] 体積を計算するには、縦に横と深さを掛け合わせなさい。
+         FR: **Pour calculer le volume, multipliez la longueur par la largeur et par la profo...
+  [FR No.161] 樽の底に小さなひび割れが見つかった。
+         FR: **De minuscules fissures ont été découvertes au fond du tonneau.**...
+  [FR No.162] 本章では幾何学の概念に焦点を当てる。
+         FR: **Ce chapitre se concentrera sur les concepts de la géométrie.**...
+  [FR No.163] フィリップは実用的な技能よりも学術的な科目にずっと関心がある。
+         FR: **Philippe s'intéresse bien plus aux matières académiques qu'aux compétences pra...
+  [FR No.164] — この顕微鏡の調子がおかしいの、修理してもらわなきゃ。 — 見せてごらん！直せるかもしれないよ。
+         FR: **— Il y a un problème avec ce microscope, je dois le faire réparer. — Fais voir...
+  [FR No.165] — 計器とは何ですか？ — 例えば、温度計や気圧計のような測定機器のことよ。
+         FR: **— Qu'est-ce qu'un instrument ? — Par exemple, un appareil de mesure tel qu'un ...
+  [FR No.166] それらの微小な粒子は、肉眼ではかろうじて見える程度だ。
+         FR: **Ces minuscules particules sont à peine visibles à l'œil nu.**...
+  [FR No.167] 筋肉組織は、膨大な数の細胞から構成されている。
+         FR: **Le tissu musculaire est constitué d'un nombre immense de cellules.**...
+  [FR No.168] この物質は主に水素と酸素から構成されている。
+         FR: **Cette substance est principalement composée d'hydrogène et d'oxygène.**...
+  [FR No.169] ここで測定された正確な温度は摂氏22.68度です。
+         FR: **La température exacte mesurée ici est de 22,68 degrés Celsius.**...
+
+######################################################################
+### SECTION 16 (Audio segments: 16 | French sentences: 9)
+######################################################################
+--- Audio Segments ---
+  [01] (00:00:02.300 --> 00:00:05.540) Naomi likes to show off her perfect figure.
+  [02] (00:00:05.540 --> 00:00:07.740) "I wish I were thin like her."
+  [03] (00:00:07.740 --> 00:00:09.100) "I envy her."
+  [04] (00:00:09.100 --> 00:00:12.240) You could go in a diet.
+  [05] (00:00:12.240 --> 00:00:15.280) I fell in love with Naomi at first sight.
+  [06] (00:00:15.280 --> 00:00:18.720) Three months later, I took a chance and proposed to her,
+  [07] (00:00:18.720 --> 00:00:21.180) but she turned me down.
+  [08] (00:00:21.180 --> 00:00:23.680) I met the man by chance.
+  [09] (00:00:23.680 --> 00:00:25.780) He's gentle and smart.
+  [10] (00:00:25.780 --> 00:00:29.260) What's more, he's single.
+  [11] (00:00:29.260 --> 00:00:34.100) His nephew was brought up to be modest and considerate.
+  [12] (00:00:34.100 --> 00:00:39.540) I introduced Bob to my folks, and they took to him at once.
+  [13] (00:00:39.540 --> 00:00:45.800) People should be judged not so much by how they look, as by who they are.
+  [14] (00:00:45.800 --> 00:00:51.760) "It's not your title that counts, that's for sure," exclaimed Bob.
+  [15] (00:00:51.760 --> 00:00:57.860) As a self-made man put it, a man of vision will make good in the end.
+  [16] (00:00:57.860 --> 00:01:00.900) Keep in mind that youth is not eternal.
+
+--- French Edition Sentences ---
+  [FR No.170] — ノエミは完璧なスタイルを見せびらかしたがるのよね。彼女みたいに痩せてたらいいのに！本当に羨ましいわ。 — ダイエットでも始めればいいじゃない！
+         FR: **— Noémie aime exhiber sa silhouette parfaite. Si seulement j'étais mince comme...
+  [FR No.171] 僕はノエミに一目惚れした。3か月後、思い切ってプロポーズしたが、彼女に振られてしまった。
+         FR: **Je suis tombé amoureux de Noémie au premier regard. Trois mois plus tard, j'ai...
+  [FR No.172] その男性には偶然出会ったの。優しくて頭も良くて、そのうえ独身なのよ！
+         FR: **J'ai rencontré cet homme par hasard. Il est doux et intelligent ; qui plus est...
+  [FR No.173] 彼の甥は、謙虚で思いやりのある人間になるよう育てられた。
+         FR: **Son neveu a été élevé pour être modeste et attentionné.**...
+  [FR No.174] ジュリアンを両親に紹介したら、両親はすぐに彼のことを気に入って可愛がってくれた。
+         FR: **J'ai présenté Julien à mes parents, et ils l'ont tout de suite pris en affecti...
+  [FR No.175] 人は外見というよりも、むしろその真の人柄によって判断されるべきだ。
+         FR: **On devrait juger les gens non pas tant sur leur apparence que sur leur véritab...
+  [FR No.176] — 「大切なのは肩書きなんかじゃない、絶対にね！」とジュリアンは熱を込めて叫んだ。
+         FR: **— Ce n'est pas ton titre qui compte, ça c'est certain ! s'est écrié Julien.**...
+  [FR No.177] ゼロから身を起こした叩き上げの人物が言ったように、先見の明がある者は最後には必ず成功するものだ。
+         FR: **Comme le disait un homme parti de rien, un visionnaire finit toujours par réus...
+  [FR No.178] 若さは永遠ではないということを肝に銘じておきなさい。
+         FR: **Gardez à l'esprit que la jeunesse n'est pas éternelle.**...
+
+######################################################################
+### SECTION 17 (Audio segments: 15 | French sentences: 12)
+######################################################################
+--- Audio Segments ---
+  [01] (00:00:02.420 --> 00:00:09.460) I can't figure out why on earth everybody feels so much contempt for Bob.
+  [02] (00:00:09.460 --> 00:00:14.500) I can't help laughing at him because he keeps on making stupid mistakes.
+  [03] (00:00:14.500 --> 00:00:19.340) He'd be the last person to learn his lesson.
+  [04] (00:00:19.340 --> 00:00:25.060) To make matters worse, he isn't even conscious of annoying us.
+  [05] (00:00:25.060 --> 00:00:31.280) Since I was in a hurry, I put my gloves on inside out by mistake.
+  [06] (00:00:31.280 --> 00:00:33.300) Dave is fat and clumsy.
+  [07] (00:00:33.300 --> 00:00:39.140) When he leaped over the shallow stream, he stumbled and twisted his ankle.
+  [08] (00:00:39.140 --> 00:00:40.900) I'm scared of heights.
+  [09] (00:00:40.900 --> 00:00:43.320) You're a coward!
+  [10] (00:00:43.320 --> 00:00:49.540) The passive man seldom, if ever, expresses himself in public.
+  [11] (00:00:49.540 --> 00:00:55.160) Nick convinced me that all superstitions are irrational.
+  [12] (00:00:55.160 --> 00:00:59.800) I tremble with fear at the thought of an injection.
+  [13] (00:00:59.800 --> 00:01:05.980) Since Bob is lazy at heart, he frequently neglects his duties.
+  [14] (00:01:05.980 --> 00:01:12.580) While Bob was at work, Jennifer was at home absorbed in silly soap operas.
+  [15] (00:01:12.580 --> 00:01:18.680) Bob likes cartoons, but I don't think much of them, as a matter of fact, they're boring.
+
+--- French Edition Sentences ---
+  [FR No.179] 一体なぜみんながジュリアンにあれほど強い軽蔑を抱くのか、私には理解できない。
+         FR: **Je n'arrive pas à comprendre pourquoi diable tout le monde éprouve un tel mépr...
+  [FR No.180] 彼は愚かなミスばかり繰り返すので笑わずにはいられないよ。懲りるなんてことには一番程遠い男だ。
+         FR: **Je ne peux pas m'empêcher de rire de lui, car il ne cesse de faire des erreurs...
+  [FR No.181] さらに悪いことには、彼は私たちを苛立たせていることにすら気づいていないのよ！
+         FR: **Pire encore, il n'est même pas conscient de nous agacer !**...
+  [FR No.182] 急いでいたので、うっかり手袋を裏返しにはめてしまった。
+         FR: **Comme j'étais pressé, j'ai mis mes gants à l'envers par mégarde.**...
+  [FR No.183] ダヴィッドは太っていて不器用だ。浅い小川を跳び越えたとき、つまずいて足首を捻挫してしまった。
+         FR: **David est gros et maladroit ; lorsqu'il a sauté par-dessus le ruisseau peu pro...
+  [FR No.184] — ひどく高所恐怖症なんだ！ — もう、単なる臆病者じゃない！
+         FR: **— J'ai terriblement le vertige ! — Mais enfin, tu n'es qu'un lâche !**...
+  [FR No.185] その消極的な男は、人前で自己表現することなど滅多になく、あったとしても極めて稀だ。
+         FR: **Cet homme passif ne s'exprime que rarement, voire jamais, en public.**...
+  [FR No.186] あらゆる迷信が非合理的であることを、ニコラが僕に納得させてくれた。
+         FR: **Nicolas m'a convaincu que toutes les superstitions étaient irrationnelles.**...
+  [FR No.187] 注射を受けることを考えただけで、私は恐怖で身震いする。
+         FR: **Je tremble de peur à la seule idée de recevoir une piqûre.**...
+  [FR No.188] ジュリアンは根っからの怠け者なので、頻繁に自らの義務や職務をなおざりにしている。
+         FR: **Comme Julien est paresseux dans l'âme, il néglige fréquemment ses devoirs.**...
+  [FR No.189] ジュリアンが職場で働いている間、ジュリエットは家でくだらないメロドラマに夢中になっていた。
+         FR: **Pendant que Julien était au travail, Juliette était à la maison, absorbée par ...
+  [FR No.190] ジュリアンはアニメが好きだが、僕はあまり高く評価していない。実際のところ、単に退屈なだけだよ。
+         FR: **Julien aime les dessins animés, mais je n'en pense pas grand-chose. En fait, i...
+
+######################################################################
+### SECTION 18 (Audio segments: 20 | French sentences: 13)
+######################################################################
+--- Audio Segments ---
+  [01] (00:00:02.200 --> 00:00:09.240) It occurred to me that he was holding something back because he wouldn't look me in the eye.
+  [02] (00:00:09.240 --> 00:00:15.680) When her patients gave out, she grabbed his collar and swore at him.
+  [03] (00:00:15.680 --> 00:00:22.880) I must admit, we quarrel every now and then, but generally, we're on good terms with each other.
+  [04] (00:00:22.880 --> 00:00:25.440) Do you mind if I stop by your house?
+  [05] (00:00:25.440 --> 00:00:29.680) No, not at all. Be my guest.
+  [06] (00:00:29.680 --> 00:00:34.840) Hold on. I'll be right back. Don't hang up.
+  [07] (00:00:34.840 --> 00:00:42.240) I can't put you up. For one thing, my dad drops in on me from time to time.
+  [08] (00:00:42.240 --> 00:00:48.800) While Jennifer was standing still, Bob was pacing back and forth along the sidewalk.
+  [09] (00:00:48.800 --> 00:00:50.480) Let's make up, Lisa.
+  [10] (00:00:50.480 --> 00:00:56.880) Stop taking me for granted. We're through for good this time. I mean it.
+  [11] (00:00:56.880 --> 00:01:06.000) Come on. Don't get so emotional, Lisa. I didn't mean to hurt you. Let's talk it over.
+  [12] (00:01:06.000 --> 00:01:07.760) You betrayed me.
+  [13] (00:01:07.760 --> 00:01:11.360) Please forgive me. How can I make it up to you?
+  [14] (00:01:11.360 --> 00:01:14.800) I'll get even.
+  [15] (00:01:14.800 --> 00:01:19.760) You should confess your sins rather than conceal them.
+  [16] (00:01:19.760 --> 00:01:24.560) Keep your word. Otherwise, you'll end up losing face.
+  [17] (00:01:24.560 --> 00:01:31.040) Bob sticks to his moral principles and believes that honesty pays off in the long run.
+  [18] (00:01:31.040 --> 00:01:33.600) Cheer up. You couldn't help it.
+  [19] (00:01:33.600 --> 00:01:35.040) I did my best.
+  [20] (00:01:35.040 --> 00:01:39.280) I know. Don't dwell on the past. You can start over.
+
+--- French Edition Sentences ---
+  [FR No.191] 彼が目をじっと合わせようとしなかったので、何かを隠しているのではないかという考えが私の頭にふと浮かんだ。
+         FR: **Il m'est venu à l'esprit qu'il dissimulait quelque chose, car il refusait de m...
+  [FR No.192] 堪忍袋の緒が切れると、彼女は彼の襟首をわしづかみにして、激しい罵声を浴びせた。
+         FR: **Lorsque sa patience est arrivée à bout, elle l'a empoigné par le collet et l'a...
+  [FR No.193] 時々口論することは認めざるを得ないけれど、大体において、私たちはお互いとても良好な関係にあるわ。
+         FR: **Je dois avouer que nous nous disputons de temps à autre, mais dans l'ensemble,...
+  [FR No.194] 「君の家にちょっと立ち寄っても構わないかい？」「いいえ、ちっとも構わないわ。どうぞ遠慮しないでくつろいで！」
+         FR: **— Est-ce que cela t'ennuie si je passe chez toi un instant ? — Non, pas du tou...
+  [FR No.195] 切らずにそのまま待っててね。すぐ戻るから、絶対に電話を切らないで！
+         FR: **Reste en ligne, s'il te plaît. Je reviens tout de suite, surtout ne raccroche ...
+  [FR No.196] 君を家に泊めてあげることはできないんだ。一つには、親父が時々ふらりと予告なしにやって来るからね。
+         FR: **Je ne peux pas t'héberger. D'une part, mon père passe me voir à l'improviste d...
+  [FR No.197] ジュリエットがまったく身動きせずに立ち尽くしている間、ジュリアンは歩道を行ったり来たりとうろうろ歩き回っていた。
+         FR: **Tandis que Juliette restait parfaitement immobile, Julien faisait les cent pas...
+  [FR No.198] 「仲直りしよう、レア、頼むから！」「私の存在を当たり前だと思うのはやめて！今度こそ私たち完全に終わりよ、私は本気なんだから！」
+         FR: **— Réconcilions-nous, Léa, je t'en supplie ! — Cesse de me considérer comme acq...
+  [FR No.199] 「おいおい、そんなに感情的になるなよ、レア！傷つける気なんてなかったんだ、徹底的に話し合おう！」「あなたは私を裏切ったのよ！」「許してくれ、どうやって償えばいいんだい？」「いつか必ず仕返ししてやるわ！」
+         FR: **— Allons, ne sois pas si émotive, Léa ! Je n'avais pas l'intention de te bless...
+  [FR No.200] 罪を隠蔽しようとするくらいなら、素直に告白したほうがいい。
+         FR: **Tu ferais mieux de confesser tes péchés plutôt que de chercher à les dissimule...
+  [FR No.201] 約束は守りなさい！さもないと、最後にはみんなの前で面目を失う羽目になるわよ。
+         FR: **Tiens ta parole ! Autrement, tu finiras par perdre la face auprès de tous.**...
+  [FR No.202] ジュリアンは自身の道徳的信条を確固として守り抜いており、正直さは長い目で見れば必ず報われると信じている。
+         FR: **Julien s'en tient fermement à ses principes moraux et croit que l'honnêteté fi...
+  [FR No.203] 「元気を出して！あなたにはどうすることもできなかったのよ。」「でも僕、全力を尽くしたんだ！」「よく分かっているわ。過ぎ去った過去をくよくよ悔やまないで、最初からやり直せばいいのよ！」
+         FR: **— Reprends courage ! Tu n'y pouvais absolument rien. — J'ai pourtant fait de m...
+
+######################################################################
+### SECTION 19 (Audio segments: 22 | French sentences: 12)
+######################################################################
+--- Audio Segments ---
+  [01] (00:00:02.400 --> 00:00:06.840) Jane, please do me a favor and give me a ride to Times Square.
+  [02] (00:00:06.840 --> 00:00:11.280) I wish I could, but I'm tied up right now.
+  [03] (00:00:11.280 --> 00:00:14.200) As usual, Mike turned up on time.
+  [04] (00:00:14.200 --> 00:00:17.040) He's very punctual.
+  [05] (00:00:17.040 --> 00:00:22.580) The other day I ran out of gas in the middle of a busy interstate.
+  [06] (00:00:22.580 --> 00:00:29.960) A truck driving ahead of me skidded, turned over, and scattered its load all over the road.
+  [07] (00:00:29.960 --> 00:00:34.640) He recalled that a collision had been avoided by sheer luck.
+  [08] (00:00:34.640 --> 00:00:41.000) In case of an emergency, get in touch with my agent right away.
+  [09] (00:00:41.000 --> 00:00:43.880) Jane, where are we heading?
+  [10] (00:00:43.880 --> 00:00:45.760) I think we're lost.
+  [11] (00:00:45.760 --> 00:00:48.040) We went in the wrong direction.
+  [12] (00:00:48.040 --> 00:00:51.160) Damn, pull over.
+  [13] (00:00:51.160 --> 00:00:56.480) My rusty Ford broke down, obstructing the intersection.
+  [14] (00:00:56.480 --> 00:01:02.860) There are so many fine scratches and dents on its surface, it's no use polishing it.
+  [15] (00:01:02.860 --> 00:01:06.320) Hey, we're stuck in a traffic jam.
+  [16] (00:01:06.320 --> 00:01:07.920) Chill out, Joe.
+  [17] (00:01:07.920 --> 00:01:09.440) Let's take a shortcut.
+  [18] (00:01:09.440 --> 00:01:11.920) We'll get there in time.
+  [19] (00:01:11.920 --> 00:01:14.000) I've got a flat tire.
+  [20] (00:01:14.000 --> 00:01:15.420) Can you give me a hand?
+  [21] (00:01:15.420 --> 00:01:17.920) I'd be glad to.
+  [22] (00:01:17.920 --> 00:01:22.040) The ambulance went out of control and came close to running over a pedestrian.
+
+--- French Edition Sentences ---
+  [FR No.204] 「ジャンヌ、お願いだから一つ頼みを聞いて、コンコルド広場まで車に乗せていってくれないかい？」「そうしてあげたいのは山々なんだけど、あいにく今は手が離せないのよ！」
+         FR: **— Jeanne, s'il te plaît, rends-moi un service et dépose-moi en voiture place d...
+  [FR No.205] いつものように、ミシェルは時間きっかりに現れた。彼は極めて時間に正確だ。
+         FR: **Comme d'habitude, Michel s'est présenté pile à l'heure ; il est extrêmement po...
+  [FR No.206] 先日、交通量の激しい高速道路のど真ん中でガソリン切れを起こしてしまった。
+         FR: **L'autre jour, je suis tombé en panne d'essence au beau milieu d'une autoroute ...
+  [FR No.207] 私の前を走っていたトラックがスリップし、横転して、積荷を車道一面に散乱させた。
+         FR: **Un camion qui roulait devant moi a dérapé, s'est renversé et a éparpillé tout ...
+  [FR No.208] 彼は、凄まじい衝突事故がまったくの偶然の幸運によって回避されたのだと回想した。
+         FR: **Il s'est rappelé qu'une terrible collision avait été évitée par pure chance.**...
+  [FR No.209] 緊急時には、少しの猶予もなく直ちに私の代理人と連絡を取ってください。
+         FR: **En cas d'urgence, prenez immédiatement contact avec mon agent sans le moindre ...
+  [FR No.210] 「ジャンヌ、僕たちどこへ向かっているんだい？道に迷ったみたいだ、方向を完全に間違えたよ！」「なんてこと、車を路肩に止めて！」
+         FR: **— Jeanne, vers où nous dirigeons-nous ? Je crois que nous sommes perdus, nous ...
+  [FR No.211] 私の錆びついた古いプジョーが故障して立ち往生し、交差点を完全に塞いでしまった。
+         FR: **Ma vieille Peugeot toute rouillée est tombée en panne, obstruant complètement ...
+  [FR No.212] 車体の表面にはあまりにも細かな擦り傷やへこみが多すぎて、磨き上げたところでまったくの無駄である。
+         FR: **Il y a tant de fines égratignures et de bosses sur sa carrosserie qu'il est pa...
+  [FR No.213] 「おい、交通渋滞に巻き込まれて完全に立ち往生だぞ！」「落ち着けよ、アントワーヌ！近道を通ろう、時間内にはちゃんと到着できるさ！」
+         FR: **— Dis donc, nous sommes complètement coincés dans un embouteillage ! — Du calm...
+  [FR No.214] 「タイヤがパンクしちゃったんだ！ちょっと手を貸してくれないかい？」「ええもちろん、喜んで手伝うわ！」
+         FR: **— J'ai un pneu crevé ! Est-ce que tu pourrais me donner un coup de main ? — Ma...
+  [FR No.215] 救急車は完全に制御を失い、あやうく哀れな歩行者をひき倒しそうになった。
+         FR: **L'ambulance a perdu tout contrôle et a failli écraser un malheureux piéton.**...
+
+######################################################################
+### SECTION 20 (Audio segments: 18 | French sentences: 17)
+######################################################################
+--- Audio Segments ---
+  [01] (00:00:02.360 --> 00:00:07.280) He contends that primitive life once existed on Mars.
+  [02] (00:00:07.280 --> 00:00:12.620) The crew is busy preparing for the voyage into outer space.
+  [03] (00:00:12.620 --> 00:00:18.000) They conducted a series of experiments under zero gravity.
+  [04] (00:00:18.000 --> 00:00:24.080) Many astronomers assume that the universe will expand infinitely.
+  [05] (00:00:24.080 --> 00:00:28.440) The astronauts were greeted with spontaneous applause.
+  [06] (00:00:28.440 --> 00:00:33.760) A fund was set up with a view to preserving our endangered planet.
+  [07] (00:00:33.760 --> 00:00:39.120) The mass of flood paralysed the local transportation network.
+  [08] (00:00:39.120 --> 00:00:44.640) The equator divides the globe into two hemispheres.
+  [09] (00:00:44.640 --> 00:00:50.080) I think it's cruel to trap animals for fur coats.
+  [10] (00:00:50.080 --> 00:00:56.040) The organisation plays a principal role in wildlife conservation.
+  [11] (00:00:56.040 --> 00:01:01.000) Many fragile species are on the verge of extinction.
+  [12] (00:01:01.000 --> 00:01:06.280) The prolonged drought did severe damage to the crops.
+  [13] (00:01:06.280 --> 00:01:10.760) Tropical rainforests are quickly disappearing on a global scale.
+  [14] (00:01:10.760 --> 00:01:15.200) In part, it's due to acid rain.
+  [15] (00:01:15.200 --> 00:01:21.800) It is said that global warming is directly related to carbon dioxide emissions.
+  [16] (00:01:21.800 --> 00:01:27.160) The destruction of the ozone layer affects the environment.
+  [17] (00:01:27.160 --> 00:01:34.120) The committee called on all nations to work side by side to curb air pollution.
+  [18] (00:01:34.120 --> 00:01:38.480) A satellite was launched into orbit to monitor melting glaciers.
+
+--- French Edition Sentences ---
+  [FR No.216] 彼はかつて火星に原始的な生命が存在していたと主張している。
+         FR: **Il soutient qu'une forme de vie primitive a jadis existé sur Mars.**...
+  [FR No.217] 乗組員たちは宇宙空間への長い航海に向けて準備に追われている。
+         FR: **L'équipage est occupé à préparer ce long voyage dans l'espace lointain.**...
+  [FR No.218] 彼らは無重力状態のもとで一連の実験を実施した。
+         FR: **Ils ont mené une série d'expériences en état d'apesanteur.**...
+  [FR No.219] 多くの天文学者は、宇宙は無限に膨張していくと仮定している。
+         FR: **De nombreux astronomes supposent que l'univers va s'étendre à l'infini.**...
+  [FR No.220] 宇宙飛行士たちは自然と湧き上がる拍手喝采で迎えられた。
+         FR: **Les astronautes ont été accueillis par des applaudissements spontanés.**...
+  [FR No.221] 危機に瀕した私たちの地球を保護する目的で、基金が設立された。
+         FR: **Un fonds a été créé en vue de préserver notre planète en danger.**...
+  [FR No.222] 大規模な洪水が、地元の交通網全体を麻痺させた。
+         FR: **L'inondation massive a paralysé l'ensemble du réseau local de transport.**...
+  [FR No.223] 赤道は地球を2つの異なる半球へと分割している。
+         FR: **L'équateur divise le globe terrestre en deux hémisphères distincts.**...
+  [FR No.224] 毛皮のコートを作るために動物を罠で捕らえるなんて残酷だと思う。
+         FR: **Je trouve cruel de piéger des animaux pour fabriquer des manteaux de fourrure....
+  [FR No.225] この組織は、野生動物の保護において主導的な役割を果たしている。
+         FR: **Cette organisation joue un rôle de premier plan dans la conservation de la fau...
+  [FR No.226] 多くの脆弱な種が、現在まさに絶滅の危機に瀕している。
+         FR: **De nombreuses espèces vulnérables sont actuellement au bord de l'extinction.**...
+  [FR No.227] この長期にわたる干ばつは、農作物に甚大な被害をもたらした。
+         FR: **Cette sécheresse prolongée a causé de graves ravages aux récoltes.**...
+  [FR No.228] 熱帯雨林は世界規模で急速に姿を消しつつあり、その一部は酸性雨が原因である。
+         FR: **Les forêts tropicales disparaissent rapidement à l'échelle mondiale, en partie...
+  [FR No.229] 地球温暖化は、二酸化炭素の排出と直接関係していると言われている。
+         FR: **On affirme que le réchauffement climatique est directement lié aux émissions d...
+  [FR No.230] オゾン層の破壊は、環境に深刻な悪影響を及ぼしている。
+         FR: **La détérioration de la couche d'ozone affecte gravement l'environnement.**...
+  [FR No.231] 委員会は、大気汚染を抑制するために一致協力するようすべての国に強く促した。
+         FR: **Le comité a exhorté toutes les nations à coopérer pour freiner la pollution de...
+  [FR No.232] 氷河の融解を監視するために、人工衛星が軌道上に投入された。
+         FR: **Un satellite a été mis en orbite pour surveiller la fonte des glaciers.**...
+
+######################################################################
+### SECTION 21 (Audio segments: 20 | French sentences: 15)
+######################################################################
+--- Audio Segments ---
+  [01] (00:00:00.000 --> 00:00:05.200) The ecologist has warned us time and again
+  [02] (00:00:05.200 --> 00:00:10.600) that petroleum is not only a blessing but also a curse.
+  [03] (00:00:10.600 --> 00:00:15.160) The continent is abundant in fossil fuels.
+  [04] (00:00:15.160 --> 00:00:20.760) The region is relatively rich in mineral resources.
+  [05] (00:00:20.760 --> 00:00:24.520) Wheat accounts for approximately 2/3 of agricultural production
+  [06] (00:00:24.520 --> 00:00:27.320) in the area.
+  [07] (00:00:27.320 --> 00:00:32.400) Fertile soil is indispensable for a good harvest.
+  [08] (00:00:32.400 --> 00:00:37.640) A humid climate is characteristic of the peninsula.
+  [09] (00:00:37.640 --> 00:00:42.600) The active volcano erupts at regular intervals.
+  [10] (00:00:42.600 --> 00:00:48.320) The Panama Canal connects the Atlantic with the Pacific.
+  [11] (00:00:48.320 --> 00:00:53.920) The geographical features here are similar to those of our prefecture.
+  [12] (00:00:53.920 --> 00:00:59.280) More often than not, famine is accompanied by plague.
+  [13] (00:00:59.280 --> 00:01:02.280) A devastating earthquake hit the state capital,
+  [14] (00:01:02.280 --> 00:01:06.640) leaving tens of thousands of residents homeless.
+  [15] (00:01:06.640 --> 00:01:11.200) Watch out. The ceiling is giving way.
+  [16] (00:01:11.200 --> 00:01:18.480) The weather forecast says the typhoon is likely to accelerate and approach the coast.
+  [17] (00:01:18.480 --> 00:01:22.200) It's still up in the air whether the game will be called off or not.
+  [18] (00:01:22.200 --> 00:01:26.400) So what? It makes no difference to me.
+  [19] (00:01:26.400 --> 00:01:27.960) It's foggy, isn't it?
+  [20] (00:01:27.960 --> 00:01:31.640) It sure is. But chances are it'll clear up later on.
+
+--- French Edition Sentences ---
+  [FR No.233] その環境学者は、石油は恵みであると同時に災いでもあると、私たちに幾度となく警告してきた。
+         FR: **L'écologiste nous a avertis à maintes reprises que le pétrole est à la fois un...
+  [FR No.234] この大陸は化石燃料が極めて豊富である。
+         FR: **Ce continent est particulièrement riche en combustibles fossiles.**...
+  [FR No.235] この地域は鉱物資源が比較的豊かである。
+         FR: **Cette région est relativement abondante en ressources minérales.**...
+  [FR No.236] 小麦がこの地域の農業生産の約3分の2を占めている。
+         FR: **Le blé représente environ deux tiers de la production agricole de cette zone.*...
+  [FR No.237] 肥沃な土壌は、豊かな収穫を得るために絶対に欠かせない。
+         FR: **Une terre fertile est tout à fait indispensable pour obtenir une bonne récolte...
+  [FR No.238] 湿潤で温暖な気候が、この広大な半島の際立った特徴である。
+         FR: **Un climat humide et tempéré est caractéristique de cette vaste péninsule.**...
+  [FR No.239] その活火山は、一定の間隔を置いて規則的に噴火する。
+         FR: **Ce volcan en activité entre en éruption à des intervalles réguliers.**...
+  [FR No.240] パナマ運河は大西洋と太平洋を結んでいる。
+         FR: **Le canal de Panama relie l'océan Atlantique à l'océan Pacifique.**...
+  [FR No.241] ここ一帯の地理的特徴は、私たちの地域のそれと極めてよく似ている。
+         FR: **Les caractéristiques géographiques d'ici sont très similaires à celles de notr...
+  [FR No.242] 大抵の場合、飢饉には決まって疫病が伴うものである。
+         FR: **Le plus souvent, la famine est inévitablement accompagnée par la peste.**...
+  [FR No.243] 壊滅的な大地震が地方の中心都市を襲い、数万人の住民が家を失ってホームレスとなった。
+         FR: **Un séisme dévastateur a frappé la capitale régionale, laissant des dizaines de...
+  [FR No.244] 危ない！気をつけて、天井が崩れ落ちかけているぞ！
+         FR: **Attention ! Prends garde, le plafond est en train de s'effondrer !**...
+  [FR No.245] 天気予報によれば、暴風雨は速度を上げて沿岸に接近する恐れがあるそうだ。
+         FR: **Le bulletin météo annonce que l'ouragan risque d'accélérer et de s'approcher d...
+  [FR No.246] 「試合が中止になるかどうかはまだ未定なんだ。」「それがどうしたの？私にはどうでもいいことよ！」
+         FR: **— L'annulation du match est encore en suspens. — Et alors ? Cela ne me fait ni...
+  [FR No.247] 「霧が濃いね？」「本当にね。でも、後になれば晴れ渡る可能性が高いわよ。」
+         FR: **— Il y a un brouillard épais, non ? — En effet, mais il y a de fortes chances ...
+
+######################################################################
+### SECTION 22 (Audio segments: 20 | French sentences: 17)
+######################################################################
+--- Audio Segments ---
+  [01] (00:00:00.000 --> 00:00:08.080) For the most part, modernization is identified with westernization.
+  [02] (00:00:08.080 --> 00:00:15.160) Urban culture appears to be attractive to many people, in particular to younger people.
+  [03] (00:00:15.160 --> 00:00:19.760) AI stands for artificial intelligence.
+  [04] (00:00:19.760 --> 00:00:25.440) Household appliances are becoming more convenient day by day.
+  [05] (00:00:25.440 --> 00:00:33.160) My income is not adequate to provide for my family of four, but we have to make the best of it.
+  [06] (00:00:33.160 --> 00:00:38.760) The popularity of a website depends on its content.
+  [07] (00:00:38.760 --> 00:00:40.800) You've got to keep up with it.
+  [08] (00:00:40.800 --> 00:00:45.520) Once you fall behind, it's hard to catch up.
+  [09] (00:00:45.520 --> 00:00:51.760) As technology rapidly advances, it's tough to keep pace with it.
+  [10] (00:00:51.760 --> 00:00:58.120) More and more people are rushing to make use of the interactive nature of the medium.
+  [11] (00:00:58.120 --> 00:01:04.040) Innovation has something to do with the ability to notice unusual phenomena.
+  [12] (00:01:04.040 --> 00:01:09.600) A bunch of other companies are imitating our excellent methods.
+  [13] (00:01:09.600 --> 00:01:16.120) The once desolate valley was transformed into a thriving hub of high-tech business.
+  [14] (00:01:16.120 --> 00:01:25.200) Although there's still plenty of room for improvement, his invention is superior to conventional equipment in every respect.
+  [15] (00:01:25.200 --> 00:01:31.800) The strength of the firm is attributed to its unique and future-oriented strategies.
+  [16] (00:01:31.800 --> 00:01:36.880) Sony has integrated a wide range of functions into this cool gadget.
+  [17] (00:01:36.880 --> 00:01:40.960) It's catching on from coast to coast.
+  [18] (00:01:40.960 --> 00:01:46.720) This tool comes in handy, so I always keep it close at hand.
+  [19] (00:01:46.720 --> 00:01:50.880) In general, consumers prefer quantity to quality.
+  [20] (00:01:50.880 --> 00:01:53.280) It's the other way around today.
+
+--- French Edition Sentences ---
+  [FR No.248] 大部分において、近代化は西洋化と同一視されている。
+         FR: **Pour l'essentiel, la modernisation est assimilée à l'occidentalisation.**...
+  [FR No.249] 都会の文化は多くの人々、とりわけ若者たちを惹きつけているようだ。
+         FR: **La culture urbaine semble séduire beaucoup de gens, en particulier les jeunes....
+  [FR No.250] 略語の「IA」は人工知能を意味する。
+         FR: **Le sigle IA signifie intelligence artificielle.**...
+  [FR No.251] 家電製品は日増しに便利になってきている。
+         FR: **Les appareils électroménagers deviennent de jour en jour plus pratiques.**...
+  [FR No.252] 私の収入は4人家族を養うには不十分だが、なんとかやりくりするしかない。
+         FR: **Mes revenus ne suffisent pas pour subvenir aux besoins de quatre personnes, ma...
+  [FR No.253] ウェブサイトの人気は何よりもまずそのコンテンツの質にかかっている。
+         FR: **La popularité d'un site internet dépend avant tout de la qualité de son conten...
+  [FR No.254] 流行や最新情報についていかなければならない。一度取り残されると、追いつくのは大変だ。
+         FR: **Il faut rester à la page : dès qu'on prend du retard, il est difficile de le r...
+  [FR No.255] テクノロジーの急速な進歩に伴い、そのペースについていくことは極めて難しくなっている。
+         FR: **Avec l'évolution fulgurante des technologies, il devient très difficile de ten...
+  [FR No.256] ますます多くの人々が、このメディアの双方向的な特性を進んで利用しようとしている。
+         FR: **De plus en plus de personnes s'empressent d'exploiter la nature interactive de...
+  [FR No.257] 革新というものは、一風変わった珍しい現象に気づく能力と明らかに大いに関係がある。
+         FR: **L'innovation a manifestement un lien avec la faculté de remarquer des phénomèn...
+  [FR No.258] 他の多くの企業が、今や我が社の優れた手法をこぞって真似ている。
+         FR: **Tout un groupe d'autres entreprises imitent désormais nos excellentes méthodes...
+  [FR No.259] かつては荒涼としていたその谷は、ハイテク産業の活気ある一大拠点へと変貌を遂げた。
+         FR: **Cette vallée autrefois désolée s'est transformée en un pôle florissant de haut...
+  [FR No.260] 改善の余地はまだ十分にあるものの、彼の発明品はあらゆる点で従来型の機器よりも優れている。
+         FR: **Bien qu'il y ait encore une marge de progression, son invention est supérieure...
+  [FR No.261] その企業の強みは、独自で未来志向の戦略に起因しているとされている。
+         FR: **La force de cette entreprise est attribuée à ses stratégies uniques et tournée...
+  [FR No.262] ソニーはこの素晴らしい新機器に幅広い機能を統合した。国中の至る所で大ブームを巻き起こしている。
+         FR: **Sony a intégré un large éventail de fonctions dans ce gadget génial ; il fait ...
+  [FR No.263] この道具はとても重宝するので、いつも手元に置くようにしている。
+         FR: **Cet outil est très commode, alors je le garde toujours à portée de main.**...
+  [FR No.264] 「概して消費者は質より量を好むものだ。」「現代では、まさにその正反対よ！」
+         FR: **— En général, les consommateurs préfèrent la quantité à la qualité. — Aujourd'...
+
+######################################################################
+### SECTION 23 (Audio segments: 11 | French sentences: 9)
+######################################################################
+--- Audio Segments ---
+  [01] (00:00:00.000 --> 00:00:07.140) Obviously, the advertisement is aimed at teenagers.
+  [02] (00:00:07.140 --> 00:00:13.300) The factory now under construction will assemble 1,000 VCR units per day.
+  [03] (00:00:13.300 --> 00:00:17.540) Efficient machinery replaced manual labor.
+  [04] (00:00:17.540 --> 00:00:25.600) In those days, the gigantic corporation had a virtual monopoly over internal commerce.
+  [05] (00:00:25.600 --> 00:00:32.620) With restrictions removed, thousands of new enterprises have come into being.
+  [06] (00:00:32.620 --> 00:00:39.600) As a result of his ridiculous venture, he is in danger of going bankrupt.
+  [07] (00:00:39.600 --> 00:00:44.600) Compared to the previous year, business is looking up in terms of sales.
+  [08] (00:00:44.600 --> 00:00:49.200) However, we haven't made any profit yet.
+  [09] (00:00:49.200 --> 00:00:52.300) I'm going to be transferred to an overseas branch.
+  [10] (00:00:52.300 --> 00:00:56.300) Oh, I'll miss you. Please drop me a line.
+  [11] (00:00:56.300 --> 00:01:02.300) While he was away on business, his wife gave birth to a baby boy.
+
+--- French Edition Sentences ---
+  [FR No.265] 明らかに、その広告は10代の若者層をターゲットにしている。
+         FR: **Manifestement, cette publicité s'adresse aux adolescents.**...
+  [FR No.266] 現在建設中のその工場は、1日に1,000台の機器を組み立てることになる。
+         FR: **L'usine actuellement en construction assemblera mille appareils par jour.**...
+  [FR No.267] 効率的な機械が、手作業（肉体労働
+         FR: **Des machines efficaces se sont substituées au travail manuel.**...
+  [FR No.268] 当時、その巨大企業は国内商業に対して実質的な独占権を持っていた。
+         FR: **À cette époque-là, cette gigantesque entreprise exerçait un quasi-monopole sur...
+  [FR No.269] 規制が撤廃され、何千もの新しい企業が誕生した。
+         FR: **Grâce à la levée des restrictions, des milliers de nouvelles entreprises ont v...
+  [FR No.270] 危険な投機的事業の結果、彼は破産する危機に瀕している。
+         FR: **Par suite de cette entreprise risquée, il est en danger de faire faillite.**...
+  [FR No.271] 前年に比べると、売上の面で景気は上向いているが、まだ利益は出ていない。
+         FR: **Par rapport à l'année précédente, les affaires reprennent en termes de ventes,...
+  [FR No.272] — 海外の子会社（支社
+         FR: **— Je vais être muté dans une filiale à l'étranger. — Oh, tu vas me manquer. Do...
+  [FR No.273] 彼が出張中、妻は男の子の赤ちゃんを出産した。
+         FR: **Pendant qu'il était en voyage d'affaires, son épouse a donné naissance à un pe...
+
+######################################################################
+### SECTION 24 (Audio segments: 16 | French sentences: 10)
+######################################################################
+--- Audio Segments ---
+  [01] (00:00:00.000 --> 00:00:09.000) Apparently, Nick wasn't willing to take on the task because it would just add to his burdens.
+  [02] (00:00:09.000 --> 00:00:15.000) Bob had intended to take her out tonight, but he had to work overtime.
+  [03] (00:00:15.000 --> 00:00:19.000) Please estimate the losses by Friday at the latest.
+  [04] (00:00:19.000 --> 00:00:22.000) I'll manage it somehow.
+  [05] (00:00:22.000 --> 00:00:24.000) Nick, I'm counting on you.
+  [06] (00:00:24.000 --> 00:00:26.000) Okay, I'll see to it.
+  [07] (00:00:26.000 --> 00:00:28.000) Thanks. I appreciate it.
+  [08] (00:00:28.000 --> 00:00:31.000) Don't mention it.
+  [09] (00:00:31.000 --> 00:00:36.000) He pretends to be enthusiastic when his boss is around.
+  [10] (00:00:36.000 --> 00:00:43.000) He got promoted at the expense of his colleagues. He should be ashamed of himself.
+  [11] (00:00:43.000 --> 00:00:49.000) As the recession set in, temporary employees were laid off one after another.
+  [12] (00:00:49.000 --> 00:00:57.000) Nowadays, many people are out of work against their will. Who is responsible for that?
+  [13] (00:00:57.000 --> 00:01:05.000) I've gotten pessimistic, and I'm worried about something I would never have been concerned about before.
+  [14] (00:01:05.000 --> 00:01:11.000) Today, even white collar workers are confronted with great hardships.
+  [15] (00:01:11.000 --> 00:01:16.000) The authorities are striving in vain to stabilize the currency.
+  [16] (00:01:16.000 --> 00:01:23.000) We've come to the conclusion that nothing is more urgent than reducing Japan's huge deficit.
+
+--- French Edition Sentences ---
+  [FR No.274] どうやらニコラはその仕事を引き受ける気がなかったようだ。それは彼の負担を増やすだけだろうから。
+         FR: **Apparemment, Nicolas n'était pas disposé à se charger de cette tâche, car elle...
+  [FR No.275] ジュリアンは今夜彼女を食事に連れ出すつもりだったが、残業しなければならなかった。
+         FR: **Julien avait l'intention de l'emmener dîner ce soir, mais il a dû faire des he...
+  [FR No.276] — 遅くとも金曜日までに損失額を見積もってください。 — なんとかやってみます。
+         FR: **— Veuillez évaluer les pertes d'ici vendredi au plus tard. — Je me débrouiller...
+  [FR No.277] — ニコラ、頼りにしてるわよ。 — わかった、ちゃんとやっておくよ。
+         FR: **— Nicolas, je compte sur toi. — D'accord, j'y veillerai.**...
+  [FR No.278] — ありがとう、本当に感謝してるわ。 — どういたしまして！
+         FR: **— Merci, je te suis vraiment reconnaissante. — Il n'y a pas de quoi !**...
+  [FR No.279] — 彼は同僚たちを踏み台にして昇進したんだ。 — 恥を知るべきね！
+         FR: **— Il a été promu au détriment de ses collègues. — Il devrait avoir honte !**...
+  [FR No.280] 以前なら気にも留めなかったようなことを、今は心配している。
+         FR: **Je m'inquiète pour des choses dont je ne me serais jamais souciée auparavant.*...
+  [FR No.281] 今日では、ホワイトカラーでさえ大きな苦境に直面している。
+         FR: **De nos jours, même les cadres sont confrontés à de graves difficultés.**...
+  [FR No.282] 当局は通貨の安定化に努めているが、うまくいっていない。
+         FR: **Les autorités s'efforcent en vain de stabiliser la monnaie.**...
+  [FR No.283] 我々は、フランスの巨額の赤字を削減することほど急を要するものはないという結論に達した。
+         FR: **Nous sommes arrivés à la conclusion que rien n'est plus urgent que de réduire ...
+
+######################################################################
+### SECTION 25 (Audio segments: 11 | French sentences: 10)
+######################################################################
+--- Audio Segments ---
+  [01] (00:00:00.000 --> 00:00:07.000) The questionnaires were distributed at random.
+  [02] (00:00:07.000 --> 00:00:14.500) All you have to do is fill in the blanks below. Please print in black or blue ink.
+  [03] (00:00:14.500 --> 00:00:21.500) In addition to a 10% discount you can pick out an optional excursion for free.
+  [04] (00:00:21.500 --> 00:00:26.500) Round-trip fares to each destination are as follows.
+  [05] (00:00:26.500 --> 00:00:30.000) Don't forget to confirm your reservation in advance.
+  [06] (00:00:30.000 --> 00:00:32.000) I won't.
+  [07] (00:00:32.000 --> 00:00:38.000) Be sure to check in at least 45 minutes prior to departure time.
+  [08] (00:00:38.000 --> 00:00:44.000) I attached my name tag to my baggage, but it soon came off.
+  [09] (00:00:44.000 --> 00:00:49.000) On average, these packages weigh two pounds.
+  [10] (00:00:49.000 --> 00:00:54.500) This plastic garbage bag is free of hazardous chemicals.
+  [11] (00:00:54.500 --> 00:00:58.500) This flashlight is getting dim. It needs new batteries.
+
+--- French Edition Sentences ---
+  [FR No.284] アンケート用紙は参加者に無作為に配布された。
+         FR: **Les questionnaires ont été distribués au hasard parmi les participants.**...
+  [FR No.285] 下の空欄に、黒または青のインクで大文字（ブロック体
+         FR: **Il suffit de remplir les blancs ci-dessous en lettres majuscules, à l'encre no...
+  [FR No.286] 10%の値引きに加え、無料のオプショナルツアー（遠出
+         FR: **En plus d'un rabais de 10 %, vous pouvez choisir une excursion facultative gra...
+  [FR No.287] 各目的地への往復運賃は、以下の通りとなっております。
+         FR: **Les tarifs aller-retour pour chaque destination s'établissent comme suit.**...
+  [FR No.288] — 事前に予約を確認するのを忘れないでね。 — 約束するよ、絶対に忘れない！
+         FR: **— N'oublie pas de confirmer ta réservation à l'avance. — C'est promis, je n'y ...
+  [FR No.289] 出発時刻の少なくとも45分前には、必ず搭乗手続き（チェックイン
+         FR: **Prenez soin de vous enregistrer au moins quarante-cinq minutes avant le départ...
+  [FR No.290] 荷物にネームタグ（荷札
+         FR: **J'avais attaché une étiquette à mon bagage, mais elle s'est rapidement détaché...
+  [FR No.291] 平均すると、これらの小包は2ポンド（約1キロ
+         FR: **En moyenne, ces colis pèsent environ deux livres, soit près d'un kilo.**...
+  [FR No.292] このプラスチック製ゴミ袋には、有害な化学物質は一切含まれていません。
+         FR: **Ce sac poubelle en plastique est totalement exempt de produits chimiques nocif...
+  [FR No.293] この懐中電灯の光が弱くなってきた。新しい電池が必要だ。
+         FR: **Cette lampe de poche commence à faiblir, elle a besoin de piles neuves.**...
+
+######################################################################
+### SECTION 26 (Audio segments: 12 | French sentences: 10)
+######################################################################
+--- Audio Segments ---
+  [01] (00:00:00.000 --> 00:00:08.160) Excuse me, how often do the shuttle buses run to downtown New York?
+  [02] (00:00:08.160 --> 00:00:12.640) The motel can accommodate as many as 400 guests.
+  [03] (00:00:12.640 --> 00:00:17.360) This suite is three times larger than my condominium.
+  [04] (00:00:17.360 --> 00:00:24.040) Littering in this facility is subject to a maximum fine of $500.
+  [05] (00:00:24.040 --> 00:00:31.000) That restaurant is always packed. We'd better make a reservation beforehand.
+  [06] (00:00:31.000 --> 00:00:35.440) Sorry to interrupt your meal, but I'd like a word with you in private.
+  [07] (00:00:35.440 --> 00:00:38.240) Can I get back to you later?
+  [08] (00:00:38.240 --> 00:00:43.040) The cook was astonished at his incredible appetite.
+  [09] (00:00:43.040 --> 00:00:46.240) What's going on down there? I'm curious.
+  [10] (00:00:46.240 --> 00:00:48.440) I have no idea.
+  [11] (00:00:48.440 --> 00:00:55.440) Excited fans were hanging around the rear exit, hoping to catch a glimpse of Michael.
+  [12] (00:00:55.440 --> 00:00:59.680) On encountering the celebrity, they asked for his autograph.
+
+--- French Edition Sentences ---
+  [FR No.294] すみません、市街地（中心街
+         FR: **Pardon, à quelle fréquence les navettes circulent-elles vers le centre-ville ?...
+  [FR No.295] そのモーテル（宿泊施設
+         FR: **Ce motel est en mesure de loger jusqu'à quatre cents personnes.**...
+  [FR No.296] このスイートルームは、私の分譲マンションの3倍の広さがある。
+         FR: **Cette suite est trois fois plus spacieuse que mon appartement en copropriété.*...
+  [FR No.297] この施設内でのゴミの投棄（ポイ捨て
+         FR: **Jeter des ordures dans cet établissement est passible d'une amende maximale de...
+  [FR No.298] あのレストランはいつも超満員よ。あらかじめ予約しておいたほうがいいわ。
+         FR: **Ce restaurant est toujours plein à craquer ; il vaut mieux réserver au préalab...
+  [FR No.299] — 食事中に邪魔してごめん、内密に話したいことがあるんだ。 — あとで連絡し直してもいい？
+         FR: **— Pardon d'interrompre ton repas, mais j'aimerais te parler en privé. — Je peu...
+  [FR No.300] 料理人は、彼の信じられないほどの旺盛な食欲に目を見張った。
+         FR: **Le cuisinier a été stupéfait par son appétit incroyable.**...
+  [FR No.301] — あそこで何が起きているんだい？気になるな。 — さっぱり見当もつかないわ！
+         FR: **— Que se passe-t-il là-bas ? Je suis curieux de savoir. — Je n'en ai pas la mo...
+  [FR No.302] 興奮したファンたちが、ミシェルを一目見ようと裏口の周りにたむろしていた。
+         FR: **Des admirateurs enthousiastes traînaient près de la sortie arrière, espérant a...
+  [FR No.303] その大スターと対面すると、彼らはサイン（自筆署名
+         FR: **En se trouvant face à cette vedette, ils lui ont réclamé un autographe.**...
+
+######################################################################
+### SECTION 27 (Audio segments: 18 | French sentences: 11)
+######################################################################
+--- Audio Segments ---
+  [01] (00:00:00.000 --> 00:00:08.200) - Whenever I go abroad, I suffer from jet lag and diarrhea.
+  [02] (00:00:08.200 --> 00:00:12.080) I feel sort of dizzy and I feel like throwing up.
+  [03] (00:00:12.080 --> 00:00:14.600) You look pale.
+  [04] (00:00:14.600 --> 00:00:16.000) Take some aspirin.
+  [05] (00:00:16.000 --> 00:00:19.740) It will cure you of your headache in no time.
+  [06] (00:00:19.740 --> 00:00:22.520) I'm afraid I'm coming down with something.
+  [07] (00:00:22.520 --> 00:00:25.400) You should take a day off.
+  [08] (00:00:25.400 --> 00:00:31.680) Some of the ingredients in this beverage are harmful, especially if you're pregnant.
+  [09] (00:00:31.680 --> 00:00:36.520) Good nutrition is vital for an infant's growth.
+  [10] (00:00:36.520 --> 00:00:41.600) Moderate exercise stimulates the circulation of the blood.
+  [11] (00:00:41.600 --> 00:00:47.680) My physician advised me to refrain from alcohol for the time being.
+  [12] (00:00:47.680 --> 00:00:54.040) I do want to get into shape and lose some weight, so I go swimming every morning.
+  [13] (00:00:54.040 --> 00:00:59.400) He caught a nasty cold because he stayed up late last night.
+  [14] (00:00:59.400 --> 00:01:04.640) The surgeon persuaded him to undergo an organ transplant.
+  [15] (00:01:04.640 --> 00:01:10.040) Since our father is bedridden, we take turns looking after him.
+  [16] (00:01:10.040 --> 00:01:18.280) Our hypothesis is that eating excessive amounts of junk food contributes to early mortality.
+  [17] (00:01:18.280 --> 00:01:24.920) The government did not take appropriate measures to prevent the infection from spreading.
+  [18] (00:01:24.920 --> 00:01:27.520) The minister was obliged to resign from the cabinet.
+
+--- French Edition Sentences ---
+  [FR No.304] 海外に行くたびに、私は時差ボケと下痢に悩まされる。
+         FR: **Chaque fois que je pars à l'étranger, je souffre du décalage horaire et de la ...
+  [FR No.305] — なんだか頭がクラクラして吐き気がするんだ。 — 顔が真っ青よ！
+         FR: **— J'ai un peu la tête qui tourne et j'ai envie de vomir. — Tu es toute pâle !*...
+  [FR No.306] アスピリンを飲みなさい。あっという間に頭痛を治してくれるわ。
+         FR: **Prends de l'aspirine : elle guérira ton mal de tête en un rien de temps.**...
+  [FR No.307] — なんだか風邪でも引いた（病気に罹りかけた
+         FR: **— J'ai peur de couver quelque chose. — Tu ferais bien de prendre un jour de co...
+  [FR No.308] この飲料に含まれる一部の成分は有害です。特に妊娠中の女性にとっては。
+         FR: **Certains ingrédients de cette boisson sont nocifs, en particulier chez la femm...
+  [FR No.309] 絶対に健康を維持して体重を落としたいので、私は毎朝泳ぎに行っています。
+         FR: **Je tiens absolument à garder la forme et à perdre du poids, alors je vais nage...
+  [FR No.310] 外科医に説得され、彼は臓器移植手術を受けることに同意した。
+         FR: **Le chirurgien l'a persuadé de subir une greffe d'organe.**...
+  [FR No.311] 父が寝たきりの状態であるため、私たちは交代で付き添って面倒を見ている。
+         FR: **Notre père étant alité, nous nous relayons pour veiller sur lui.**...
+  [FR No.312] 私たちの仮説は、ジャンクフードの過剰摂取が早期死亡の一因になっているというものだ。
+         FR: **Notre hypothèse est que la surconsommation de malbouffe contribue à une mortal...
+  [FR No.313] 政府は、感染症の拡大を防ぐための適切な措置を講じなかった。
+         FR: **Le gouvernement n'a pas pris les mesures adéquates pour empêcher l'infection d...
+  [FR No.314] その大臣は、内閣（政府
+         FR: **Le ministre a été contraint de démissionner du gouvernement.**...
+
+######################################################################
+### SECTION 28 (Audio segments: 18 | French sentences: 13)
+######################################################################
+--- Audio Segments ---
+  [01] (00:00:02.480 --> 00:00:09.320) Many people regard the current compulsory education system as being obsolete.
+  [02] (00:00:09.320 --> 00:00:14.040) Many people encouraged me to fulfill my ambitions.
+  [03] (00:00:14.040 --> 00:00:21.040) To make his dreams come true, he dropped out of school and made his way to Tokyo.
+  [04] (00:00:21.040 --> 00:00:22.400) What do you do?
+  [05] (00:00:22.400 --> 00:00:25.440) I'm a college student, a freshman at Harvard.
+  [06] (00:00:25.440 --> 00:00:26.640) What's your major?
+  [07] (00:00:26.640 --> 00:00:28.600) Philosophy.
+  [08] (00:00:28.600 --> 00:00:35.720) Tuition will be raised by nearly 10% as of April 1st, 2001.
+  [09] (00:00:35.720 --> 00:00:39.480) I'm of two minds whether to apply for the scholarship or not.
+  [10] (00:00:39.480 --> 00:00:41.720) Give it a try.
+  [11] (00:00:41.720 --> 00:00:48.720) As soon as he graduated from KO University, he took over his family's business.
+  [12] (00:00:48.720 --> 00:00:54.240) You aren't cut out for the military because of its rigid discipline.
+  [13] (00:00:54.240 --> 00:00:59.760) I am determined to make a living as a playwright at all costs.
+  [14] (00:00:59.760 --> 00:01:04.960) As he grew up, he learned to put things in perspective.
+  [15] (00:01:04.960 --> 00:01:10.800) Conformity is an essential element of our homogenous community.
+  [16] (00:01:10.800 --> 00:01:19.360) I'd rather go my own way than toil away for a company, trying to fit into a mold gets me nowhere.
+  [17] (00:01:19.360 --> 00:01:25.000) Tom takes after his uncle in personality, I mean, he is obstinate by nature.
+  [18] (00:01:25.000 --> 00:01:26.080) He never gives in.
+
+--- French Edition Sentences ---
+  [FR No.315] 多くの人が、現行の義務教育制度を時代遅れだとみなしている。
+         FR: **Beaucoup considèrent le système actuel d'enseignement obligatoire comme obsolè...
+  [FR No.316] 多くの人たちが、私の大志（野望）を実現させるよう励ましてくれた。
+         FR: **De nombreuses personnes m'ont encouragé à concrétiser mes ambitions.**...
+  [FR No.317] 夢を実現させるため、彼は大学を中退し、地方からパリへ出た（上京した）。
+         FR: **Pour réaliser ses rêves, il a abandonné ses études et est monté à Paris.**...
+  [FR No.318] — お仕事は何をされていますか？ — 大学の1年生です。 — ご専攻は？ — 哲学です。
+         FR: **— Vous faites quoi dans la vie ? — Je suis étudiant en première année. — Quell...
+  [FR No.319] 授業料（学費）は、4月1日付けで10%近く引き上げられる予定です。
+         FR: **Les frais de scolarité seront augmentés de près de 10 % à compter du premier a...
+  [FR No.320] — この奨学金に応募すべきか迷っているんだ。 — ダメ元でやってみなよ、失うものは何もないわ！
+         FR: **— J'hésite à postuler pour cette bourse d'études. — Tente le coup, tu n'as rie...
+  [FR No.321] 大学の学位（卒業証書）を取得するやいなや、彼は家業を継いだ。
+         FR: **Dès qu'il a obtenu son diplôme universitaire, il a repris l'entreprise familia...
+  [FR No.322] 厳しい規律があるから、君は軍隊には向いていないよ。
+         FR: **Tu n'es pas fait pour l'armée en raison de sa discipline rigide.**...
+  [FR No.323] どんな代償を払っても、私は劇作家として生計を立てる決意です。
+         FR: **Je suis déterminée à gagner ma vie comme dramaturge, coûte que coûte.**...
+  [FR No.324] 大人になるにつれて、彼は一歩引いて物事を大局的（客観的）に見ることを覚えた。
+         FR: **En grandissant, il a appris à prendre du recul et à relativiser les choses.**...
+  [FR No.325] 同調（順応性）は、私たちの均質な地域社会における不可欠な要素である。
+         FR: **Le conformisme est un élément essentiel de notre communauté homogène.**...
+  [FR No.326] 会社のためにあくせく働くくらいなら、我が道を行くほうがましだ。型にはまろうとしても何の役にも立たない。
+         FR: **Je préfère suivre ma propre voie plutôt que de trimer pour une entreprise ; en...
+  [FR No.327] トマは性格の点で叔父に似ている。生まれつき頑固で、決して人に屈しない。
+         FR: **Thomas tient de son oncle pour le caractère : il est têtu de nature et ne cède...
+
+######################################################################
+### SECTION 29 (Audio segments: 11 | French sentences: 12)
+######################################################################
+--- Audio Segments ---
+  [01] (00:00:00.000 --> 00:00:07.120) When the time is ripe, be bold and go for it. I'll stand by you.
+  [02] (00:00:08.560 --> 00:00:12.400) I'll stand up for what I believe in and won't yield to any threats.
+  [03] (00:00:13.920 --> 00:00:20.480) If only I could conquer my weaknesses. It's up to you. You should make the most of this
+  [04] (00:00:20.480 --> 00:00:28.080) rare opportunity to demonstrate your talent. You won't let me down. I have great faith in you.
+  [05] (00:00:28.080 --> 00:00:33.920) You can make it. The spectators were moved by her graceful performance.
+  [06] (00:00:35.840 --> 00:00:40.800) In 1995, Ando received architecture's most prestigious award.
+  [07] (00:00:42.880 --> 00:00:48.240) In the face of adversity, Mike accomplished an extraordinary feat. He deserves praise.
+  [08] (00:00:50.240 --> 00:00:52.960) The audience was impressed by his eloquent lecture.
+  [09] (00:00:54.800 --> 00:00:58.240) From a humble background, John achieved worldwide fame.
+  [10] (00:01:00.240 --> 00:01:03.680) He accumulated a tremendous fortune during the post-war era.
+  [11] (00:01:05.760 --> 00:01:10.000) He used to be well-off and generous, but now he lives from hand to mouth.
+
+--- French Edition Sentences ---
+  [FR No.328] 時が来たら、大胆になって思い切って突き進め！ 私はいつでも君の味方だ。
+         FR: **Le moment venu, sois audacieux et fonce ! Je serai toujours à tes côtés.**...
+  [FR No.329] 私は自らの信念を断固として守り、いかなる脅迫［威嚇］にも屈しない。
+         FR: **Je défendrai mes convictions et je ne céderai à aucune intimidation.**...
+  [FR No.330] — 自らの弱点を克服できさえすればいいのに！ — それは君のやる気次第だよ。
+         FR: **— Si seulement je pouvais surmonter mes faiblesses ! — Cela ne tient qu'à toi....
+  [FR No.331] この稀な好機を最大限に活かして、自分の才能を証明してみせるべきだ。
+         FR: **Tu devrais mettre à profit cette rare opportunité pour démontrer ton talent.**...
+  [FR No.332] 君は私を失望させたりしない。君に全幅の信頼を置いているよ、君ならやり遂げられる！
+         FR: **Tu ne me décevras pas. J'ai une foi totale en toi : tu vas y arriver !**...
+  [FR No.333] 観客たちは彼女の優雅な演技に深く心を動かされた。
+         FR: **Les spectateurs ont été profondément émus par sa gracieuse prestation.**...
+  [FR No.334] 1995年、建築家の安藤は自らの専門分野における最高の栄誉［賞］を授与された。
+         FR: **En 1995, l'architecte Ando s'est vu décerner la récompense suprême dans son do...
+  [FR No.335] 逆境に直面しながらもアントワーヌは並外れた偉業を成し遂げた。彼は賞賛に値する。
+         FR: **Face à l'adversité, Antoine a accompli un exploit extraordinaire : il mérite d...
+  [FR No.336] 聴衆は彼のとりわけ雄弁な講義に深い感銘を受けた。
+         FR: **L'auditoire a été impressionné par son exposé particulièrement éloquent.**...
+  [FR No.337] 慎ましい家庭の出身でありながら、ジャンは世界的な名声を獲得した。
+         FR: **Issu d'un milieu modeste, Jean a acquis une renommée mondiale.**...
+  [FR No.338] 彼は戦後の時代において、巨万の富を築き上げた。
+         FR: **Il a accumulé une fortune colossale au cours de l'après-guerre.**...
+  [FR No.339] かつては裕福で気前が良かったのに、今では暮らしをやりくりするのに四苦八苦している。
+         FR: **Autrefois aisé et généreux, il peine aujourd'hui à joindre les deux bouts.**...
