@@ -67983,10 +67983,10 @@
 
       <div class="dock-settings">
         <select id="dock-repeat" class="dock-select" title="リピートモード">
-          <option value="1">1回</option>
+          <option value="1" selected>1回</option>
           <option value="3">3回</option>
           <option value="loop">ループ</option>
-          <option value="seq" selected>連続</option>
+          <option value="seq">連続</option>
         </select>
         <select id="dock-speed" class="dock-select" title="再生速度">
           <option value="0.75">0.75x</option>
@@ -68265,9 +68265,9 @@
       // =========================================================================
       // AUDIO ENGINE
       // =========================================================================
-      function playSentence(sid, forceStart = true) {
+      function playSentence(sid, forceStart = true, mode = 'single') {
         showSentenceById(sid, 'next');
-        currentMode = 'single';
+        currentMode = mode;
         const mp3Path = `audio/sentence_${sid}.mp3`;
         const repMode = dockRepeat.value;
         if (repMode === '3' && forceStart) {
@@ -68312,10 +68312,10 @@
           repeatCountRemaining--;
           audio.currentTime = 0;
           audio.play();
-        } else if (repMode === 'seq') {
+        } else if (repMode === 'seq' && currentMode === 'seq') {
           if (currentIndex + 1 < totalCards) {
             const nextSid = allCards[currentIndex + 1].dataset.id;
-            playSentence(nextSid, true);
+            playSentence(nextSid, true, 'seq');
           }
         }
       });
@@ -68327,7 +68327,7 @@
           if (currentSentenceId === sid && isPlaying && currentMode === 'single') {
             audio.pause();
           } else {
-            playSentence(sid, true);
+            playSentence(sid, true, 'single');
           }
           return;
         }
@@ -68366,21 +68366,32 @@
 
       dockPlayBtn.addEventListener('click', () => {
         if (!audio.src) {
-          playSentence(currentSentenceId, true);
+          const mode = dockRepeat.value === 'seq' ? 'seq' : 'single';
+          playSentence(currentSentenceId, true, mode);
           return;
         }
-        if (isPlaying) audio.pause();
-        else audio.play();
+        if (isPlaying) {
+          audio.pause();
+        } else {
+          if (dockRepeat.value === 'seq') currentMode = 'seq';
+          audio.play();
+        }
       });
 
       dockPrevBtn.addEventListener('click', () => {
         stepSentence(-1);
-        playSentence(currentSentenceId, true);
+        playSentence(currentSentenceId, true, currentMode);
       });
 
       dockNextBtn.addEventListener('click', () => {
         stepSentence(1);
-        playSentence(currentSentenceId, true);
+        playSentence(currentSentenceId, true, currentMode);
+      });
+
+      dockRepeat.addEventListener('change', () => {
+        if (currentMode !== 'opus') {
+          currentMode = dockRepeat.value === 'seq' ? 'seq' : 'single';
+        }
       });
 
       dockSpeed.addEventListener('change', () => {
