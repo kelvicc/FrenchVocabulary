@@ -147,25 +147,29 @@
     }
 
     /* ==========================================================================
-       MEMORIZATION MASKS (Clean Blur / Gray Mask)
+       MEMORIZATION MASKS (赤シート統合モード: 和訳 + 意味 + 派生語 + 成句を一括隠蔽)
        ========================================================================== */
-    body.mask-jp .japanese-translation {
-      background: var(--mask-bg) !important;
+    body.mask-redsheet .japanese-translation,
+    body.mask-redsheet .meaning,
+    body.mask-redsheet .meaning *,
+    body.mask-redsheet .rel-meaning,
+    body.mask-redsheet .rel-meaning *,
+    body.mask-redsheet .word-note,
+    body.mask-redsheet .word-etym {
+      background: #cbd5e1 !important;
       color: transparent !important;
       border-radius: 4px;
       user-select: none;
+      -webkit-user-select: none;
+      display: inline-block;
+      cursor: pointer;
     }
-    body.mask-meaning .meaning,
-    body.mask-meaning .word-note,
-    body.mask-meaning .word-etym,
-    body.mask-meaning .rel-meaning,
-    body.mask-meaning .syn-content,
-    body.mask-meaning .ant-content {
-      background: var(--mask-bg) !important;
-      color: transparent !important;
-      border-radius: 3px;
-      user-select: none;
+    body.mask-redsheet .word-note,
+    body.mask-redsheet .word-etym {
+      display: block;
+      border-left-color: #cbd5e1 !important;
     }
+
     body.mask-cloze .word-token {
       background: #cbd5e1;
       color: transparent;
@@ -971,8 +975,7 @@
       </div>
       <div class="header-right">
         <button id="btn-filter-star" class="btn-top-mini" title="要復習のみ表示">⭐ <span id="star-count">0</span></button>
-        <button id="btn-quick-mask-jp" class="btn-top-mini" title="和訳を隠す">🇯🇵 和訳</button>
-        <button id="btn-quick-mask-meaning" class="btn-top-mini" title="単語の意味を隠す">📖 意味</button>
+        <button id="btn-quick-redsheet" class="btn-top-mini" title="赤シート（和訳・意味・解説を隠す）">🟥 赤シート</button>
         <button id="btn-current-sec-opus" class="btn-top-mini" style="color:#34d399;" title="セクション通し音声">▶ 通し</button>
       </div>
     </div>
@@ -66866,10 +66869,9 @@
       </div>
       <div class="modal-body">
         <div class="tools-section">
-          <div class="tools-section-title">暗記マスク (赤シート) ＆ 視覚サポート</div>
+          <div class="tools-section-title">暗記サポート設定</div>
           <div class="tools-grid">
-            <button id="tool-mask-jp" class="tool-btn">🇯🇵 日本語訳を隠す</button>
-            <button id="tool-mask-meaning" class="tool-btn">📖 単語の意味を隠す</button>
+            <button id="tool-mask-redsheet" class="tool-btn">🟥 赤シート (和訳＋意味)</button>
             <button id="tool-mask-cloze" class="tool-btn">✏️ 仏文穴埋めテスト</button>
             <button id="tool-highlight-gender" class="tool-btn">🚻 名詞の性を色強調</button>
           </div>
@@ -67132,12 +67134,10 @@
       });
 
       // =========================================================================
-      // STUDY TOOLS & MEMORIZATION MASKS
+      // STUDY TOOLS & INTEGRATED RED-SHEET MASK
       // =========================================================================
-      const btnQuickMaskJp = document.getElementById('btn-quick-mask-jp');
-      const btnQuickMaskMeaning = document.getElementById('btn-quick-mask-meaning');
-      const btnToolMaskJp = document.getElementById('tool-mask-jp');
-      const btnToolMaskMeaning = document.getElementById('tool-mask-meaning');
+      const btnQuickRedSheet = document.getElementById('btn-quick-redsheet');
+      const btnToolRedSheet = document.getElementById('tool-mask-redsheet');
       const btnToolMaskCloze = document.getElementById('tool-mask-cloze');
       const btnToolGender = document.getElementById('tool-highlight-gender');
 
@@ -67151,10 +67151,12 @@
         });
       }
 
-      btnQuickMaskJp.addEventListener('click', () => toggleBodyMask('mask-jp', [btnQuickMaskJp, btnToolMaskJp]));
-      btnToolMaskJp.addEventListener('click', () => toggleBodyMask('mask-jp', [btnQuickMaskJp, btnToolMaskJp]));
-      btnQuickMaskMeaning.addEventListener('click', () => toggleBodyMask('mask-meaning', [btnQuickMaskMeaning, btnToolMaskMeaning]));
-      btnToolMaskMeaning.addEventListener('click', () => toggleBodyMask('mask-meaning', [btnQuickMaskMeaning, btnToolMaskMeaning]));
+      if (btnQuickRedSheet) {
+        btnQuickRedSheet.addEventListener('click', () => toggleBodyMask('mask-redsheet', [btnQuickRedSheet, btnToolRedSheet]));
+      }
+      if (btnToolRedSheet) {
+        btnToolRedSheet.addEventListener('click', () => toggleBodyMask('mask-redsheet', [btnQuickRedSheet, btnToolRedSheet]));
+      }
       btnToolMaskCloze.addEventListener('click', () => toggleBodyMask('mask-cloze', [btnToolMaskCloze]));
       btnToolGender.addEventListener('click', () => toggleBodyMask('highlight-gender', [btnToolGender]));
 
