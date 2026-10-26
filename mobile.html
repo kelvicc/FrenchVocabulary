@@ -53,16 +53,16 @@
     em { font-style: italic; font-family: 'Source Serif 4', Georgia, serif; }
 
     /* ==========================================================================
-       COMPACT MOBILE TOP BAR
+       SUPER COMPACT MOBILE TOP BAR
        ========================================================================== */
     header {
-      background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+      background: #1e293b;
       color: white;
-      padding: 0.45rem 0.75rem;
+      padding: 0.3rem 0.6rem;
       position: sticky;
       top: 0;
       z-index: 500;
-      box-shadow: 0 1px 6px rgba(0,0,0,0.12);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
     }
     .header-inner {
       max-width: 640px;
@@ -70,150 +70,80 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.4rem;
     }
-    .logo-group {
-      display: flex;
-      align-items: center;
-      gap: 0.45rem;
-      cursor: pointer;
-    }
-    .tricolor-flag {
-      display: flex;
-      width: 18px;
-      height: 13px;
-      border-radius: 2px;
-      overflow: hidden;
-      flex-shrink: 0;
-    }
-    .flag-b { width: 33.3%; background: #2563eb; }
-    .flag-w { width: 33.3%; background: #ffffff; }
-    .flag-r { width: 33.3%; background: #ef4444; }
-    .logo-group h1 {
-      font-family: 'Cinzel', serif;
-      font-size: 0.98rem;
-      font-weight: 800;
-      letter-spacing: 0.03em;
-      color: #ffffff;
-      display: flex;
-      align-items: center;
-      gap: 0.35rem;
-    }
-    .badge-mobile {
-      background: #dbeafe;
-      color: #1e40af;
-      font-size: 0.6rem;
-      padding: 0.08rem 0.35rem;
-      border-radius: 3px;
-      font-weight: 700;
-      font-family: sans-serif;
-    }
-
-    .top-quick-status {
+    .header-left {
       display: flex;
       align-items: center;
       gap: 0.4rem;
+      min-width: 0;
+      flex: 1;
     }
-    .btn-top-pill {
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.22);
-      color: #f8fafc;
-      font-size: 0.72rem;
+    .sec-badge-pill {
+      font-family: 'Cinzel', serif;
+      font-size: 0.76rem;
+      font-weight: 800;
+      color: #93c5fd;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.18);
+      padding: 0.12rem 0.45rem;
+      border-radius: 4px;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+    .sec-title-text {
+      font-size: 0.74rem;
+      font-weight: 600;
+      color: #e2e8f0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      flex-shrink: 0;
+    }
+    .btn-top-mini {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #f1f5f9;
+      font-size: 0.68rem;
       font-weight: 700;
-      padding: 0.22rem 0.5rem;
-      border-radius: 5px;
+      padding: 0.18rem 0.42rem;
+      border-radius: 4px;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 0.2rem;
+      gap: 0.15rem;
     }
-    .btn-top-pill.star-active {
+    .btn-top-mini.active {
+      background: #fee2e2;
+      color: #dc2626;
+      border-color: #fca5a5;
+    }
+    .btn-top-mini.star-active {
       background: #fef08a;
       color: #854d0e;
       border-color: #facc15;
     }
 
-    /* ==========================================================================
-       SWIPE STATUS & SECTION MINI BANNER
-       ========================================================================== */
+    /* Thin Progress Strip */
     .mobile-nav-strip {
-      background: #ffffff;
-      border-bottom: 1px solid var(--border);
-      padding: 0.4rem 0.75rem;
-      position: sticky;
-      top: 39px;
-      z-index: 400;
-    }
-    .mobile-nav-inner {
-      max-width: 640px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 0.3rem;
-    }
-    .sec-status-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 0.4rem;
-    }
-    .sec-current-label {
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: #1e3a8a;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      flex: 1;
-    }
-    .btn-sec-opus-mini {
-      background: #ecfdf5;
-      color: #047857;
-      border: 1px solid #a7f3d0;
-      padding: 0.18rem 0.5rem;
-      border-radius: 4px;
-      font-size: 0.68rem;
-      font-weight: 700;
-      cursor: pointer;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-    .btn-sec-opus-mini.playing {
-      background: #fee2e2;
-      color: #dc2626;
-      border-color: #fca5a5;
-    }
-
-    .sentence-progress-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.5rem;
-    }
-    .progress-bar-wrap {
-      flex: 1;
-      height: 5px;
       background: #e2e8f0;
-      border-radius: 3px;
-      overflow: hidden;
+      height: 3px;
+      width: 100%;
+      position: sticky;
+      top: 32px;
+      z-index: 490;
     }
     .progress-bar-fill {
       height: 100%;
-      background: #3b82f6;
+      background: #2563eb;
       width: 0.18%;
-      transition: width 0.2s ease;
-    }
-    .swipe-counter-text {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.72rem;
-      font-weight: 700;
-      color: #475569;
-      white-space: nowrap;
-    }
-    .swipe-hint {
-      font-size: 0.68rem;
-      color: #94a3b8;
-      white-space: nowrap;
+      transition: width 0.15s ease;
     }
 
     /* ==========================================================================
@@ -288,11 +218,6 @@
     }
     .duo-card.active-card {
       display: block;
-      animation: cardSlideIn 0.16s ease-out;
-    }
-    @keyframes cardSlideIn {
-      from { opacity: 0.65; transform: translateX(var(--slide-dir, 14px)); }
-      to { opacity: 1; transform: translateX(0); }
     }
     .duo-card.is-starred {
       border-left: 4px solid #facc15;
@@ -1037,42 +962,25 @@
 </head>
 <body>
 
-  <!-- COMPACT HEADER -->
+  <!-- SUPER COMPACT HEADER (1-LINE INTEGRATED BAR) -->
   <header>
     <div class="header-inner">
-      <div class="logo-group" id="btn-home-top">
-        <div class="tricolor-flag">
-          <div class="flag-b"></div>
-          <div class="flag-w"></div>
-          <div class="flag-r"></div>
-        </div>
-        <h1>DUO Français <span class="badge-mobile">MOBILE</span></h1>
+      <div class="header-left" id="btn-open-sections-top">
+        <span id="current-sec-badge" class="sec-badge-pill">Sec.01</span>
+        <span id="current-sec-label" class="sec-title-text">個人の尊重と意志</span>
       </div>
-
-      <div class="top-quick-status">
-        <a href="index.html" class="btn-top-pill" style="text-decoration:none;">🖥️ PC版</a>
-        <button id="btn-filter-star" class="btn-top-pill">⭐ <span id="star-count">0</span></button>
-        <button id="btn-quick-mask-jp" class="btn-top-pill">🇯🇵 和訳隠</button>
-        <button id="btn-quick-mask-meaning" class="btn-top-pill">📖 意味隠</button>
+      <div class="header-right">
+        <button id="btn-filter-star" class="btn-top-mini" title="要復習のみ表示">⭐ <span id="star-count">0</span></button>
+        <button id="btn-quick-mask-jp" class="btn-top-mini" title="和訳を隠す">🇯🇵 和訳</button>
+        <button id="btn-quick-mask-meaning" class="btn-top-mini" title="単語の意味を隠す">📖 意味</button>
+        <button id="btn-current-sec-opus" class="btn-top-mini" style="color:#34d399;" title="セクション通し音声">▶ 通し</button>
       </div>
     </div>
   </header>
 
-  <!-- SECTION & SWIPE PROGRESS STRIP -->
+  <!-- THIN PROGRESS STRIP -->
   <div class="mobile-nav-strip">
-    <div class="mobile-nav-inner">
-      <div class="sec-status-row">
-        <div id="current-sec-label" class="sec-current-label">Section 01</div>
-        <button id="btn-current-sec-opus" class="btn-sec-opus-mini" data-opus="audio_sections/section_01.opus" data-sec="1">▶ Sec通し音声</button>
-      </div>
-      <div class="sentence-progress-row">
-        <span id="swipe-counter" class="swipe-counter-text">No. 001 / 560</span>
-        <div class="progress-bar-wrap">
-          <div id="swipe-progress-fill" class="progress-bar-fill"></div>
-        </div>
-        <span class="swipe-hint">⇄ 左右スワイプで移動</span>
-      </div>
-    </div>
+    <div id="swipe-progress-fill" class="progress-bar-fill"></div>
   </div>
 
   <!-- MAIN SWIPE CONTAINER -->
@@ -67104,8 +67012,8 @@
       // =========================================================================
       // SENTENCE NAVIGATION & HORIZONTAL SWIPE ENGINE
       // =========================================================================
-      const swipeCounter = document.getElementById('swipe-counter');
       const swipeProgressFill = document.getElementById('swipe-progress-fill');
+      const currentSecBadge = document.getElementById('current-sec-badge');
       const currentSecLabel = document.getElementById('current-sec-label');
       const btnCurrentSecOpus = document.getElementById('btn-current-sec-opus');
 
@@ -67123,7 +67031,6 @@
         currentIndex = newIndex;
         const targetCard = allCards[currentIndex];
         currentSentenceId = targetCard.dataset.id;
-        targetCard.style.setProperty('--slide-dir', slideDirection === 'prev' ? '-14px' : '14px');
 
         const targetSec = targetCard.closest('.section-container');
         if (targetSec) {
@@ -67132,16 +67039,18 @@
           const secSub = targetSec.dataset.subtitle || '';
           const secOpus = targetSec.dataset.opus || '';
           currentSectionNum = secNum;
-          currentSecLabel.textContent = `Section ${String(secNum).padStart(2, '0')} — ${secSub}`;
-          btnCurrentSecOpus.dataset.opus = secOpus;
-          btnCurrentSecOpus.dataset.sec = secNum;
+          if (currentSecBadge) currentSecBadge.textContent = `Sec.${String(secNum).padStart(2, '0')}`;
+          if (currentSecLabel) currentSecLabel.textContent = secSub;
+          if (btnCurrentSecOpus) {
+            btnCurrentSecOpus.dataset.opus = secOpus;
+            btnCurrentSecOpus.dataset.sec = secNum;
+          }
         }
 
         targetCard.classList.add('active-card');
-        swipeCounter.textContent = `No. ${currentSentenceId} / ${totalCards}`;
-        swipeProgressFill.style.width = `${((currentIndex + 1) / totalCards) * 100}%`;
+        if (swipeProgressFill) swipeProgressFill.style.width = `${((currentIndex + 1) / totalCards) * 100}%`;
         if (!isPlaying) {
-          dockTitle.textContent = `No. ${currentSentenceId} 待機中`;
+          dockTitle.textContent = `No. ${currentSentenceId} / ${totalCards}`;
         }
         localStorage.setItem('duo_mobile_last_sid', currentSentenceId);
         window.scrollTo({ top: 0, behavior: 'instant' });
@@ -67171,7 +67080,13 @@
 
       document.getElementById('nav-prev-sentence').addEventListener('click', () => stepSentence(-1));
       document.getElementById('nav-next-sentence').addEventListener('click', () => stepSentence(1));
-      document.getElementById('btn-home-top').addEventListener('click', () => showSentenceByIndex(0, 'prev'));
+      const topSecBtn = document.getElementById('btn-open-sections-top');
+      if (topSecBtn) {
+        topSecBtn.addEventListener('click', () => {
+          closeAllModals();
+          modalSections.classList.add('open');
+        });
+      }
 
       // Touch Swipe Listener on Main Content
       const mainEl = document.getElementById('main-content');
