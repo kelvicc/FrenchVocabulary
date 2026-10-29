@@ -77,21 +77,7 @@ def generate_daily_css():
       letter-spacing: 0.6px;
       display: inline-block;
     }
-    .daily-back-btn {
-      background: rgba(255, 255, 255, 0.2);
-      border: 1px solid rgba(255, 255, 255, 0.45);
-      color: #ffffff;
-      padding: 3px 10px;
-      border-radius: 6px;
-      font-size: 11px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background 0.15s, transform 0.1s;
-    }
-    .daily-back-btn:hover {
-      background: rgba(255, 255, 255, 0.35);
-      transform: translateY(-1px);
-    }
+    
     .daily-theme-title {
       font-size: 18px;
       font-weight: 800;
@@ -357,10 +343,7 @@ def generate_daily_sections_html(themes, is_mobile=False):
     <!-- DAILY VOCABULARY THEME {num:02d} -->
     <section class="section-container daily-theme-container" id="{sec_id}" data-sec="{data_sec}" data-subtitle="{subtitle}" data-daily-num="{num}">
       <div class="daily-theme-header-card">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
-          <span class="daily-badge-theme">日常語 THEME {num:02d}</span>
-          <button class="daily-back-btn" onclick="if (typeof showSentenceById === 'function') {{ showSentenceById(currentSentenceId || '001', 'next'); }} else {{ const el = document.getElementById('section-01'); if (el) el.scrollIntoView({{behavior:'smooth'}}); }}">← DUO本編に戻る</button>
-        </div>
+        <span class="daily-badge-theme">日常語 THEME {num:02d}</span>
         <h2 class="daily-theme-title">🌿 {subtitle}</h2>
         <div class="daily-theme-sub">{title_fr}</div>
         <div class="daily-theme-stats">
@@ -567,10 +550,15 @@ def generate_daily_js():
       const sec = row.closest('.section-container');
       if (sec) {
         document.querySelectorAll('.section-container').forEach(s => s.classList.remove('active-sec'));
+        document.querySelectorAll('.duo-card.active-card').forEach(c => c.classList.remove('active-card'));
         sec.classList.add('active-sec');
         const badge = document.getElementById('current-sec-badge');
         if (badge) {
           badge.textContent = `日常語 D${sec.dataset.dailyNum || ''}`;
+        }
+        const label = document.getElementById('current-sec-label');
+        if (label) {
+          label.textContent = sec.dataset.subtitle || '';
         }
       }
       setTimeout(() => {
@@ -584,12 +572,17 @@ def generate_daily_js():
       const sec = document.getElementById(targetSecId);
       if (!sec) return;
       document.querySelectorAll('.section-container').forEach(s => s.classList.remove('active-sec'));
+      document.querySelectorAll('.duo-card.active-card').forEach(c => c.classList.remove('active-card'));
       sec.classList.add('active-sec');
       const badge = document.getElementById('current-sec-badge');
       if (badge) {
         badge.textContent = `日常語 D${sec.dataset.dailyNum || ''}`;
       }
-      sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const label = document.getElementById('current-sec-label');
+      if (label) {
+        label.textContent = sec.dataset.subtitle || '';
+      }
+      window.scrollTo(0, 0);
     }
 
     // Expose functions globally to window for inline onclick handlers

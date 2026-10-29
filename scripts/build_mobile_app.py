@@ -1337,16 +1337,14 @@ def generate_mobile_html(sections_data, all_words_index, index_counts, total_sen
         if (newIndex < 0) newIndex = 0;
         if (newIndex >= totalCards) newIndex = totalCards - 1;
 
-        const prevCard = allCards[currentIndex];
-        if (prevCard) {
-          prevCard.classList.remove('active-card');
-          const prevSec = prevCard.closest('.section-container');
-          if (prevSec) prevSec.classList.remove('active-sec');
-        }
+        // Deactivate all sections and cards cleanly
+        document.querySelectorAll('.section-container').forEach(s => s.classList.remove('active-sec'));
+        document.querySelectorAll('.duo-card.active-card').forEach(c => c.classList.remove('active-card'));
 
         currentIndex = newIndex;
         const targetCard = allCards[currentIndex];
         currentSentenceId = targetCard.dataset.id;
+        targetCard.classList.add('active-card');
 
         const targetSec = targetCard.closest('.section-container');
         if (targetSec) {
@@ -1363,7 +1361,6 @@ def generate_mobile_html(sections_data, all_words_index, index_counts, total_sen
           }
         }
 
-        targetCard.classList.add('active-card');
         if (swipeProgressFill) swipeProgressFill.style.width = `${((currentIndex + 1) / totalCards) * 100}%`;
         if (!isPlaying) {
           dockTitle.textContent = `No. ${currentSentenceId} / ${totalCards}`;
@@ -1395,10 +1392,39 @@ def generate_mobile_html(sections_data, all_words_index, index_counts, total_sen
       }
 
       function stepSection(delta) {
+        // 1. If currently viewing an everyday vocabulary theme
+        const activeDailySec = document.querySelector('.daily-theme-container.active-sec');
+        if (activeDailySec) {
+          let curDailyNum = parseInt(activeDailySec.dataset.dailyNum, 10) || 1;
+          let nextDailyNum = curDailyNum + delta;
+          if (nextDailyNum >= 1 && nextDailyNum <= 8) {
+            activateDailyTheme(`section-daily-${String(nextDailyNum).padStart(2, '0')}`);
+            return;
+          }
+          if (nextDailyNum < 1) {
+            // Jump backwards from Daily Theme 1 to Section 45
+            const sec45El = document.getElementById('section-45');
+            if (sec45El) {
+              const firstCard = sec45El.querySelector('.duo-card');
+              if (firstCard && firstCard.dataset.id) {
+                showSentenceById(firstCard.dataset.id, 'prev');
+              }
+            }
+            return;
+          }
+          // If nextDailyNum > 8, stay on Theme 8
+          return;
+        }
+
+        // 2. Normal DUO section stepping
         let curSec = parseInt(currentSectionNum, 10) || 1;
         let targetSec = curSec + delta;
+        if (targetSec > 45) {
+          // Jump forward from Section 45 to Daily Theme 1
+          activateDailyTheme('section-daily-01');
+          return;
+        }
         if (targetSec < 1) targetSec = 1;
-        if (targetSec > 45) targetSec = 45;
         const secEl = document.getElementById(`section-${String(targetSec).padStart(2, '0')}`);
         if (secEl) {
           const firstCard = secEl.querySelector('.duo-card');
@@ -1437,10 +1463,19 @@ def generate_mobile_html(sections_data, all_words_index, index_counts, total_sen
         const dx = e.changedTouches[0].clientX - touchStartX;
         const dy = e.changedTouches[0].clientY - touchStartY;
         if (Math.abs(dx) > 48 && Math.abs(dx) > Math.abs(dy) * 1.4) {
-          if (dx < 0) {
-            stepSentence(1);
+          const activeDailySec = document.querySelector('.daily-theme-container.active-sec');
+          if (activeDailySec) {
+            if (dx < 0) {
+              stepSection(1);
+            } else {
+              stepSection(-1);
+            }
           } else {
-            stepSentence(-1);
+            if (dx < 0) {
+              stepSentence(1);
+            } else {
+              stepSentence(-1);
+            }
           }
         }
       }, { passive: true });
@@ -1448,8 +1483,14 @@ def generate_mobile_html(sections_data, all_words_index, index_counts, total_sen
       // Keyboard Left/Right support
       document.addEventListener('keydown', (e) => {
         if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') return;
-        if (e.key === 'ArrowRight') stepSentence(1);
-        if (e.key === 'ArrowLeft') stepSentence(-1);
+        const activeDailySec = document.querySelector('.daily-theme-container.active-sec');
+        if (e.key === 'ArrowRight') {
+          if (activeDailySec) stepSection(1);
+          else stepSentence(1);
+        } else if (e.key === 'ArrowLeft') {
+          if (activeDailySec) stepSection(-1);
+          else stepSentence(-1);
+        }
       });
 
       // Star filter button
