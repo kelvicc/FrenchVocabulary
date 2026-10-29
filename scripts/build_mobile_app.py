@@ -1793,13 +1793,26 @@ def generate_mobile_html(sections_data, all_words_index, index_counts, total_sen
         updateLoadMoreButton();
       }
 
-            function updateIndexResults() {
+                  function isPureAscii(str) {
+        for (let i = 0; i < str.length; i++) {
+          if (str.charCodeAt(i) > 127) return false;
+        }
+        return true;
+      }
+
+      function hasWordComponentPrefix(w, q) {
+        const parts = w.split(/[\s\-'\u2019]+/);
+        for (let i = 0; i < parts.length; i++) {
+          if (parts[i].startsWith(q)) return true;
+        }
+        return false;
+      }
+
+      function updateIndexResults() {
         const q = currentQuery.toLowerCase().trim();
 
         if (q) {
-          const isAscii = /^[\x00-\x7F]+$/.test(q);
-          const escapedQ = q.replace(/[\-\/\\^$*+?.()|[\]{}]/g, '\\$&');
-          const regexWordStart = new RegExp('(?:^|[\\s\\-\'’])' + escapedQ);
+          const isAscii = isPureAscii(q);
 
           let scored = [];
           for (let i = 0; i < INDEX_DATA.length; i++) {
@@ -1811,17 +1824,17 @@ def generate_mobile_html(sections_data, all_words_index, index_counts, total_sen
 
             let score = 0;
             if (w === q) {
-              score = 100; // Exact match on French word
+              score = 100;
             } else if (w.startsWith(q)) {
-              score = 80;  // Prefix match on French word (e.g. "gant" -> "gants")
-            } else if (regexWordStart.test(w)) {
-              score = 70;  // Word component prefix match (e.g. "boîte à gants")
+              score = 80;
+            } else if (hasWordComponentPrefix(w, q)) {
+              score = 70;
             } else if (m === q) {
-              score = 60;  // Exact match on Japanese meaning
+              score = 60;
             } else if (m.startsWith(q) || m.includes('、' + q) || m.includes('(' + q) || m.includes('（' + q)) {
-              score = 50;  // Japanese component match
+              score = 50;
             } else if (!isAscii && m.includes(q)) {
-              score = 30;  // Japanese partial match (only for Japanese search query)
+              score = 30;
             }
 
             if (score > 0) {
@@ -1829,7 +1842,6 @@ def generate_mobile_html(sections_data, all_words_index, index_counts, total_sen
             }
           }
 
-          // Sort: highest score first, then shorter word length, then alphabetical
           scored.sort((a, b) => {
             if (b.score !== a.score) return b.score - a.score;
             if (a.item[0].length !== b.item[0].length) return a.item[0].length - b.item[0].length;
