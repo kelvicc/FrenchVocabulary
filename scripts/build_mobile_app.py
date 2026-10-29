@@ -1195,7 +1195,7 @@ def generate_mobile_html(sections_data, all_words_index, index_counts, total_sen
 
   <!-- FIXED BOTTOM DOCK: 1-LINE AUDIO BAR + THUMB NAVIGATION -->
   <div class="bottom-fixed-stack">
-    <div class="player-dock" id="player-dock">
+    <div class="player-dock dock-hidden" id="player-dock">
       <div class="dock-now-playing">
         <div id="dock-indicator" class="dock-indicator"></div>
         <div id="dock-title" class="dock-info-title">No. 001 待機中</div>
@@ -1242,7 +1242,7 @@ def generate_mobile_html(sections_data, all_words_index, index_counts, total_sen
       </button>
       <button id="btn-open-tools" class="thumb-tab">
         <span class="thumb-icon">🔍</span>
-        <span>検索・マスク</span>
+        <span>検索</span>
       </button>
       <button id="nav-next-section" class="thumb-tab nav-arrow" title="次のセクションへ">
         <span class="thumb-icon">⏭</span>
@@ -1553,6 +1553,8 @@ def generate_mobile_html(sections_data, all_words_index, index_counts, total_sen
 
       audio.addEventListener('play', () => {
         isPlaying = true;
+        const playerDock = document.getElementById('player-dock');
+        if (playerDock) playerDock.classList.remove('dock-hidden');
         document.body.classList.add('audio-open');
         dockPlayBtn.textContent = '⏸';
         dockIndicator.classList.add('live');
@@ -1631,10 +1633,14 @@ def generate_mobile_html(sections_data, all_words_index, index_counts, total_sen
         btnDockClose.addEventListener('click', () => {
           audio.pause();
           document.body.classList.remove('audio-open');
+          const playerDock = document.getElementById('player-dock');
+          if (playerDock) playerDock.classList.add('dock-hidden');
         });
       }
 
       dockPlayBtn.addEventListener('click', () => {
+        const playerDock = document.getElementById('player-dock');
+        if (playerDock) playerDock.classList.remove('dock-hidden');
         if (!audio.src) {
           const mode = dockRepeat.value === 'seq' ? 'seq' : 'single';
           playSentence(currentSentenceId, true, mode);

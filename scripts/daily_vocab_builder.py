@@ -203,6 +203,31 @@ def generate_daily_css():
     }
     .daily-btn-audio:hover { opacity: 1; transform: scale(1.15); }
 
+    .daily-btn-group-audio {
+      font-size: 11px;
+      padding: 3px 8px;
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 4px;
+      font-weight: 700;
+      color: #0f766e;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      transition: all 0.15s ease;
+    }
+    .daily-btn-group-audio:hover {
+      background: #f0fdf4;
+      border-color: #059669;
+    }
+    .daily-btn-group-audio.is-playing {
+      background: #fef2f2 !important;
+      border-color: #ef4444 !important;
+      color: #dc2626 !important;
+      box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2);
+    }
+
     .daily-meaning {
       font-size: 14px;
       font-weight: 600;
@@ -369,7 +394,7 @@ def generate_daily_sections_html(themes, is_mobile=False):
             <span class="daily-group-badge">{code}. {escape_html(g_title)}</span>
             <span class="daily-group-count">{len(w_list)} 語</span>
           </div>
-          <button class="daily-btn-audio" style="font-size:11px; padding:2px 6px; background:#fff; border:1px solid #cbd5e1; border-radius:4px; font-weight:600;" onclick="playDailyGroupAudio('{code}')">🔊 連続再生</button>
+          <button class="daily-btn-group-audio" data-group-code="{code}" onclick="playDailyGroupAudio('{code}')">🔊 連続再生</button>
         </div>
 """)
 
@@ -476,17 +501,80 @@ def generate_daily_js():
       window.speechSynthesis.speak(u);
     }
 
+    let dailyGroupAudioCtrl = {
+      activeCode: null,
+      stopRequested: false,
+      activeRow: null
+    };
+
+    function stopDailyGroupAudio() {
+      if (dailyGroupAudioCtrl.activeCode) {
+        dailyGroupAudioCtrl.stopRequested = true;
+        if ('speechSynthesis' in window) {
+          window.speechSynthesis.cancel();
+        }
+        if (dailyGroupAudioCtrl.activeRow) {
+          dailyGroupAudioCtrl.activeRow.classList.remove('flash-highlight');
+        }
+        const prevBtn = document.querySelector(`.daily-btn-group-audio[data-group-code="${dailyGroupAudioCtrl.activeCode}"]`);
+        if (prevBtn) {
+          prevBtn.innerHTML = '🔊 連続再生';
+          prevBtn.classList.remove('is-playing');
+        }
+        dailyGroupAudioCtrl.activeCode = null;
+        dailyGroupAudioCtrl.activeRow = null;
+      }
+    }
+
     async function playDailyGroupAudio(code) {
+      // 1. If currently playing this group, stop immediately
+      if (dailyGroupAudioCtrl.activeCode === code) {
+        stopDailyGroupAudio();
+        return;
+      }
+
+      // 2. Stop any existing playback first
+      stopDailyGroupAudio();
+
       const groupEl = document.getElementById('daily-group-' + code);
       if (!groupEl) return;
+      const btn = groupEl.querySelector(`.daily-btn-group-audio[data-group-code="${code}"]`);
+      if (btn) {
+        btn.innerHTML = '⏹ 停止';
+        btn.classList.add('is-playing');
+      }
+
+      dailyGroupAudioCtrl.activeCode = code;
+      dailyGroupAudioCtrl.stopRequested = false;
+
       const rows = groupEl.querySelectorAll('.daily-word-row');
       for (const row of rows) {
-        const btn = row.querySelector('.daily-btn-audio');
-        const fr = (btn && btn.dataset.speak) || row.querySelector('.daily-french').innerText.split('/')[0].trim();
+        if (dailyGroupAudioCtrl.stopRequested || dailyGroupAudioCtrl.activeCode !== code) {
+          break;
+        }
+
+        dailyGroupAudioCtrl.activeRow = row;
+        const wordBtn = row.querySelector('.daily-btn-audio');
+        const fr = (wordBtn && wordBtn.dataset.speak) || row.querySelector('.daily-french').innerText.split('/')[0].trim();
+        
         playDailyWord(fr);
         row.classList.add('flash-highlight');
-        await new Promise(r => setTimeout(r, 1600));
+
+        // Allow instant cancellation during wait loop
+        const totalWait = 1800;
+        let elapsed = 0;
+        while (elapsed < totalWait) {
+          if (dailyGroupAudioCtrl.stopRequested || dailyGroupAudioCtrl.activeCode !== code) break;
+          await new Promise(r => setTimeout(r, 100));
+          elapsed += 100;
+        }
+
         row.classList.remove('flash-highlight');
+      }
+
+      // Restore button upon completion
+      if (dailyGroupAudioCtrl.activeCode === code) {
+        stopDailyGroupAudio();
       }
     }
 
@@ -547,18 +635,21 @@ def generate_daily_js():
     function jumpToDailyWord(did) {
       const row = document.getElementById('daily-word-' + did);
       if (!row) return;
-      const sec = row.closest('.section-container');
-      if (sec) {
-        document.querySelectorAll('.section-container').forEach(s => s.classList.remove('active-sec'));
-        document.querySelectorAll('.duo-card.active-card').forEach(c => c.classList.remove('active-card'));
-        sec.classList.add('active-sec');
-        const badge = document.getElementById('current-sec-badge');
-        if (badge) {
-          badge.textContent = `日常語 D${sec.dataset.dailyNum || ''}`;
-        }
-        const label = document.getElementById('current-sec-label');
-        if (label) {
-          label.textContent = sec.dataset.subtitle || '';
+      const isMobile = !!document.querySelector('.thumb-nav-bar');
+      if (isMobile) {
+        const sec = row.closest('.section-container');
+        if (sec) {
+          document.querySelectorAll('.section-container').forEach(s => s.classList.remove('active-sec'));
+          document.querySelectorAll('.duo-card.active-card').forEach(c => c.classList.remove('active-card'));
+          sec.classList.add('active-sec');
+          const badge = document.getElementById('current-sec-badge');
+          if (badge) {
+            badge.textContent = `日常語 D${sec.dataset.dailyNum || ''}`;
+          }
+          const label = document.getElementById('current-sec-label');
+          if (label) {
+            label.textContent = sec.dataset.subtitle || '';
+          }
         }
       }
       setTimeout(() => {
@@ -571,23 +662,34 @@ def generate_daily_js():
     function activateDailyTheme(targetSecId) {
       const sec = document.getElementById(targetSecId);
       if (!sec) return;
-      document.querySelectorAll('.section-container').forEach(s => s.classList.remove('active-sec'));
-      document.querySelectorAll('.duo-card.active-card').forEach(c => c.classList.remove('active-card'));
-      sec.classList.add('active-sec');
-      const badge = document.getElementById('current-sec-badge');
-      if (badge) {
-        badge.textContent = `日常語 D${sec.dataset.dailyNum || ''}`;
+      const isMobile = !!document.querySelector('.thumb-nav-bar');
+      if (isMobile) {
+        document.querySelectorAll('.section-container').forEach(s => s.classList.remove('active-sec'));
+        document.querySelectorAll('.duo-card.active-card').forEach(c => c.classList.remove('active-card'));
+        sec.classList.add('active-sec');
+        const badge = document.getElementById('current-sec-badge');
+        if (badge) {
+          badge.textContent = `日常語 D${sec.dataset.dailyNum || ''}`;
+        }
+        const label = document.getElementById('current-sec-label');
+        if (label) {
+          label.textContent = sec.dataset.subtitle || '';
+        }
+        window.scrollTo(0, 0);
+      } else {
+        // Desktop (index.html): smoothly scroll directly to target everyday theme
+        setTimeout(() => {
+          sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          sec.classList.add('highlight-pulse');
+          setTimeout(() => sec.classList.remove('highlight-pulse'), 2000);
+        }, 50);
       }
-      const label = document.getElementById('current-sec-label');
-      if (label) {
-        label.textContent = sec.dataset.subtitle || '';
-      }
-      window.scrollTo(0, 0);
     }
 
     // Expose functions globally to window for inline onclick handlers
     window.playDailyWord = playDailyWord;
     window.playDailyGroupAudio = playDailyGroupAudio;
+    window.stopDailyGroupAudio = stopDailyGroupAudio;
     window.onDailyCheckChange = onDailyCheckChange;
     window.jumpToDailyWord = jumpToDailyWord;
     window.activateDailyTheme = activateDailyTheme;
@@ -597,6 +699,7 @@ def generate_daily_js():
     document.addEventListener('click', (e) => {
       const btn = e.target.closest('.daily-btn-audio');
       if (btn && btn.dataset.speak) {
+        stopDailyGroupAudio();
         playDailyWord(btn.dataset.speak);
       }
     });
@@ -943,7 +1046,10 @@ def generate_app_ui_css(is_mobile=False):
        MOBILE BOTTOM FIXED STACK & THUMB NAVIGATION
        ========================================================================== */
     body {
-      padding-bottom: 95px !important;
+      padding-bottom: calc(44px + env(safe-area-inset-bottom, 0px)) !important;
+    }
+    body.audio-open {
+      padding-bottom: calc(92px + env(safe-area-inset-bottom, 0px)) !important;
     }
 
     .bottom-fixed-stack {
@@ -954,56 +1060,73 @@ def generate_app_ui_css(is_mobile=False):
       z-index: 900;
       display: flex;
       flex-direction: column;
-      box-shadow: 0 -2px 14px rgba(15, 23, 42, 0.09);
+      box-shadow: 0 -2px 10px rgba(15, 23, 42, 0.08);
       background: #ffffff;
-      border-top: 1px solid #e2e8f0;
+      border-top: 1px solid #cbd5e1;
+    }
+
+    .player-dock {
+      display: none;
+      background: #f8fafc;
+      padding: 0.3rem 0.6rem;
+      border-bottom: 1px solid #e2e8f0;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.4rem;
+    }
+    body.audio-open .player-dock {
+      display: flex !important;
+    }
+    .player-dock.dock-hidden {
+      display: none !important;
     }
 
     .thumb-nav-bar {
       display: flex;
       align-items: center;
-      justify-content: space-around;
+      justify-content: space-between;
+      gap: 4px;
       background: #ffffff;
-      padding: 0.35rem 0.4rem 0.55rem;
-      border-top: 1px solid #f1f5f9;
+      padding: 4px 6px calc(4px + env(safe-area-inset-bottom, 0px));
+      height: 38px;
+      box-sizing: border-box;
     }
 
     .thumb-tab {
-      display: flex;
-      flex-direction: column;
+      flex: 1;
+      height: 30px;
+      display: inline-flex;
+      flex-direction: row;
       align-items: center;
       justify-content: center;
-      background: none;
-      border: none;
-      color: #475569;
-      font-size: 0.72rem;
-      font-weight: 600;
-      padding: 0.25rem 0.45rem;
-      border-radius: 8px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      color: #334155;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 0 4px;
+      border-radius: 6px;
       cursor: pointer;
-      gap: 2px;
-      transition: all 0.15s ease;
-      min-width: 52px;
+      gap: 3px;
+      white-space: nowrap;
+      transition: all 0.12s ease;
     }
-    .thumb-tab:hover {
-      background: #f1f5f9;
-      color: #0f172a;
+    .thumb-tab:active {
+      background: #e2e8f0;
     }
     .thumb-tab.active {
       color: #2563eb;
       background: #eff6ff;
-    }
-    .thumb-tab .thumb-icon {
-      font-size: 1.15rem;
-      line-height: 1;
+      border-color: #bfdbfe;
     }
     .thumb-tab.nav-arrow {
-      color: #2563eb;
-      background: #f0f7ff;
-      border: 1px solid #dbeafe;
+      color: #1d4ed8;
+      background: #eff6ff;
+      border-color: #bfdbfe;
     }
-    .thumb-tab.nav-arrow:hover {
-      background: #dbeafe;
+    .thumb-tab .thumb-icon {
+      font-size: 12px;
+      line-height: 1;
     }
     """
     else:
@@ -1025,6 +1148,9 @@ def generate_app_ui_css(is_mobile=False):
       box-shadow: 0 10px 30px rgba(15, 23, 42, 0.15), 0 1px 3px rgba(0,0,0,0.06);
       border: 1px solid #cbd5e1;
       padding: 0.5rem 1.1rem;
+    }
+    .player-dock.dock-hidden {
+      display: none !important;
     }
     """
 

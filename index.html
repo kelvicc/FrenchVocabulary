@@ -1193,6 +1193,9 @@
       border: 1px solid #cbd5e1;
       padding: 0.5rem 1.1rem;
     }
+    .player-dock.dock-hidden {
+      display: none !important;
+    }
     
     /* =========================================================================
        EVERYDAY VOCABULARY PART (CONTIGUOUS SECTIONS & EMERALD PALETTE)
@@ -1345,6 +1348,31 @@
       transition: opacity 0.15s, transform 0.1s;
     }
     .daily-btn-audio:hover { opacity: 1; transform: scale(1.15); }
+
+    .daily-btn-group-audio {
+      font-size: 11px;
+      padding: 3px 8px;
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 4px;
+      font-weight: 700;
+      color: #0f766e;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      transition: all 0.15s ease;
+    }
+    .daily-btn-group-audio:hover {
+      background: #f0fdf4;
+      border-color: #059669;
+    }
+    .daily-btn-group-audio.is-playing {
+      background: #fef2f2 !important;
+      border-color: #ef4444 !important;
+      color: #dc2626 !important;
+      box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2);
+    }
 
     .daily-meaning {
       font-size: 14px;
@@ -68481,7 +68509,7 @@
             <span class="daily-group-badge">01-1. 台所・調理器具</span>
             <span class="daily-group-count">12 語</span>
           </div>
-          <button class="daily-btn-audio" style="font-size:11px; padding:2px 6px; background:#fff; border:1px solid #cbd5e1; border-radius:4px; font-weight:600;" onclick="playDailyGroupAudio('01-1')">🔊 連続再生</button>
+          <button class="daily-btn-group-audio" data-group-code="01-1" onclick="playDailyGroupAudio('01-1')">🔊 連続再生</button>
         </div>
 
         <div class="daily-word-row" id="daily-word-D001" data-did="D001">
@@ -68689,7 +68717,7 @@
             <span class="daily-group-badge">01-2. リビング・家具・家電</span>
             <span class="daily-group-count">8 語</span>
           </div>
-          <button class="daily-btn-audio" style="font-size:11px; padding:2px 6px; background:#fff; border:1px solid #cbd5e1; border-radius:4px; font-weight:600;" onclick="playDailyGroupAudio('01-2')">🔊 連続再生</button>
+          <button class="daily-btn-group-audio" data-group-code="01-2" onclick="playDailyGroupAudio('01-2')">🔊 連続再生</button>
         </div>
 
         <div class="daily-word-row" id="daily-word-D013" data-did="D013">
@@ -68833,7 +68861,7 @@
             <span class="daily-group-badge">01-3. 寝室・ベッド周り</span>
             <span class="daily-group-count">9 語</span>
           </div>
-          <button class="daily-btn-audio" style="font-size:11px; padding:2px 6px; background:#fff; border:1px solid #cbd5e1; border-radius:4px; font-weight:600;" onclick="playDailyGroupAudio('01-3')">🔊 連続再生</button>
+          <button class="daily-btn-group-audio" data-group-code="01-3" onclick="playDailyGroupAudio('01-3')">🔊 連続再生</button>
         </div>
 
         <div class="daily-word-row" id="daily-word-D021" data-did="D021">
@@ -68993,7 +69021,7 @@
             <span class="daily-group-badge">01-4. 浴室・洗面所・トイレ</span>
             <span class="daily-group-count">12 語</span>
           </div>
-          <button class="daily-btn-audio" style="font-size:11px; padding:2px 6px; background:#fff; border:1px solid #cbd5e1; border-radius:4px; font-weight:600;" onclick="playDailyGroupAudio('01-4')">🔊 連続再生</button>
+          <button class="daily-btn-group-audio" data-group-code="01-4" onclick="playDailyGroupAudio('01-4')">🔊 連続再生</button>
         </div>
 
         <div class="daily-word-row" id="daily-word-D030" data-did="D030">
@@ -69201,7 +69229,7 @@
             <span class="daily-group-badge">01-5. 家事・洗濯・掃除</span>
             <span class="daily-group-count">9 語</span>
           </div>
-          <button class="daily-btn-audio" style="font-size:11px; padding:2px 6px; background:#fff; border:1px solid #cbd5e1; border-radius:4px; font-weight:600;" onclick="playDailyGroupAudio('01-5')">🔊 連続再生</button>
+          <button class="daily-btn-group-audio" data-group-code="01-5" onclick="playDailyGroupAudio('01-5')">🔊 連続再生</button>
         </div>
 
         <div class="daily-word-row" id="daily-word-D042" data-did="D042">
@@ -69377,7 +69405,7 @@
             <span class="daily-group-badge">02-1. 野菜・果物</span>
             <span class="daily-group-count">10 語</span>
           </div>
-          <button class="daily-btn-audio" style="font-size:11px; padding:2px 6px; background:#fff; border:1px solid #cbd5e1; border-radius:4px; font-weight:600;" onclick="playDailyGroupAudio('02-1')">🔊 連続再生</button>
+          <button class="daily-btn-group-audio" data-group-code="02-1" onclick="playDailyGroupAudio('02-1')">🔊 連続再生</button>
         </div>
 
         <div class="daily-word-row" id="daily-word-D051" data-did="D051">
@@ -69553,7 +69581,7 @@
             <span class="daily-group-badge">02-2. 肉・魚・乳製品</span>
             <span class="daily-group-count">10 語</span>
           </div>
-          <button class="daily-btn-audio" style="font-size:11px; padding:2px 6px; background:#fff; border:1px solid #cbd5e1; border-radius:4px; font-weight:600;" onclick="playDailyGroupAudio('02-2')">🔊 連続再生</button>
+          <button class="daily-btn-group-audio" data-group-code="02-2" onclick="playDailyGroupAudio('02-2')">🔊 連続再生</button>
         </div>
 
         <div class="daily-word-row" id="daily-word-D061" data-did="D061">
@@ -69729,7 +69757,7 @@
             <span class="daily-group-badge">02-3. パン・調味料・飲み物</span>
             <span class="daily-group-count">10 語</span>
           </div>
-          <button class="daily-btn-audio" style="font-size:11px; padding:2px 6px; background:#fff; border:1px solid #cbd5e1; border-radius:4px; font-weight:600;" onclick="playDailyGroupAudio('02-3')">🔊 連続再生</button>
+          <button class="daily-btn-group-audio" data-group-code="02-3" onclick="playDailyGroupAudio('02-3')">🔊 連続再生</button>
         </div>
 
         <div class="daily-word-row" id="daily-word-D071" data-did="D071">
@@ -69905,7 +69933,7 @@
             <span class="daily-group-badge">02-4. スーパー・買い物・会計</span>
             <span class="daily-group-count">8 語</span>
           </div>
-          <button class="daily-btn-audio" style="font-size:11px; padding:2px 6px; background:#fff; border:1px solid #cbd5e1; border-radius:4px; font-weight:600;" onclick="playDailyGroupAudio('02-4')">🔊 連続再生</button>
+          <button class="daily-btn-group-audio" data-group-code="02-4" onclick="playDailyGroupAudio('02-4')">🔊 連続再生</button>
         </div>
 
         <div class="daily-word-row" id="daily-word-D081" data-did="D081">
@@ -70049,7 +70077,7 @@
             <span class="daily-group-badge">02-5. カフェ・レストラン・外食</span>
             <span class="daily-group-count">8 語</span>
           </div>
-          <button class="daily-btn-audio" style="font-size:11px; padding:2px 6px; background:#fff; border:1px solid #cbd5e1; border-radius:4px; font-weight:600;" onclick="playDailyGroupAudio('02-5')">🔊 連続再生</button>
+          <button class="daily-btn-group-audio" data-group-code="02-5" onclick="playDailyGroupAudio('02-5')">🔊 連続再生</button>
         </div>
 
         <div class="daily-word-row" id="daily-word-D089" data-did="D089">
@@ -70209,7 +70237,7 @@
             <span class="daily-group-badge">03-1. 洋服・トップス・ボトムス</span>
             <span class="daily-group-count">14 語</span>
           </div>
-          <button class="daily-btn-audio" style="font-size:11px; padding:2px 6px; background:#fff; border:1px solid #cbd5e1; border-radius:4px; font-weight:600;" onclick="playDailyGroupAudio('03-1')">🔊 連続再生</button>
+          <button class="daily-btn-group-audio" data-group-code="03-1" onclick="playDailyGroupAudio('03-1')">🔊 連続再生</button>
         </div>
 
         <div class="daily-word-row" id="daily-word-D097" data-did="D097">
@@ -70449,7 +70477,7 @@
             <span class="daily-group-badge">03-2. 靴・鞄・服飾小物</span>
             <span class="daily-group-count">19 語</span>
           </div>
-          <button class="daily-btn-audio" style="font-size:11px; padding:2px 6px; background:#fff; border:1px solid #cbd5e1; border-radius:4px; font-weight:600;" onclick="playDailyGroupAudio('03-2')">🔊 連続再生</button>
+          <button class="daily-btn-group-audio" data-group-code="03-2" onclick="playDailyGroupAudio('03-2')">🔊 連続再生</button>
         </div>
 
         <div class="daily-word-row" id="daily-word-D111" data-did="D111">
@@ -70769,7 +70797,7 @@
             <span class="daily-group-badge">03-3. 身だしなみ・化粧・整髪</span>
             <span class="daily-group-count">9 語</span>
           </div>
-          <button class="daily-btn-audio" style="font-size:11px; padding:2px 6px; background:#fff; border:1px solid #cbd5e1; border-radius:4px; font-weight:600;" onclick="playDailyGroupAudio('03-3')">🔊 連続再生</button>
+          <button class="daily-btn-group-audio" data-group-code="03-3" onclick="playDailyGroupAudio('03-3')">🔊 連続再生</button>
         </div>
 
         <div class="daily-word-row" id="daily-word-D130" data-did="D130">
@@ -70945,7 +70973,7 @@
             <span class="daily-group-badge">04-1. 身体の部位・顔</span>
             <span class="daily-group-count">18 語</span>
           </div>
-          <button class="daily-btn-audio" style="font-size:11px; padding:2px 6px; background:#fff; border:1px solid #cbd5e1; border-radius:4px; font-weight:600;" onclick="playDailyGroupAudio('04-1')">🔊 連続再生</button>
+          <button class="daily-btn-group-audio" data-group-code="04-1" onclick="playDailyGroupAudio('04-1')">🔊 連続再生</button>
         </div>
 
         <div class="daily-word-row" id="daily-word-D139" data-did="D139">
@@ -71249,7 +71277,7 @@
             <span class="daily-group-badge">04-2. 症状・体調不良・ケガ</span>
             <span class="daily-group-count">12 語</span>
           </div>
-          <button class="daily-btn-audio" style="font-size:11px; padding:2px 6px; background:#fff; border:1px solid #cbd5e1; border-radius:4px; font-weight:600;" onclick="playDailyGroupAudio('04-2')">🔊 連続再生</button>
+          <button class="daily-btn-group-audio" data-group-code="04-2" onclick="playDailyGroupAudio('04-2')">🔊 連続再生</button>
         </div>
 
         <div class="daily-word-row" id="daily-word-D157" data-did="D157">
@@ -71457,7 +71485,7 @@
             <span class="daily-group-badge">04-3. 薬局・病院・診察</span>
             <span class="daily-group-count">12 語</span>
           </div>
-          <button class="daily-btn-audio" style="font-size:11px; padding:2px 6px; background:#fff; border:1px solid #cbd5e1; border-radius:4px; font-weight:600;" onclick="playDailyGroupAudio('04-3')">🔊 連続再生</button>
+          <button class="daily-btn-group-audio" data-group-code="04-3" onclick="playDailyGroupAudio('04-3')">🔊 連続再生</button>
         </div>
 
         <div class="daily-word-row" id="daily-word-D169" data-did="D169">
@@ -71681,7 +71709,7 @@
             <span class="daily-group-badge">05-1. 街の施設・道・建物</span>
             <span class="daily-group-count">11 語</span>
           </div>
-          <button class="daily-btn-audio" style="font-size:11px; padding:2px 6px; background:#fff; border:1px solid #cbd5e1; border-radius:4px; font-weight:600;" onclick="playDailyGroupAudio('05-1')">🔊 連続再生</button>
+          <button class="daily-btn-group-audio" data-group-code="05-1" onclick="playDailyGroupAudio('05-1')">🔊 連続再生</button>
         </div>
 
         <div class="daily-word-row" id="daily-word-D181" data-did="D181">
@@ -71873,7 +71901,7 @@
             <span class="daily-group-badge">05-2. 電車・地下鉄・バス</span>
             <span class="daily-group-count">14 語</span>
           </div>
-          <button class="daily-btn-audio" style="font-size:11px; padding:2px 6px; background:#fff; border:1px solid #cbd5e1; border-radius:4px; font-weight:600;" onclick="playDailyGroupAudio('05-2')">🔊 連続再生</button>
+          <button class="daily-btn-group-audio" data-group-code="05-2" onclick="playDailyGroupAudio('05-2')">🔊 連続再生</button>
         </div>
 
         <div class="daily-word-row" id="daily-word-D192" data-did="D192">
@@ -72113,7 +72141,7 @@
             <span class="daily-group-badge">05-3. 車・自転車・運転</span>
             <span class="daily-group-count">13 語</span>
           </div>
-          <button class="daily-btn-audio" style="font-size:11px; padding:2px 6px; background:#fff; border:1px solid #cbd5e1; border-radius:4px; font-weight:600;" onclick="playDailyGroupAudio('05-3')">🔊 連続再生</button>
+          <button class="daily-btn-group-audio" data-group-code="05-3" onclick="playDailyGroupAudio('05-3')">🔊 連続再生</button>
         </div>
 
         <div class="daily-word-row" id="daily-word-D206" data-did="D206">
@@ -72353,7 +72381,7 @@
             <span class="daily-group-badge">06-1. 文房具・デスク用品</span>
             <span class="daily-group-count">15 語</span>
           </div>
-          <button class="daily-btn-audio" style="font-size:11px; padding:2px 6px; background:#fff; border:1px solid #cbd5e1; border-radius:4px; font-weight:600;" onclick="playDailyGroupAudio('06-1')">🔊 連続再生</button>
+          <button class="daily-btn-group-audio" data-group-code="06-1" onclick="playDailyGroupAudio('06-1')">🔊 連続再生</button>
         </div>
 
         <div class="daily-word-row" id="daily-word-D219" data-did="D219">
@@ -72609,7 +72637,7 @@
             <span class="daily-group-badge">06-2. パソコン・スマホ・通信</span>
             <span class="daily-group-count">14 語</span>
           </div>
-          <button class="daily-btn-audio" style="font-size:11px; padding:2px 6px; background:#fff; border:1px solid #cbd5e1; border-radius:4px; font-weight:600;" onclick="playDailyGroupAudio('06-2')">🔊 連続再生</button>
+          <button class="daily-btn-group-audio" data-group-code="06-2" onclick="playDailyGroupAudio('06-2')">🔊 連続再生</button>
         </div>
 
         <div class="daily-word-row" id="daily-word-D234" data-did="D234">
@@ -72849,7 +72877,7 @@
             <span class="daily-group-badge">06-3. 職場・業務連絡・手続き</span>
             <span class="daily-group-count">12 語</span>
           </div>
-          <button class="daily-btn-audio" style="font-size:11px; padding:2px 6px; background:#fff; border:1px solid #cbd5e1; border-radius:4px; font-weight:600;" onclick="playDailyGroupAudio('06-3')">🔊 連続再生</button>
+          <button class="daily-btn-group-audio" data-group-code="06-3" onclick="playDailyGroupAudio('06-3')">🔊 連続再生</button>
         </div>
 
         <div class="daily-word-row" id="daily-word-D248" data-did="D248">
@@ -73073,7 +73101,7 @@
             <span class="daily-group-badge">07-1. 日常の時間・頻度・季節</span>
             <span class="daily-group-count">11 語</span>
           </div>
-          <button class="daily-btn-audio" style="font-size:11px; padding:2px 6px; background:#fff; border:1px solid #cbd5e1; border-radius:4px; font-weight:600;" onclick="playDailyGroupAudio('07-1')">🔊 連続再生</button>
+          <button class="daily-btn-group-audio" data-group-code="07-1" onclick="playDailyGroupAudio('07-1')">🔊 連続再生</button>
         </div>
 
         <div class="daily-word-row" id="daily-word-D260" data-did="D260">
@@ -73265,7 +73293,7 @@
             <span class="daily-group-badge">07-2. 天気・気象・気温</span>
             <span class="daily-group-count">12 語</span>
           </div>
-          <button class="daily-btn-audio" style="font-size:11px; padding:2px 6px; background:#fff; border:1px solid #cbd5e1; border-radius:4px; font-weight:600;" onclick="playDailyGroupAudio('07-2')">🔊 連続再生</button>
+          <button class="daily-btn-group-audio" data-group-code="07-2" onclick="playDailyGroupAudio('07-2')">🔊 連続再生</button>
         </div>
 
         <div class="daily-word-row" id="daily-word-D271" data-did="D271">
@@ -73473,7 +73501,7 @@
             <span class="daily-group-badge">07-3. 身近な動植物・自然</span>
             <span class="daily-group-count">17 語</span>
           </div>
-          <button class="daily-btn-audio" style="font-size:11px; padding:2px 6px; background:#fff; border:1px solid #cbd5e1; border-radius:4px; font-weight:600;" onclick="playDailyGroupAudio('07-3')">🔊 連続再生</button>
+          <button class="daily-btn-group-audio" data-group-code="07-3" onclick="playDailyGroupAudio('07-3')">🔊 連続再生</button>
         </div>
 
         <div class="daily-word-row" id="daily-word-D283" data-did="D283">
@@ -73777,7 +73805,7 @@
             <span class="daily-group-badge">08-1. 家族・友人・人間関係</span>
             <span class="daily-group-count">12 語</span>
           </div>
-          <button class="daily-btn-audio" style="font-size:11px; padding:2px 6px; background:#fff; border:1px solid #cbd5e1; border-radius:4px; font-weight:600;" onclick="playDailyGroupAudio('08-1')">🔊 連続再生</button>
+          <button class="daily-btn-group-audio" data-group-code="08-1" onclick="playDailyGroupAudio('08-1')">🔊 連続再生</button>
         </div>
 
         <div class="daily-word-row" id="daily-word-D300" data-did="D300">
@@ -73985,7 +74013,7 @@
             <span class="daily-group-badge">08-2. 感情・気分・リアクション</span>
             <span class="daily-group-count">10 語</span>
           </div>
-          <button class="daily-btn-audio" style="font-size:11px; padding:2px 6px; background:#fff; border:1px solid #cbd5e1; border-radius:4px; font-weight:600;" onclick="playDailyGroupAudio('08-2')">🔊 連続再生</button>
+          <button class="daily-btn-group-audio" data-group-code="08-2" onclick="playDailyGroupAudio('08-2')">🔊 連続再生</button>
         </div>
 
         <div class="daily-word-row" id="daily-word-D312" data-did="D312">
@@ -74161,7 +74189,7 @@
             <span class="daily-group-badge">08-3. 趣味・スポーツ・余暇</span>
             <span class="daily-group-count">16 語</span>
           </div>
-          <button class="daily-btn-audio" style="font-size:11px; padding:2px 6px; background:#fff; border:1px solid #cbd5e1; border-radius:4px; font-weight:600;" onclick="playDailyGroupAudio('08-3')">🔊 連続再生</button>
+          <button class="daily-btn-group-audio" data-group-code="08-3" onclick="playDailyGroupAudio('08-3')">🔊 連続再生</button>
         </div>
 
         <div class="daily-word-row" id="daily-word-D322" data-did="D322">
@@ -75386,17 +75414,80 @@
       window.speechSynthesis.speak(u);
     }
 
+    let dailyGroupAudioCtrl = {
+      activeCode: null,
+      stopRequested: false,
+      activeRow: null
+    };
+
+    function stopDailyGroupAudio() {
+      if (dailyGroupAudioCtrl.activeCode) {
+        dailyGroupAudioCtrl.stopRequested = true;
+        if ('speechSynthesis' in window) {
+          window.speechSynthesis.cancel();
+        }
+        if (dailyGroupAudioCtrl.activeRow) {
+          dailyGroupAudioCtrl.activeRow.classList.remove('flash-highlight');
+        }
+        const prevBtn = document.querySelector(`.daily-btn-group-audio[data-group-code="${dailyGroupAudioCtrl.activeCode}"]`);
+        if (prevBtn) {
+          prevBtn.innerHTML = '🔊 連続再生';
+          prevBtn.classList.remove('is-playing');
+        }
+        dailyGroupAudioCtrl.activeCode = null;
+        dailyGroupAudioCtrl.activeRow = null;
+      }
+    }
+
     async function playDailyGroupAudio(code) {
+      // 1. If currently playing this group, stop immediately
+      if (dailyGroupAudioCtrl.activeCode === code) {
+        stopDailyGroupAudio();
+        return;
+      }
+
+      // 2. Stop any existing playback first
+      stopDailyGroupAudio();
+
       const groupEl = document.getElementById('daily-group-' + code);
       if (!groupEl) return;
+      const btn = groupEl.querySelector(`.daily-btn-group-audio[data-group-code="${code}"]`);
+      if (btn) {
+        btn.innerHTML = '⏹ 停止';
+        btn.classList.add('is-playing');
+      }
+
+      dailyGroupAudioCtrl.activeCode = code;
+      dailyGroupAudioCtrl.stopRequested = false;
+
       const rows = groupEl.querySelectorAll('.daily-word-row');
       for (const row of rows) {
-        const btn = row.querySelector('.daily-btn-audio');
-        const fr = (btn && btn.dataset.speak) || row.querySelector('.daily-french').innerText.split('/')[0].trim();
+        if (dailyGroupAudioCtrl.stopRequested || dailyGroupAudioCtrl.activeCode !== code) {
+          break;
+        }
+
+        dailyGroupAudioCtrl.activeRow = row;
+        const wordBtn = row.querySelector('.daily-btn-audio');
+        const fr = (wordBtn && wordBtn.dataset.speak) || row.querySelector('.daily-french').innerText.split('/')[0].trim();
+        
         playDailyWord(fr);
         row.classList.add('flash-highlight');
-        await new Promise(r => setTimeout(r, 1600));
+
+        // Allow instant cancellation during wait loop
+        const totalWait = 1800;
+        let elapsed = 0;
+        while (elapsed < totalWait) {
+          if (dailyGroupAudioCtrl.stopRequested || dailyGroupAudioCtrl.activeCode !== code) break;
+          await new Promise(r => setTimeout(r, 100));
+          elapsed += 100;
+        }
+
         row.classList.remove('flash-highlight');
+      }
+
+      // Restore button upon completion
+      if (dailyGroupAudioCtrl.activeCode === code) {
+        stopDailyGroupAudio();
       }
     }
 
@@ -75457,18 +75548,21 @@
     function jumpToDailyWord(did) {
       const row = document.getElementById('daily-word-' + did);
       if (!row) return;
-      const sec = row.closest('.section-container');
-      if (sec) {
-        document.querySelectorAll('.section-container').forEach(s => s.classList.remove('active-sec'));
-        document.querySelectorAll('.duo-card.active-card').forEach(c => c.classList.remove('active-card'));
-        sec.classList.add('active-sec');
-        const badge = document.getElementById('current-sec-badge');
-        if (badge) {
-          badge.textContent = `日常語 D${sec.dataset.dailyNum || ''}`;
-        }
-        const label = document.getElementById('current-sec-label');
-        if (label) {
-          label.textContent = sec.dataset.subtitle || '';
+      const isMobile = !!document.querySelector('.thumb-nav-bar');
+      if (isMobile) {
+        const sec = row.closest('.section-container');
+        if (sec) {
+          document.querySelectorAll('.section-container').forEach(s => s.classList.remove('active-sec'));
+          document.querySelectorAll('.duo-card.active-card').forEach(c => c.classList.remove('active-card'));
+          sec.classList.add('active-sec');
+          const badge = document.getElementById('current-sec-badge');
+          if (badge) {
+            badge.textContent = `日常語 D${sec.dataset.dailyNum || ''}`;
+          }
+          const label = document.getElementById('current-sec-label');
+          if (label) {
+            label.textContent = sec.dataset.subtitle || '';
+          }
         }
       }
       setTimeout(() => {
@@ -75481,23 +75575,34 @@
     function activateDailyTheme(targetSecId) {
       const sec = document.getElementById(targetSecId);
       if (!sec) return;
-      document.querySelectorAll('.section-container').forEach(s => s.classList.remove('active-sec'));
-      document.querySelectorAll('.duo-card.active-card').forEach(c => c.classList.remove('active-card'));
-      sec.classList.add('active-sec');
-      const badge = document.getElementById('current-sec-badge');
-      if (badge) {
-        badge.textContent = `日常語 D${sec.dataset.dailyNum || ''}`;
+      const isMobile = !!document.querySelector('.thumb-nav-bar');
+      if (isMobile) {
+        document.querySelectorAll('.section-container').forEach(s => s.classList.remove('active-sec'));
+        document.querySelectorAll('.duo-card.active-card').forEach(c => c.classList.remove('active-card'));
+        sec.classList.add('active-sec');
+        const badge = document.getElementById('current-sec-badge');
+        if (badge) {
+          badge.textContent = `日常語 D${sec.dataset.dailyNum || ''}`;
+        }
+        const label = document.getElementById('current-sec-label');
+        if (label) {
+          label.textContent = sec.dataset.subtitle || '';
+        }
+        window.scrollTo(0, 0);
+      } else {
+        // Desktop (index.html): smoothly scroll directly to target everyday theme
+        setTimeout(() => {
+          sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          sec.classList.add('highlight-pulse');
+          setTimeout(() => sec.classList.remove('highlight-pulse'), 2000);
+        }, 50);
       }
-      const label = document.getElementById('current-sec-label');
-      if (label) {
-        label.textContent = sec.dataset.subtitle || '';
-      }
-      window.scrollTo(0, 0);
     }
 
     // Expose functions globally to window for inline onclick handlers
     window.playDailyWord = playDailyWord;
     window.playDailyGroupAudio = playDailyGroupAudio;
+    window.stopDailyGroupAudio = stopDailyGroupAudio;
     window.onDailyCheckChange = onDailyCheckChange;
     window.jumpToDailyWord = jumpToDailyWord;
     window.activateDailyTheme = activateDailyTheme;
@@ -75507,6 +75612,7 @@
     document.addEventListener('click', (e) => {
       const btn = e.target.closest('.daily-btn-audio');
       if (btn && btn.dataset.speak) {
+        stopDailyGroupAudio();
         playDailyWord(btn.dataset.speak);
       }
     });
