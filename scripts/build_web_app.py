@@ -17,6 +17,7 @@ import re
 import sys
 import json
 import html
+from daily_vocab_builder import load_daily_vocab_data, get_daily_index_entries, generate_daily_css, generate_daily_sections_html, generate_daily_toc_html, generate_daily_js
 import unicodedata
 from collections import defaultdict
 
@@ -171,6 +172,54 @@ def parse_syn_or_ant_item(raw_item):
 
     return s, ""
 
+SECTION_SHORT_TITLES = {
+    1: "信条・人間関係",
+    2: "文学・芸術・学問",
+    3: "労働・経済・社会",
+    4: "インフラ・環境・法律",
+    5: "医療・健康・身体",
+    6: "買い物・都市生活",
+    7: "議論・説得・論理",
+    8: "航空・交通安全",
+    9: "家事・料理・生活",
+    10: "家庭・トラブル・休息",
+    11: "ビジネス・投資・貿易",
+    12: "政治・歴史・人道支援",
+    13: "学校生活・人間関係",
+    14: "学業・論文・研究",
+    15: "自然科学・数学・化学",
+    16: "恋愛・人生観・自立",
+    17: "性格・欠点・人間模様",
+    18: "疑惑・口論・仲直り",
+    19: "運転・道路・交通事故",
+    20: "宇宙・地球環境保護",
+    21: "地理・資源・自然災害",
+    22: "テクノロジー・IT・革新",
+    23: "商業・広告・企業活動",
+    24: "仕事・財政・景気動向",
+    25: "旅行・空港・手荷物",
+    26: "交通・宿泊・外食",
+    27: "病気・医療・健康管理",
+    28: "教育・大学・就職",
+    29: "勇気・成功・逆境克服",
+    30: "金銭・適応・求職活動",
+    31: "職場・人間関係・面接",
+    32: "社会奉仕・選挙・引退",
+    33: "政治・権力・機密情報",
+    34: "司法・汚職・法廷",
+    35: "戦争・テロ・市民権",
+    36: "外交・人権・難民支援",
+    37: "外交・安保・貿易摩擦",
+    38: "犯罪捜査・裁判・刑罰",
+    39: "事故・火災・探検",
+    40: "歴史・文明・神話・文化",
+    41: "社交・マナー・人間関係",
+    42: "孤独・適応・日常生活",
+    43: "恋愛関係・誤解・家庭",
+    44: "失恋・葛藤・新たな一歩",
+    45: "人生の節目・死生観",
+}
+
 def parse_all_sections():
     sections_data = []
     all_words_index = []
@@ -191,7 +240,10 @@ def parse_all_sections():
 
         header_match = re.search(r"^#\s*Section\s*(\d+)(?:\s*[—\-–:]\s*(.*?))?$", content, re.MULTILINE)
         sec_title = f"Section {sec_num:02d}"
-        sec_subtitle = header_match.group(2).strip() if (header_match and header_match.group(2)) else ""
+        sec_subtitle = SECTION_SHORT_TITLES.get(sec_num)
+        if not sec_subtitle:
+            raw_sub = header_match.group(2).strip() if (header_match and header_match.group(2)) else ""
+            sec_subtitle = re.sub(r"\(No\..*?\)", "", raw_sub).strip()
 
         opus_file = f"section_{sec_num:02d}.opus"
         has_opus = os.path.exists(os.path.join(SECTION_AUDIO_DIR, opus_file))
@@ -420,6 +472,7 @@ def get_actor_class(cast_str):
     return "cast-male"
 
 def generate_html(sections_data, all_words_index, index_counts, total_sentences, total_lemmas):
+    daily_themes = load_daily_vocab_data()
     compact_index_data = [
         [
             w["word"],
@@ -431,6 +484,8 @@ def generate_html(sections_data, all_words_index, index_counts, total_sentences,
         ]
         for w in all_words_index
     ]
+    compact_index_data.extend(get_daily_index_entries(daily_themes))
+    compact_index_data.sort(key=lambda x: (x[5] if x[5] != '#' else 'Z~', x[0].lower()))
     json_index_str = json.dumps(compact_index_data, ensure_ascii=False, separators=(',', ':'))
 
     all_letters = sorted(list(set(w["letter"] for w in all_words_index if w["letter"] != "#")))
@@ -1293,343 +1348,7 @@ def generate_html(sections_data, all_words_index, index_counts, total_sentences,
       line-height: 1.35;
     }}
 
-    /* A-Z Index Toolbar & Filter */
-    .index-toolbar {{
-      position: sticky;
-      top: -1.25rem;
-      background: white;
-      padding-top: 0.2rem;
-      padding-bottom: 0.8rem;
-      border-bottom: 1px solid var(--border);
-      z-index: 20;
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-    }}
-    .index-search-row {{
-      display: flex;
-      gap: 0.5rem;
-      align-items: center;
-    }}
-    .az-search-input {{
-      flex: 1;
-      padding: 0.45rem 0.85rem;
-      border: 1px solid var(--border-dark);
-      border-radius: 6px;
-      font-size: 0.85rem;
-      outline: none;
-    }}
-    .az-search-input:focus {{
-      border-color: #60a5fa;
-      box-shadow: 0 0 8px rgba(96,165,250,0.25);
-    }}
-    .az-type-filters {{
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.35rem;
-      align-items: center;
-    }}
-    .az-type-btn {{
-      background: #f8fafc;
-      border: 1px solid var(--border);
-      color: var(--text-main);
-      padding: 0.25rem 0.55rem;
-      border-radius: 4px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.15s;
-    }}
-    .az-type-btn:hover {{
-      background: #f1f5f9;
-    }}
-    .az-type-btn.active {{
-      background: #2563eb;
-      color: white;
-      border-color: #2563eb;
-    }}
-
-    .az-nav-tabs {{
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.3rem;
-      padding-top: 0.2rem;
-    }}
-    .az-tab {{
-      background: #f8fafc;
-      border: 1px solid var(--border);
-      color: var(--text-main);
-      padding: 0.2rem 0.45rem;
-      border-radius: 4px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      cursor: pointer;
-      min-width: 26px;
-      text-align: center;
-    }}
-    .az-tab:hover {{ background: #eff6ff; color: #1d4ed8; }}
-    .az-tab.active {{ background: #2563eb; color: white; border-color: #2563eb; }}
-
-    .index-content-wrap {{
-      margin-top: 1rem;
-    }}
-    .index-status-bar {{
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      margin-bottom: 0.6rem;
-      font-weight: 600;
-    }}
-    .index-words-list {{
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 0.15rem 1.2rem;
-    }}
-    .index-entry {{
-      padding: 0.32rem 0.5rem;
-      border-radius: 4px;
-      background: transparent;
-      border: none;
-      border-bottom: 1px solid #f1f5f9;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 0.6rem;
-      content-visibility: auto;
-      contain-intrinsic-size: 0 30px;
-      transition: background 0.12s;
-    }}
-    .index-entry:hover {{
-      background: #f1f5f9;
-    }}
-    .index-lemma-wrap {{
-      display: flex;
-      align-items: baseline;
-      gap: 0.4rem;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      flex: 1;
-      min-width: 0;
-    }}
-    .index-tag-type {{
-      color: #64748b;
-      font-size: 0.74rem;
-      font-weight: 600;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }}
-    .index-lemma {{
-      font-weight: 700;
-      color: #0f172a;
-      font-size: 0.88rem;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }}
-    .index-tag-pos {{
-      color: #64748b;
-      font-size: 0.74rem;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }}
-    .index-preview {{
-      font-size: 0.78rem;
-      color: #64748b;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }}
-    .index-target-link {{
-      font-family: 'Cinzel', serif;
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: #2563eb;
-      background: transparent;
-      border: none;
-      padding: 0;
-      flex-shrink: 0;
-      white-space: nowrap;
-    }}
-    .index-target-link:hover {{
-      text-decoration: underline;
-    }}
-    .btn-more-results {{
-      grid-column: 1 / -1;
-      background: #f8fafc;
-      border: 1px solid #e2e8f0;
-      color: #475569;
-      padding: 0.55rem;
-      border-radius: 6px;
-      font-weight: 600;
-      cursor: pointer;
-      text-align: center;
-      margin: 0.6rem 0;
-      transition: all 0.2s;
-      font-size: 0.82rem;
-    }}
-    .btn-more-results:hover {{
-      background: #f1f5f9;
-      color: #1e293b;
-    }}
-
-    /* ==========================================================================
-       FLOATING AUDIO DOCK (PLAYER)
-       ========================================================================== */
-    .player-dock {{
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: rgba(30, 41, 59, 0.95);
-      backdrop-filter: blur(12px);
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      color: white;
-      padding: 0.65rem 1.5rem;
-      z-index: 600;
-      box-shadow: 0 -3px 16px rgba(0,0,0,0.2);
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-    }}
-    .dock-now-playing {{
-      display: flex;
-      align-items: center;
-      gap: 0.85rem;
-      flex: 1;
-      min-width: 240px;
-    }}
-    .dock-indicator {{
-      width: 11px;
-      height: 11px;
-      border-radius: 50%;
-      background: #64748b;
-      transition: background 0.3s;
-    }}
-    .dock-indicator.live {{
-      background: #22c55e;
-      box-shadow: 0 0 10px #22c55e;
-      animation: pulse-dot 1.2s infinite;
-    }}
-    @keyframes pulse-dot {{
-      0% {{ transform: scale(0.95); opacity: 0.8; }}
-      50% {{ transform: scale(1.2); opacity: 1; }}
-      100% {{ transform: scale(0.95); opacity: 0.8; }}
-    }}
-    .dock-info-title {{
-      font-size: 0.86rem;
-      font-weight: 700;
-      color: #f8fafc;
-    }}
-    .dock-info-sub {{
-      font-size: 0.75rem;
-      color: #cbd5e1;
-      max-width: 480px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }}
-
-    .dock-controls {{
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }}
-    .dock-btn {{
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      color: white;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all 0.2s;
-    }}
-    .dock-btn:hover {{
-      background: rgba(255, 255, 255, 0.22);
-      transform: scale(1.08);
-    }}
-    .dock-btn.main-play {{
-      background: #2563eb;
-      width: 42px;
-      height: 42px;
-      border-color: #3b82f6;
-      font-size: 1.1rem;
-    }}
-    .dock-btn.main-play:hover {{
-      background: #1d4ed8;
-      box-shadow: 0 0 12px rgba(37,99,235,0.4);
-    }}
-
-    .dock-settings {{
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      font-size: 0.78rem;
-    }}
-    .dock-select {{
-      background: #0f172a;
-      border: 1px solid #475569;
-      color: #f1f5f9;
-      padding: 0.28rem 0.5rem;
-      border-radius: 4px;
-      font-size: 0.78rem;
-      outline: none;
-      cursor: pointer;
-    }}
-
-    /* ==========================================================================
-       PRINT STYLES (@media print)
-       ========================================================================== */
-    @media print {{
-      header, .sub-strip, .player-dock, .modal-overlay, .sentence-audio-col, .btn-star, .section-actions {{
-        display: none !important;
-      }}
-      body {{
-        background: white;
-        color: black;
-        padding-bottom: 0;
-      }}
-      main {{
-        max-width: 100%;
-        margin: 0;
-        padding: 0;
-      }}
-      .duo-card {{
-        page-break-inside: avoid;
-        border: 1px solid #ccc;
-        box-shadow: none;
-        margin-bottom: 1.5rem;
-      }}
-      .sentence-header {{
-        background: #f5f5f5;
-        border-bottom: 1px solid #ccc;
-      }}
-      .card-translation-box {{
-        background: #fafafa;
-        border-top: 1px solid #ccc;
-      }}
-    }}
-
-    /* Responsive */
-    @media (max-width: 768px) {{
-      .header-inner {{ flex-direction: column; align-items: stretch; }}
-      .search-input {{ width: 100%; }}
-      .search-input:focus {{ width: 100%; }}
-      .sentence-header {{ flex-direction: column; }}
-      .sentence-badge-col {{ flex-direction: row; width: 100%; justify-content: space-between; }}
-      .sentence-audio-col {{ flex-direction: row; width: 100%; justify-content: flex-end; }}
-      .player-dock {{ flex-direction: column; gap: 0.5rem; }}
-      .word-row {{ flex-direction: column; gap: 0.6rem; }}
-      .word-left-col {{ flex: auto; border-right: none; padding-right: 0; border-bottom: 1px dashed var(--border); padding-bottom: 0.4rem; }}
-      .phonetic-ipa {{ padding-left: 1.35rem; }}
-      .card-translation-box {{ flex-direction: column; gap: 0.4rem; }}
-    }}
-  </style>
+    """ + generate_daily_css() + """</style>
 </head>
 <body>
 
@@ -1826,6 +1545,9 @@ def generate_html(sections_data, all_words_index, index_counts, total_sentences,
     </section>
 """)
 
+    # Append Everyday Vocabulary Themes (THEME 01 - 08, 336 words)
+    html_out.append(generate_daily_sections_html(daily_themes, is_mobile=False))
+
     html_out.append(f"""
   </main>
 
@@ -1841,15 +1563,17 @@ def generate_html(sections_data, all_words_index, index_counts, total_sentences,
 """)
 
     for sec in sections_data:
+        first_sid = sec["sentences"][0]["id"] if sec["sentences"] else "001"
         html_out.append(f"""
           <div class="sec-jump-card" data-jump="section-{sec['num']:02d}">
-            <div class="sec-jump-num">Section {sec['num']:02d}</div>
+            <div class="sec-jump-num">Section {sec['num']:02d} (No.{first_sid}〜)</div>
             <div class="sec-jump-sub">{sec['subtitle']}</div>
           </div>
 """)
 
     html_out.append(f"""
         </div>
+        """ + generate_daily_toc_html(daily_themes) + f"""
       </div>
     </div>
   </div>
@@ -1873,6 +1597,7 @@ def generate_html(sections_data, all_words_index, index_counts, total_sentences,
             <button class="az-type-btn" data-type="idiom">成句 ({index_counts['idiom']:,})</button>
             <button class="az-type-btn" data-type="syn">同意語 ({index_counts['syn']:,})</button>
             <button class="az-type-btn" data-type="ant">反意語 ({index_counts['ant']:,})</button>
+            <button class="az-type-btn" data-type="日常">日常語 ({len(get_daily_index_entries(daily_themes)):,})</button>
           </div>
           <div class="az-nav-tabs">
 """)
@@ -2192,10 +1917,22 @@ def generate_html(sections_data, all_words_index, index_counts, total_sentences,
       const modalSections = document.getElementById('modal-sections');
       const modalIndex = document.getElementById('modal-index');
 
+      function closeAllModalsDesktop() {
+        if (modalSections) modalSections.classList.remove('open');
+        if (modalIndex) modalIndex.classList.remove('open');
+      }
+
+      const btnOpdBannerD = document.getElementById('btn-open-opd-banner');
+      if (btnOpdBannerD) btnOpdBannerD.addEventListener('click', openOpdCuisineDesktop);
+      const btnOpdCardD = document.getElementById('btn-open-opd-card');
+      if (btnOpdCardD) btnOpdCardD.addEventListener('click', openOpdCuisineDesktop);
+
       document.getElementById('btn-open-sections').addEventListener('click', () => {
+        closeAllModalsDesktop();
         modalSections.classList.add('open');
       });
       document.getElementById('btn-open-index').addEventListener('click', () => {
+        closeAllModalsDesktop();
         modalIndex.classList.add('open');
         if (!isIndexInitialized) {
           initIndexView();
@@ -2205,21 +1942,32 @@ def generate_html(sections_data, all_words_index, index_counts, total_sentences,
       document.querySelectorAll('.modal-close, .modal-overlay').forEach(el => {
         el.addEventListener('click', (e) => {
           if (e.target === el || e.target.classList.contains('modal-close')) {
-            modalSections.classList.remove('open');
-            modalIndex.classList.remove('open');
+            closeAllModalsDesktop();
           }
         });
       });
 
-      // Quick Jump Link
+      // Quick Jump Link (DUO Core & Everyday Vocabulary)
       document.addEventListener('click', (e) => {
+        const dailyJump = e.target.closest('[data-jump-daily]');
+        if (dailyJump) {
+          closeAllModalsDesktop();
+          activateDailyTheme(dailyJump.dataset.jumpDaily);
+          return;
+        }
+
         const jumpEl = e.target.closest('[data-jump]');
         if (jumpEl) {
           const targetId = jumpEl.dataset.jump;
+          if (targetId.startsWith('card-daily-')) {
+            const did = targetId.replace('card-daily-', '');
+            closeAllModalsDesktop();
+            jumpToDailyWord(did);
+            return;
+          }
           const target = document.getElementById(targetId);
           if (target) {
-            modalSections.classList.remove('open');
-            modalIndex.classList.remove('open');
+            closeAllModalsDesktop();
             target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             if (target.classList.contains('duo-card')) {
               target.classList.add('highlight-pulse');
@@ -2237,7 +1985,8 @@ def generate_html(sections_data, all_words_index, index_counts, total_sentences,
         'deriv': '派生',
         'idiom': '成句',
         'syn': '類義',
-        'ant': '反意'
+        'ant': '反意',
+        '日常': '日常'
       };
 
       function escapeHtml(str) {
@@ -2270,18 +2019,21 @@ def generate_html(sections_data, all_words_index, index_counts, total_sentences,
           const meaning = item[3];
           const sid = item[4];
 
-          const tLabel = typeLabels[type] || '語彙';
+          const isDaily = sid.startsWith('daily-');
+          const tLabel = typeLabels[type] || (isDaily ? '日常' : '語彙');
+          const isDailyClass = (type === '日常' || isDaily) ? ' tag-daily' : '';
+          const targetText = isDaily ? `生活語 #${sid.replace('daily-','')}` : `No. ${sid}`;
           const posText = pos ? `【${escapeHtml(pos)}】` : '';
 
           htmlBuffer.push(`
             <div class="index-entry" data-jump="card-${sid}">
               <div class="index-lemma-wrap">
-                <span class="index-tag-type">[${tLabel}]</span>
+                <span class="index-tag-type${isDailyClass}">[${tLabel}]</span>
                 <span class="index-lemma">${escapeHtml(word)}</span>
                 ${posText ? `<span class="index-tag-pos">${posText}</span>` : ''}
                 ${meaning ? `<span class="index-preview">${escapeHtml(meaning)}</span>` : ''}
               </div>
-              <span class="index-target-link">No. ${sid}</span>
+              <span class="index-target-link">${targetText}</span>
             </div>
           `);
         }
@@ -2430,8 +2182,7 @@ def generate_html(sections_data, all_words_index, index_counts, total_sentences,
         searchInput.focus();
       });
 
-      // Initialize Bookmark Badges
-      updateStarUI();
+      """ + generate_daily_js() + """
     })();
   </script>
 </body>

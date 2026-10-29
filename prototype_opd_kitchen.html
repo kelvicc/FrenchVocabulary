@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  <title>DUO Français — OPD Visual Dictionary Prototype (La Cuisine)</title>
+  <style>
+    :root {
+      --bg-page: #0f172a;
+      --bg-card: #1e293b;
+      --bg-card-hover: #334155;
+      --border: rgba(255, 255, 255, 0.12);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent-blue: #38bdf8;
+      --accent-pink: #f472b6;
+      --accent-gold: #fbbf24;
+      --masc-color: #38bdf8;
+      --masc-bg: rgba(56, 189, 248, 0.15);
+      --fem-color: #f472b6;
+      --fem-bg: rgba(244, 114, 182, 0.15);
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans JP', sans-serif;
+      background: var(--bg-page);
+      color: var(--text-main);
+      padding-bottom: calc(70px + var(--safe-bottom));
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* TOP HEADER */
+    .app-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.55rem 0.85rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .header-title-wrap {
+      display: flex;
+      align-items: baseline;
+      gap: 0.45rem;
+    }
+    .header-badge {
+      background: #2563eb;
+      color: white;
+      font-size: 0.65rem;
+      font-weight: 800;
+      padding: 0.12rem 0.4rem;
+      border-radius: 4px;
+      letter-spacing: 0.05em;
+    }
+    .header-title {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #f1f5f9;
+    }
+    .header-sub {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+    .mode-tabs {
+      display: flex;
+      gap: 0.25rem;
+    }
+    .mode-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 0.25rem 0.55rem;
+      border-radius: 6px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .mode-btn.active {
+      background: #2563eb;
+      color: white;
+      border-color: #3b82f6;
+    }
+    .mode-btn.redsheet-active {
+      background: #dc2626;
+      color: white;
+      border-color: #ef4444;
+    }
+
+    .main-wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0.6rem 0.6rem;
+    }
+
+    /* 1. OPD PICTURE STAGE */
+    .picture-stage-card {
+      background: var(--bg-card);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+      position: relative;
+    }
+    .picture-container {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #1e293b;
+      user-select: none;
+      overflow: hidden;
+    }
+    .picture-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* HOTSPOT PINS */
+    .hotspot-pin {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.68rem;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+      transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.15s ease;
+      z-index: 10;
+    }
+    .hotspot-pin.gender-m {
+      background: #0284c7;
+      color: #ffffff;
+      border: 2px solid #e0f2fe;
+    }
+    .hotspot-pin.gender-f {
+      background: #db2777;
+      color: #ffffff;
+      border: 2px solid #fce7f3;
+    }
+    .hotspot-pin:hover, .hotspot-pin:active {
+      transform: translate(-50%, -50%) scale(1.28);
+      z-index: 20;
+    }
+    .hotspot-pin.active {
+      transform: translate(-50%, -50%) scale(1.35);
+      background: #fbbf24 !important;
+      color: #0f172a !important;
+      border-color: #ffffff !important;
+      box-shadow: 0 0 14px #fbbf24, 0 4px 12px rgba(0, 0, 0, 0.5);
+      z-index: 30;
+      animation: pulseActive 1.6s infinite ease-in-out;
+    }
+    .hotspot-pin.quiz-target {
+      background: #ef4444 !important;
+      color: white !important;
+      border-color: #ffffff !important;
+      animation: pulseQuiz 1s infinite alternate;
+      z-index: 30;
+    }
+
+    @keyframes pulseActive {
+      0%, 100% { box-shadow: 0 0 10px #fbbf24, 0 2px 8px rgba(0,0,0,0.5); }
+      50% { box-shadow: 0 0 20px #f59e0b, 0 2px 12px rgba(0,0,0,0.7); }
+    }
+    @keyframes pulseQuiz {
+      from { transform: translate(-50%, -50%) scale(1.15); }
+      to { transform: translate(-50%, -50%) scale(1.4); }
+    }
+
+    /* PEEK OVERLAY CALLOUT ON IMAGE */
+    .pin-callout-overlay {
+      position: absolute;
+      top: 0.5rem;
+      left: 0.5rem;
+      right: 0.5rem;
+      background: rgba(15, 23, 42, 0.88);
+      backdrop-filter: blur(6px);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.45rem 0.75rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      z-index: 25;
+      animation: fadeIn 0.15s ease-out;
+    }
+    .callout-left {
+      display: flex;
+      align-items: baseline;
+      gap: 0.4rem;
+      min-width: 0;
+      flex: 1;
+    }
+    .callout-num {
+      background: #fbbf24;
+      color: #0f172a;
+      font-weight: 800;
+      font-size: 0.65rem;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .callout-fr {
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: #f8fafc;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .callout-jp {
+      font-size: 0.75rem;
+      color: #cbd5e1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .callout-audio-btn {
+      background: #2563eb;
+      color: white;
+      border: none;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 0.72rem;
+      flex-shrink: 0;
+    }
+
+    /* GENDER COLOR LEGEND */
+    .gender-legend-bar {
+      padding: 0.35rem 0.75rem;
+      background: rgba(0, 0, 0, 0.25);
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.68rem;
+      color: var(--text-muted);
+    }
+    .legend-group {
+      display: flex;
+      gap: 0.65rem;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .legend-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+    .legend-dot.masc { background: var(--masc-color); }
+    .legend-dot.fem { background: var(--fem-color); }
+
+    /* 2. QUIZ INTERACTION BOX (When Quiz active) */
+    .quiz-card {
+      margin-top: 0.6rem;
+      background: #1e293b;
+      border: 1.5px solid #3b82f6;
+      border-radius: 10px;
+      padding: 0.75rem;
+      display: none;
+      flex-direction: column;
+      gap: 0.55rem;
+      animation: sheetUp 0.15s ease-out;
+    }
+    .quiz-card.show { display: flex; }
+    .quiz-prompt {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #93c5fd;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .quiz-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.45rem;
+    }
+    .quiz-opt-btn {
+      background: #0f172a;
+      border: 1px solid var(--border);
+      color: #f8fafc;
+      padding: 0.55rem 0.4rem;
+      border-radius: 8px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.1s ease;
+    }
+    .quiz-opt-btn:active { transform: scale(0.98); }
+    .quiz-opt-btn.correct {
+      background: #15803d !important;
+      border-color: #22c55e !important;
+      color: white !important;
+    }
+    .quiz-opt-btn.wrong {
+      background: #b91c1c !important;
+      border-color: #ef4444 !important;
+      color: white !important;
+    }
+    .quiz-feedback {
+      font-size: 0.74rem;
+      text-align: center;
+      min-height: 1.2rem;
+      font-weight: 700;
+    }
+
+    /* 3. VOCABULARY LIST */
+    .vocab-section-title {
+      margin-top: 0.85rem;
+      margin-bottom: 0.45rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .vocab-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+    .vocab-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.5rem 0.65rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.55rem;
+      cursor: pointer;
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+    .vocab-card:hover {
+      background: var(--bg-card-hover);
+    }
+    .vocab-card.highlight {
+      border-color: #fbbf24;
+      background: #1e293b;
+      box-shadow: 0 0 10px rgba(251, 191, 36, 0.25);
+    }
+
+    .vocab-num {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.68rem;
+      font-weight: 800;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+    .vocab-num.gender-m {
+      background: var(--masc-bg);
+      color: var(--masc-color);
+      border: 1px solid var(--masc-color);
+    }
+    .vocab-num.gender-f {
+      background: var(--fem-bg);
+      color: var(--fem-color);
+      border: 1px solid var(--fem-color);
+    }
+
+    .vocab-body {
+      flex: 1;
+      min-width: 0;
+    }
+    .vocab-header-line {
+      display: flex;
+      align-items: baseline;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+    .vocab-word {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #f8fafc;
+    }
+    .gender-pill {
+      font-size: 0.62rem;
+      font-weight: 800;
+      padding: 0.05rem 0.32rem;
+      border-radius: 3px;
+      line-height: 1.2;
+    }
+    .gender-pill.m { background: var(--masc-bg); color: var(--masc-color); border: 1px solid rgba(56, 189, 248, 0.4); }
+    .gender-pill.f { background: var(--fem-bg); color: var(--fem-color); border: 1px solid rgba(244, 114, 182, 0.4); }
+    .vocab-ipa {
+      font-size: 0.7rem;
+      color: #94a3b8;
+      font-family: 'Source Serif 4', Georgia, serif;
+    }
+
+    .vocab-jp-line {
+      margin-top: 0.12rem;
+      font-size: 0.8rem;
+      color: #e2e8f0;
+      font-weight: 500;
+    }
+    .vocab-collocation {
+      margin-top: 0.2rem;
+      font-size: 0.72rem;
+      color: #94a3b8;
+      background: rgba(0,0,0,0.22);
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      line-height: 1.35;
+    }
+    .vocab-audio-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border);
+      color: #cbd5e1;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 0.74rem;
+      flex-shrink: 0;
+      align-self: center;
+    }
+    .vocab-audio-btn:active { background: #2563eb; color: white; }
+
+    /* RED SHEET MASKING (INTEGRATED) */
+    body.mask-redsheet .vocab-jp-line,
+    body.mask-redsheet .vocab-collocation {
+      background: #cbd5e1 !important;
+      color: transparent !important;
+      border-radius: 4px;
+      user-select: none;
+      transition: all 0.2s;
+    }
+    body.mask-redsheet .vocab-card:hover .vocab-jp-line,
+    body.mask-redsheet .vocab-card:hover .vocab-collocation,
+    body.mask-redsheet .vocab-card:active .vocab-jp-line,
+    body.mask-redsheet .vocab-card:active .vocab-collocation {
+      background: transparent !important;
+      color: #f8fafc !important;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes sheetUp {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="app-header">
+    <div class="header-title-wrap">
+      <span class="header-badge">OPD日常語</span>
+      <h1 class="header-title">La Cuisine</h1>
+      <span class="header-sub">台所・キッチン (14語)</span>
+    </div>
+    <div class="mode-tabs">
+      <button id="btn-mode-study" class="mode-btn active" title="学習モード">📖 学習</button>
+      <button id="btn-mode-redsheet" class="mode-btn" title="赤シート（日本語を隠してテスト）">🟥 赤シート</button>
+      <button id="btn-mode-quiz" class="mode-btn" title="4択テスト">🎯 クイズ</button>
+    </div>
+  </header>
+
+  <!-- MAIN STAGE -->
+  <main class="main-wrap">
+
+    <!-- 1. OPD ILLUSTRATION WITH PINS -->
+    <div class="picture-stage-card">
+      <div class="picture-container" id="picture-container">
+        <!-- AI Generated High-Res Visual Dictionary Image -->
+        <img src="kitchen_dictionary_sample.webp" alt="La Cuisine - Oxford Picture Dictionary Style" class="picture-img" id="kitchen-img" onerror="this.onerror=null; this.src='kitchen_dictionary_sample.jpg';">
+
+        <!-- HOTSPOT PINS (OVERLAID) -->
+        <div id="pins-layer"></div>
+
+        <!-- ACTIVE SELECTION CALLOUT (Floating inside picture) -->
+        <div id="pin-callout" class="pin-callout-overlay" style="display: none;">
+          <div class="callout-left">
+            <span id="callout-num" class="callout-num">1</span>
+            <span id="callout-fr" class="callout-fr">le réfrigérateur</span>
+            <span id="callout-jp" class="callout-jp">(冷蔵庫)</span>
+          </div>
+          <button id="callout-audio" class="callout-audio-btn" title="発音を聞く">🔊</button>
+        </div>
+      </div>
+
+      <!-- GENDER COLOR LEGEND -->
+      <div class="gender-legend-bar">
+        <span>💡 ピン番号をタップすると発音と解説が連動します</span>
+        <div class="legend-group">
+          <div class="legend-item">
+            <div class="legend-dot masc"></div>
+            <span>青: 陽性名詞 (le)</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot fem"></div>
+            <span>桃: 陰性名詞 (la)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. QUIZ BOX (Active when in Quiz mode) -->
+    <div id="quiz-card" class="quiz-card">
+      <div class="quiz-prompt">
+        <span id="quiz-question-title">🎯 赤く光っているピンのフランス語は？</span>
+        <span id="quiz-score" style="color: var(--accent-gold);">スコア: 0 / 0</span>
+      </div>
+      <div class="quiz-options" id="quiz-options"></div>
+      <div class="quiz-feedback" id="quiz-feedback"></div>
+    </div>
+
+    <!-- 3. VOCABULARY LIST -->
+    <div class="vocab-section-title">
+      <span>収録単語リスト (名詞・性・用例)</span>
+      <span id="vocab-counter">全 14 項目</span>
+    </div>
+
+    <div class="vocab-list" id="vocab-list"></div>
+
+  </main>
+
+  <!-- JAVASCRIPT ENGINE -->
+  <script>
+    const VOCAB_DATA = [
+      {
+        id: 1, pin: 1,
+        fr: "le réfrigérateur", shortFr: "le frigo",
+        gender: "m", ipa: "/ʁe.fʁi.ʒe.ʁa.tœʁ/",
+        jp: "冷蔵庫",
+        col: "Mettre le lait au réfrigérateur. (牛乳を冷蔵庫に入れる [le])",
+        x: 22.5, y: 52.0
+      },
+      {
+        id: 2, pin: 2,
+        fr: "les placards", shortFr: "le placard",
+        gender: "m", ipa: "/pla.kaʁ/",
+        jp: "食器棚・上部戸棚",
+        col: "Ranger les assiettes dans le placard. (食器を戸棚にしまう [le])",
+        x: 49.5, y: 14.5
+      },
+      {
+        id: 3, pin: 3,
+        fr: "la hotte", shortFr: "la hotte",
+        gender: "f", ipa: "/ɔt/",
+        jp: "換気扇・レンジフード",
+        col: "Allumer la hotte aspirante. (換気扇を回す [la])",
+        x: 40.0, y: 19.5
+      },
+      {
+        id: 4, pin: 4,
+        fr: "les plaques de cuisson", shortFr: "la cuisinière",
+        gender: "f", ipa: "/plak də kɥi.sɔ̃/",
+        jp: "コンロ・調理用バーナー",
+        col: "Allumer une plaque de cuisson. (コンロの火をつける [une])",
+        x: 37.0, y: 44.5
+      },
+      {
+        id: 5, pin: 5,
+        fr: "la poêle", shortFr: "la poêle",
+        gender: "f", ipa: "/pwal/",
+        jp: "フライパン",
+        col: "Chauffer du beurre dans une poêle. (フライパンにバターを熱する [une])",
+        x: 42.2, y: 40.0
+      },
+      {
+        id: 6, pin: 6,
+        fr: "le four", shortFr: "le four",
+        gender: "m", ipa: "/fuʁ/",
+        jp: "オーブン",
+        col: "Faire cuire une tarte au four. (タルトをオーブンで焼く [le: au = à+le])",
+        x: 43.6, y: 59.5
+      },
+      {
+        id: 7, pin: 7,
+        fr: "le robinet", shortFr: "le robinet",
+        gender: "m", ipa: "/ʁɔ.bi.nɛ/",
+        jp: "水道・蛇口",
+        col: "Fermer le robinet d'eau. (蛇口をしっかり閉める [le])",
+        x: 66.1, y: 34.5
+      },
+      {
+        id: 8, pin: 8,
+        fr: "l'évier", shortFr: "l'évier",
+        gender: "m", ipa: "/e.vje/",
+        jp: "流し台・シンク",
+        col: "Faire la vaisselle dans l'évier. (シンクで皿を洗う [le])",
+        x: 64.0, y: 42.5
+      },
+      {
+        id: 9, pin: 9,
+        fr: "l'éponge", shortFr: "l'éponge",
+        gender: "f", ipa: "/e.pɔ̃ʒ/",
+        jp: "スポンジ",
+        col: "Nettoyer avec une éponge humide. (湿ったスポンジで拭く [une])",
+        x: 70.1, y: 41.0
+      },
+      {
+        id: 10, pin: 10,
+        fr: "la bouilloire", shortFr: "la bouilloire",
+        gender: "f", ipa: "/bu.jwaʁ/",
+        jp: "電気ケトル・やかん",
+        col: "Faire bouillir de l'eau dans la bouilloire. (ケトルでお湯を沸かす [la])",
+        x: 73.8, y: 43.0
+      },
+      {
+        id: 11, pin: 11,
+        fr: "le four à micro-ondes", shortFr: "le micro-ondes",
+        gender: "m", ipa: "/mi.kʁo.ɔ̃d/",
+        jp: "電子レンジ",
+        col: "Réchauffer le plat au micro-ondes. (レンジで温める [le: au = à+le])",
+        x: 80.7, y: 41.0
+      },
+      {
+        id: 12, pin: 12,
+        fr: "la planche à découper", shortFr: "la planche",
+        gender: "f", ipa: "/plɑ̃ʃ a de.ku.pe/",
+        jp: "まな板",
+        col: "Couper les légumes sur une planche. (まな板で野菜を切る [une])",
+        x: 64.0, y: 64.5
+      },
+      {
+        id: 13, pin: 13,
+        fr: "le couteau de cuisine", shortFr: "le couteau",
+        gender: "m", ipa: "/ku.to/",
+        jp: "包丁・ナイフ",
+        col: "Couper la viande avec un bon couteau. (切れる包丁で肉を切る [un])",
+        x: 58.5, y: 64.5
+      },
+      {
+        id: 14, pin: 14,
+        fr: "la poubelle", shortFr: "la poubelle",
+        gender: "f", ipa: "/pu.bɛl/",
+        jp: "ゴミ箱",
+        col: "Jeter les emballages dans la poubelle. (ゴミ箱に捨てる [la])",
+        x: 55.2, y: 87.0
+      }
+    ];
+
+    // SPEECH SYNTHESIS ENGINE (French Audio Pronunciation)
+    function speakFrench(text) {
+      if (!('speechSynthesis' in window)) return;
+      window.speechSynthesis.cancel();
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = 'fr-FR';
+      u.rate = 0.9;
+      window.speechSynthesis.speak(u);
+    }
+
+    // RENDER PINS ON IMAGE
+    const pinsLayer = document.getElementById('pins-layer');
+    const vocabListEl = document.getElementById('vocab-list');
+    const pinCallout = document.getElementById('pin-callout');
+    const calloutNum = document.getElementById('callout-num');
+    const calloutFr = document.getElementById('callout-fr');
+    const calloutJp = document.getElementById('callout-jp');
+    const calloutAudio = document.getElementById('callout-audio');
+
+    let currentActiveId = null;
+    let currentQuizItem = null;
+    let quizScore = 0;
+    let quizTotal = 0;
+
+    function renderPins() {
+      pinsLayer.innerHTML = '';
+      VOCAB_DATA.forEach(item => {
+        const pin = document.createElement('div');
+        pin.className = `hotspot-pin gender-${item.gender}`;
+        pin.id = `pin-${item.id}`;
+        pin.style.left = `${item.x}%`;
+        pin.style.top = `${item.y}%`;
+        pin.textContent = item.pin;
+        pin.title = `${item.fr} (${item.jp})`;
+
+        pin.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (document.body.classList.contains('mode-quiz-active')) {
+            // In quiz mode, ignore direct click or handle test
+            return;
+          }
+          selectItem(item.id, true);
+        });
+
+        pinsLayer.appendChild(pin);
+      });
+    }
+
+    // RENDER VOCABULARY LIST CARDS
+    function renderVocabList() {
+      vocabListEl.innerHTML = '';
+      VOCAB_DATA.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'vocab-card';
+        card.id = `vocab-card-${item.id}`;
+
+        const genderLabel = item.gender === 'm' ? '陽性 (le)' : '陰性 (la)';
+
+        card.innerHTML = `
+          <div class="vocab-num gender-${item.gender}">${item.pin}</div>
+          <div class="vocab-body">
+            <div class="vocab-header-line">
+              <span class="vocab-word">${item.fr}</span>
+              <span class="gender-pill ${item.gender}">${genderLabel}</span>
+              <span class="vocab-ipa">${item.ipa}</span>
+            </div>
+            <div class="vocab-jp-line">${item.jp}</div>
+            <div class="vocab-collocation">${item.col}</div>
+          </div>
+          <button class="vocab-audio-btn" title="音声再生" data-speak="${item.fr}">🔊</button>
+        `;
+
+        card.addEventListener('click', (e) => {
+          if (e.target.closest('.vocab-audio-btn')) {
+            speakFrench(item.fr);
+            return;
+          }
+          selectItem(item.id, true);
+        });
+
+        vocabListEl.appendChild(card);
+      });
+    }
+
+    // SELECT AN ITEM (Link Pin + Card + Sound)
+    function selectItem(id, doSpeak = false) {
+      currentActiveId = id;
+      const item = VOCAB_DATA.find(v => v.id === id);
+      if (!item) return;
+
+      // Update Pin Active state
+      document.querySelectorAll('.hotspot-pin').forEach(p => p.classList.remove('active'));
+      const activePin = document.getElementById(`pin-${id}`);
+      if (activePin) activePin.classList.add('active');
+
+      // Update Card Highlight state & scroll
+      document.querySelectorAll('.vocab-card').forEach(c => c.classList.remove('highlight'));
+      const activeCard = document.getElementById(`vocab-card-${id}`);
+      if (activeCard) {
+        activeCard.classList.add('highlight');
+        activeCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+
+      // Show Peek Callout inside image
+      calloutNum.textContent = item.pin;
+      calloutFr.textContent = item.fr;
+      calloutJp.textContent = `(${item.jp})`;
+      pinCallout.style.display = 'flex';
+
+      calloutAudio.onclick = () => speakFrench(item.fr);
+
+      if (doSpeak) {
+        speakFrench(item.fr);
+      }
+    }
+
+    // MODE TOGGLES: STUDY / RED SHEET / QUIZ
+    const btnStudy = document.getElementById('btn-mode-study');
+    const btnRedsheet = document.getElementById('btn-mode-redsheet');
+    const btnQuiz = document.getElementById('btn-mode-quiz');
+    const quizCard = document.getElementById('quiz-card');
+
+    btnStudy.addEventListener('click', () => {
+      document.body.classList.remove('mask-redsheet', 'mode-quiz-active');
+      btnStudy.classList.add('active');
+      btnRedsheet.classList.remove('redsheet-active');
+      btnQuiz.classList.remove('active');
+      quizCard.classList.remove('show');
+      document.querySelectorAll('.hotspot-pin').forEach(p => p.classList.remove('quiz-target'));
+    });
+
+    btnRedsheet.addEventListener('click', () => {
+      const active = document.body.classList.toggle('mask-redsheet');
+      btnRedsheet.classList.toggle('redsheet-active', active);
+    });
+
+    btnQuiz.addEventListener('click', () => {
+      document.body.classList.remove('mask-redsheet');
+      btnRedsheet.classList.remove('redsheet-active');
+      btnStudy.classList.remove('active');
+      btnQuiz.classList.add('active');
+      document.body.classList.add('mode-quiz-active');
+      quizCard.classList.add('show');
+      quizScore = 0;
+      quizTotal = 0;
+      updateQuizScore();
+      nextQuizQuestion();
+    });
+
+    // QUIZ LOGIC
+    function updateQuizScore() {
+      document.getElementById('quiz-score').textContent = `スコア: ${quizScore} / ${quizTotal}`;
+    }
+
+    function nextQuizQuestion() {
+      document.querySelectorAll('.hotspot-pin').forEach(p => {
+        p.classList.remove('active', 'quiz-target');
+      });
+      pinCallout.style.display = 'none';
+
+      // Pick random item
+      const item = VOCAB_DATA[Math.floor(Math.random() * VOCAB_DATA.length)];
+      currentQuizItem = item;
+
+      // Highlight target pin
+      const targetPin = document.getElementById(`pin-${item.id}`);
+      if (targetPin) {
+        targetPin.classList.add('quiz-target');
+      }
+
+      // Generate 4 choices (1 correct + 3 distractors)
+      const distractors = VOCAB_DATA.filter(v => v.id !== item.id)
+        .sort(() => 0.5 - Math.random())
+        .slice(0, 3);
+      const choices = [item, ...distractors].sort(() => 0.5 - Math.random());
+
+      const optionsContainer = document.getElementById('quiz-options');
+      optionsContainer.innerHTML = '';
+      document.getElementById('quiz-feedback').textContent = '';
+
+      choices.forEach(c => {
+        const optBtn = document.createElement('button');
+        optBtn.className = 'quiz-opt-btn';
+        optBtn.textContent = c.fr;
+        optBtn.addEventListener('click', () => checkQuizAnswer(c, optBtn));
+        optionsContainer.appendChild(optBtn);
+      });
+    }
+
+    function checkQuizAnswer(chosen, btnEl) {
+      quizTotal++;
+      const feedback = document.getElementById('quiz-feedback');
+      const allBtns = document.querySelectorAll('.quiz-opt-btn');
+      allBtns.forEach(b => b.disabled = true);
+
+      if (chosen.id === currentQuizItem.id) {
+        quizScore++;
+        btnEl.classList.add('correct');
+        feedback.style.color = '#4ade80';
+        feedback.textContent = `正解！ ${currentQuizItem.fr} = ${currentQuizItem.jp}`;
+        speakFrench(currentQuizItem.fr);
+      } else {
+        btnEl.classList.add('wrong');
+        allBtns.forEach(b => {
+          if (b.textContent === currentQuizItem.fr) b.classList.add('correct');
+        });
+        feedback.style.color = '#f87171';
+        feedback.textContent = `惜しい！ 正解は ${currentQuizItem.fr} (${currentQuizItem.jp})`;
+        speakFrench(currentQuizItem.fr);
+      }
+      updateQuizScore();
+
+      setTimeout(() => {
+        if (document.body.classList.contains('mode-quiz-active')) {
+          nextQuizQuestion();
+        }
+      }, 1800);
+    }
+
+    // INITIALIZE
+    renderPins();
+    renderVocabList();
+    // Default select item 1
+    selectItem(1, false);
+  </script>
+</body>
+</html>

@@ -22,7 +22,7 @@ def verify_html_file(filename, is_mobile=False):
     assert os.path.exists(html_path), f"{filename} does not exist"
     size_kb = os.path.getsize(html_path) / 1024
     print(f"[{filename}] HTML Size: {size_kb:.1f} KB ({size_kb / 1024:.2f} MB)")
-    assert size_kb < 7000, f"{filename} file size too large ({size_kb:.1f} KB > 7000 KB)"
+    assert size_kb < 8500, f"{filename} file size too large ({size_kb:.1f} KB > 8500 KB)"
 
     with open(html_path, "r", encoding="utf-8") as f:
         html = f.read()
@@ -75,8 +75,11 @@ def verify_html_file(filename, is_mobile=False):
     assert 'id="modal-sections"' in html, "Sections drawer modal missing"
     assert 'id="modal-index"' in html, "A-Z index modal missing"
     assert 'id="player-dock"' in html, "Player dock missing"
-    assert 'tool-mask-jp' in html, "Mask JP tool missing"
-    assert 'tool-mask-meaning' in html, "Mask meaning tool missing"
+    if is_mobile:
+        assert 'tool-mask-redsheet' in html, "Mask RedSheet tool missing in mobile"
+    else:
+        assert 'tool-mask-jp' in html, "Mask JP tool missing in desktop"
+        assert 'tool-mask-meaning' in html, "Mask meaning tool missing in desktop"
     assert 'tool-mask-cloze' in html, "Mask cloze tool missing"
     assert 'az-search-input' in html, "A-Z quick search missing"
     assert 'content-visibility: auto;' in html, "content-visibility optimization missing"
@@ -86,7 +89,7 @@ def verify_html_file(filename, is_mobile=False):
     if is_mobile:
         assert 'class="thumb-nav-bar"' in html, "Mobile thumb navigation bar missing"
         assert 'touchstart' in html and 'touchend' in html, "Mobile swipe handlers missing"
-        assert 'id="nav-prev-sentence"' in html and 'id="nav-next-sentence"' in html, "Mobile prev/next buttons missing"
+        assert 'id="nav-prev-section"' in html and 'id="nav-next-section"' in html, "Mobile prev/next section buttons missing"
         assert 'flex: 0 0 33%;' in html, "Mobile 2-column side-by-side layout missing"
 
 

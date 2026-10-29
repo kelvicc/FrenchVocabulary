@@ -15,6 +15,7 @@ import re
 import sys
 import json
 import html
+from daily_vocab_builder import load_daily_vocab_data, get_daily_index_entries, generate_daily_css, generate_daily_sections_html, generate_daily_toc_html, generate_daily_js
 
 if sys.platform == "win32":
     try:
@@ -37,6 +38,19 @@ OUTPUT_MOBILE_HTML = os.path.join(BASE_DIR, "mobile.html")
 
 
 def generate_mobile_html(sections_data, all_words_index, index_counts, total_sentences, total_lemmas):
+    daily_themes = load_daily_vocab_data()
+    # Prepare Section Quiz Data: lemma, pos, clean short meaning, sid
+    sec_quiz_map = {}
+    for sec in sections_data:
+        s_items = []
+        for s in sec["sentences"]:
+            for w in s["words"]:
+                m_clean = re.sub(r"<[^>]+>", "", format_inline_markdown(w["meaning"]))
+                m_short = m_clean.split("；")[0].split(";")[0].strip()
+                s_items.append([w["lemma"], w["pos"], m_short, s["id"]])
+        sec_quiz_map[sec["num"]] = s_items
+    json_sec_quiz_str = json.dumps(sec_quiz_map, ensure_ascii=False, separators=(',', ':'))
+
     compact_index_data = [
         [
             w["word"],
@@ -48,6 +62,8 @@ def generate_mobile_html(sections_data, all_words_index, index_counts, total_sen
         ]
         for w in all_words_index
     ]
+    compact_index_data.extend(get_daily_index_entries(daily_themes))
+    compact_index_data.sort(key=lambda x: (x[5] if x[5] != '#' else 'Z~', x[0].lower()))
     json_index_str = json.dumps(compact_index_data, ensure_ascii=False, separators=(',', ':'))
 
     all_letters = sorted(list(set(w["letter"] for w in all_words_index if w["letter"] != "#")))
@@ -94,7 +110,10 @@ def generate_mobile_html(sections_data, all_words_index, index_counts, total_sen
       overscroll-behavior-x: none;
     }}
     body {{
-      padding-bottom: calc(108px + var(--safe-bottom));
+      padding-bottom: calc(48px + var(--safe-bottom));
+    }}
+    body.audio-open {{
+      padding-bottom: calc(88px + var(--safe-bottom));
     }}
 
     code {{
@@ -110,16 +129,16 @@ def generate_mobile_html(sections_data, all_words_index, index_counts, total_sen
     em {{ font-style: italic; font-family: 'Source Serif 4', Georgia, serif; }}
 
     /* ==========================================================================
-       COMPACT MOBILE TOP BAR
+       SUPER COMPACT MOBILE TOP BAR
        ========================================================================== */
     header {{
-      background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+      background: #1e293b;
       color: white;
-      padding: 0.45rem 0.75rem;
+      padding: 0.3rem 0.6rem;
       position: sticky;
       top: 0;
       z-index: 500;
-      box-shadow: 0 1px 6px rgba(0,0,0,0.12);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
     }}
     .header-inner {{
       max-width: 640px;
@@ -127,172 +146,106 @@ def generate_mobile_html(sections_data, all_words_index, index_counts, total_sen
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.4rem;
     }}
-    .logo-group {{
-      display: flex;
-      align-items: center;
-      gap: 0.45rem;
-      cursor: pointer;
-    }}
-    .tricolor-flag {{
-      display: flex;
-      width: 18px;
-      height: 13px;
-      border-radius: 2px;
-      overflow: hidden;
-      flex-shrink: 0;
-    }}
-    .flag-b {{ width: 33.3%; background: #2563eb; }}
-    .flag-w {{ width: 33.3%; background: #ffffff; }}
-    .flag-r {{ width: 33.3%; background: #ef4444; }}
-    .logo-group h1 {{
-      font-family: 'Cinzel', serif;
-      font-size: 0.98rem;
-      font-weight: 800;
-      letter-spacing: 0.03em;
-      color: #ffffff;
-      display: flex;
-      align-items: center;
-      gap: 0.35rem;
-    }}
-    .badge-mobile {{
-      background: #dbeafe;
-      color: #1e40af;
-      font-size: 0.6rem;
-      padding: 0.08rem 0.35rem;
-      border-radius: 3px;
-      font-weight: 700;
-      font-family: sans-serif;
-    }}
-
-    .top-quick-status {{
+    .header-left {{
       display: flex;
       align-items: center;
       gap: 0.4rem;
+      min-width: 0;
+      flex: 1;
     }}
-    .btn-top-pill {{
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.22);
-      color: #f8fafc;
-      font-size: 0.72rem;
+    .sec-badge-pill {{
+      font-family: 'Cinzel', serif;
+      font-size: 0.76rem;
+      font-weight: 800;
+      color: #93c5fd;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.18);
+      padding: 0.12rem 0.45rem;
+      border-radius: 4px;
+      white-space: nowrap;
+      cursor: pointer;
+    }}
+    .sec-title-text {{
+      font-size: 0.74rem;
+      font-weight: 600;
+      color: #e2e8f0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }}
+
+    .header-right {{
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      flex-shrink: 0;
+    }}
+    .btn-top-mini {{
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #f1f5f9;
+      font-size: 0.68rem;
       font-weight: 700;
-      padding: 0.22rem 0.5rem;
-      border-radius: 5px;
+      padding: 0.18rem 0.42rem;
+      border-radius: 4px;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 0.2rem;
+      gap: 0.15rem;
     }}
-    .btn-top-pill.star-active {{
+    .btn-top-mini.active {{
+      background: #fee2e2;
+      color: #dc2626;
+      border-color: #fca5a5;
+    }}
+    .btn-top-mini.star-active {{
       background: #fef08a;
       color: #854d0e;
       border-color: #facc15;
     }}
 
-    /* ==========================================================================
-       SWIPE STATUS & SECTION MINI BANNER
-       ========================================================================== */
+    /* Thin Progress Strip */
     .mobile-nav-strip {{
-      background: #ffffff;
-      border-bottom: 1px solid var(--border);
-      padding: 0.4rem 0.75rem;
-      position: sticky;
-      top: 39px;
-      z-index: 400;
-    }}
-    .mobile-nav-inner {{
-      max-width: 640px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 0.3rem;
-    }}
-    .sec-status-row {{
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 0.4rem;
-    }}
-    .sec-current-label {{
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: #1e3a8a;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      flex: 1;
-    }}
-    .btn-sec-opus-mini {{
-      background: #ecfdf5;
-      color: #047857;
-      border: 1px solid #a7f3d0;
-      padding: 0.18rem 0.5rem;
-      border-radius: 4px;
-      font-size: 0.68rem;
-      font-weight: 700;
-      cursor: pointer;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }}
-    .btn-sec-opus-mini.playing {{
-      background: #fee2e2;
-      color: #dc2626;
-      border-color: #fca5a5;
-    }}
-
-    .sentence-progress-row {{
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.5rem;
-    }}
-    .progress-bar-wrap {{
-      flex: 1;
-      height: 5px;
       background: #e2e8f0;
-      border-radius: 3px;
-      overflow: hidden;
+      height: 3px;
+      width: 100%;
+      position: sticky;
+      top: 32px;
+      z-index: 490;
     }}
     .progress-bar-fill {{
       height: 100%;
-      background: #3b82f6;
+      background: #2563eb;
       width: 0.18%;
-      transition: width 0.2s ease;
-    }}
-    .swipe-counter-text {{
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.72rem;
-      font-weight: 700;
-      color: #475569;
-      white-space: nowrap;
-    }}
-    .swipe-hint {{
-      font-size: 0.68rem;
-      color: #94a3b8;
-      white-space: nowrap;
+      transition: width 0.15s ease;
     }}
 
     /* ==========================================================================
-       MEMORIZATION MASKS (Clean Blur / Gray Mask)
+       MEMORIZATION MASKS (赤シート統合モード: 和訳 + 意味 + 派生語 + 成句を一括隠蔽)
        ========================================================================== */
-    body.mask-jp .japanese-translation {{
-      background: var(--mask-bg) !important;
+    body.mask-redsheet .japanese-translation,
+    body.mask-redsheet .meaning,
+    body.mask-redsheet .meaning *,
+    body.mask-redsheet .rel-meaning,
+    body.mask-redsheet .rel-meaning *,
+    body.mask-redsheet .word-note,
+    body.mask-redsheet .word-etym {{
+      background: #cbd5e1 !important;
       color: transparent !important;
       border-radius: 4px;
       user-select: none;
+      -webkit-user-select: none;
+      display: inline-block;
+      cursor: pointer;
     }}
-    body.mask-meaning .meaning,
-    body.mask-meaning .word-note,
-    body.mask-meaning .word-etym,
-    body.mask-meaning .rel-meaning,
-    body.mask-meaning .syn-content,
-    body.mask-meaning .ant-content {{
-      background: var(--mask-bg) !important;
-      color: transparent !important;
-      border-radius: 3px;
-      user-select: none;
+    body.mask-redsheet .word-note,
+    body.mask-redsheet .word-etym {{
+      display: block;
+      border-left-color: #cbd5e1 !important;
     }}
+
     body.mask-cloze .word-token {{
       background: #cbd5e1;
       color: transparent;
@@ -345,11 +298,6 @@ def generate_mobile_html(sections_data, all_words_index, index_counts, total_sen
     }}
     .duo-card.active-card {{
       display: block;
-      animation: cardSlideIn 0.16s ease-out;
-    }}
-    @keyframes cardSlideIn {{
-      from {{ opacity: 0.65; transform: translateX(var(--slide-dir, 14px)); }}
-      to {{ opacity: 1; transform: translateX(0); }}
     }}
     .duo-card.is-starred {{
       border-left: 4px solid #facc15;
@@ -629,8 +577,231 @@ def generate_mobile_html(sections_data, all_words_index, index_counts, total_sen
     }}
 
     /* ==========================================================================
-       BOTTOM SHEET MODALS (SECTIONS, A-Z INDEX, SEARCH & TOOLS)
+       SECTION END QUIZ BANNER & POPUP MODAL
        ========================================================================== */
+    .sec-quiz-banner {{
+      margin-top: 0.8rem;
+      background: linear-gradient(135deg, #eff6ff 0%, #f0fdf4 100%);
+      border: 1.5px dashed #93c5fd;
+      border-radius: 10px;
+      padding: 0.85rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+    }}
+    .sec-quiz-title {{
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #1e40af;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }}
+    .sec-quiz-sub {{
+      font-size: 0.72rem;
+      color: #64748b;
+    }}
+    .btn-start-quiz {{
+      background: #2563eb;
+      color: white;
+      border: none;
+      padding: 0.45rem 1.2rem;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(37,99,235,0.25);
+      margin-top: 0.2rem;
+    }}
+    .btn-start-quiz:active {{
+      background: #1d4ed8;
+      transform: scale(0.98);
+    }}
+
+    /* Quiz Modal */
+    .quiz-card {{
+      background: white;
+      border-radius: 16px 16px 0 0;
+      width: 100%;
+      max-width: 640px;
+      max-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 -8px 28px rgba(0,0,0,0.2);
+      overflow: hidden;
+      animation: sheetUp 0.2s ease-out;
+    }}
+    .quiz-header {{
+      background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+      color: white;
+      padding: 0.8rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }}
+    .quiz-header h3 {{
+      font-size: 0.95rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }}
+    .quiz-body {{
+      padding: 1.1rem 1rem;
+      overflow-y: auto;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }}
+    .quiz-progress-text {{
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #64748b;
+      display: flex;
+      justify-content: space-between;
+    }}
+    .quiz-question-box {{
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 1rem;
+      text-align: center;
+    }}
+    .quiz-q-word {{
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: 0.02em;
+    }}
+    .quiz-q-pos {{
+      display: inline-block;
+      margin-top: 0.25rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #2563eb;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      padding: 0.1rem 0.45rem;
+      border-radius: 4px;
+    }}
+    .quiz-choices {{
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }}
+    .quiz-choice-btn {{
+      background: #ffffff;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 0.65rem 0.85rem;
+      text-align: left;
+      font-size: 0.86rem;
+      font-weight: 600;
+      color: #1e293b;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.12s;
+    }}
+    .quiz-choice-btn:active {{
+      background: #f1f5f9;
+    }}
+    .quiz-choice-btn.correct {{
+      background: #dcfce7 !important;
+      border-color: #22c55e !important;
+      color: #15803d !important;
+    }}
+    .quiz-choice-btn.incorrect {{
+      background: #fee2e2 !important;
+      border-color: #ef4444 !important;
+      color: #b91c1c !important;
+    }}
+    .quiz-choice-num {{
+      font-family: 'Cinzel', serif;
+      font-size: 0.76rem;
+      font-weight: 800;
+      color: #64748b;
+      width: 18px;
+    }}
+    .quiz-feedback {{
+      display: none;
+      border-radius: 8px;
+      padding: 0.65rem 0.85rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      line-height: 1.4;
+      animation: fadeIn 0.15s ease;
+    }}
+    .quiz-feedback.show {{ display: block; }}
+    .quiz-feedback.ok {{
+      background: #f0fdf4;
+      border: 1px solid #86efac;
+      color: #166534;
+    }}
+    .quiz-feedback.ng {{
+      background: #fef2f2;
+      border: 1px solid #fca5a5;
+      color: #991b1b;
+    }}
+    .quiz-next-btn {{
+      background: #2563eb;
+      color: white;
+      border: none;
+      padding: 0.6rem;
+      border-radius: 8px;
+      font-size: 0.86rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: none;
+      width: 100%;
+      text-align: center;
+    }}
+    .quiz-next-btn.show {{ display: block; }}
+
+    /* Quiz Result View */
+    .quiz-result-box {{
+      text-align: center;
+      padding: 1.5rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.8rem;
+    }}
+    .quiz-result-score {{
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #2563eb;
+    }}
+    .quiz-result-msg {{
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #1e293b;
+    }}
+    .quiz-result-actions {{
+      display: flex;
+      gap: 0.6rem;
+      width: 100%;
+      margin-top: 0.6rem;
+    }}
+    .quiz-result-btn {{
+      flex: 1;
+      padding: 0.6rem;
+      border-radius: 8px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: 1px solid #cbd5e1;
+      background: white;
+    }}
+    .quiz-result-btn.primary {{
+      background: #2563eb;
+      color: white;
+      border-color: #2563eb;
+    }}
     .modal-overlay {{
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
@@ -724,412 +895,28 @@ def generate_mobile_html(sections_data, all_words_index, index_counts, total_sen
       line-height: 1.3;
     }}
 
-    /* Ultra-Lightweight Monochrome A-Z Index */
-    .index-toolbar {{
-      position: sticky;
-      top: -0.85rem;
-      background: white;
-      padding-top: 0.15rem;
-      padding-bottom: 0.6rem;
-      border-bottom: 1px solid var(--border);
-      z-index: 20;
-      display: flex;
-      flex-direction: column;
-      gap: 0.45rem;
-    }}
-    .az-search-input {{
-      width: 100%;
-      padding: 0.45rem 0.75rem;
-      border: 1px solid var(--border-dark);
-      border-radius: 6px;
-      font-size: 0.85rem;
-      outline: none;
-    }}
-    .az-type-filters {{
-      display: flex;
-      overflow-x: auto;
-      gap: 0.3rem;
-      padding-bottom: 0.1rem;
-    }}
-    .az-type-btn {{
-      background: #f8fafc;
-      border: 1px solid var(--border);
-      color: var(--text-main);
-      padding: 0.22rem 0.5rem;
-      border-radius: 4px;
-      font-size: 0.72rem;
-      font-weight: 700;
-      cursor: pointer;
-      white-space: nowrap;
-    }}
-    .az-type-btn.active {{
-      background: #2563eb;
-      color: white;
-      border-color: #2563eb;
-    }}
-    .az-nav-tabs {{
-      display: flex;
-      overflow-x: auto;
-      gap: 0.25rem;
-      padding-bottom: 0.15rem;
-    }}
-    .az-tab {{
-      background: #f8fafc;
-      border: 1px solid var(--border);
-      color: var(--text-main);
-      padding: 0.22rem 0.48rem;
-      border-radius: 4px;
-      font-size: 0.74rem;
-      font-weight: 700;
-      cursor: pointer;
-      min-width: 28px;
-      text-align: center;
-      flex-shrink: 0;
-    }}
-    .az-tab.active {{
-      background: #2563eb;
-      color: white;
-      border-color: #2563eb;
-    }}
-
-    .index-content-wrap {{ margin-top: 0.6rem; }}
-    .index-status-bar {{
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      margin-bottom: 0.4rem;
-      font-weight: 600;
-    }}
-    .index-words-list {{
-      display: flex;
-      flex-direction: column;
-    }}
-    .index-entry {{
-      padding: 0.38rem 0.35rem;
-      border-bottom: 1px solid #f1f5f9;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 0.5rem;
-      content-visibility: auto;
-      contain-intrinsic-size: 0 32px;
-    }}
-    .index-entry:active {{ background: #f1f5f9; }}
-    .index-lemma-wrap {{
-      display: flex;
-      align-items: baseline;
-      gap: 0.35rem;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      flex: 1;
-      min-width: 0;
-    }}
-    .index-tag-type {{
-      color: #64748b;
-      font-size: 0.72rem;
-      font-weight: 600;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }}
-    .index-lemma {{
-      font-weight: 700;
-      color: #0f172a;
-      font-size: 0.86rem;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }}
-    .index-tag-pos {{
-      color: #64748b;
-      font-size: 0.72rem;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }}
-    .index-preview {{
-      font-size: 0.75rem;
-      color: #64748b;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }}
-    .index-target-link {{
-      font-family: 'Cinzel', serif;
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: #2563eb;
-      flex-shrink: 0;
-      white-space: nowrap;
-    }}
-    .btn-more-results {{
-      background: #f8fafc;
-      border: 1px solid #e2e8f0;
-      color: #475569;
-      padding: 0.55rem;
-      border-radius: 6px;
-      font-weight: 600;
-      cursor: pointer;
-      text-align: center;
-      margin: 0.6rem 0;
-      font-size: 0.8rem;
-    }}
-
-    /* Search & Study Tools Sheet */
-    .tools-section {{
-      margin-bottom: 1rem;
-    }}
-    .tools-section-title {{
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: #475569;
-      margin-bottom: 0.45rem;
-    }}
-    .tools-grid {{
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 0.45rem;
-    }}
-    .tool-btn {{
-      background: #f8fafc;
-      border: 1px solid var(--border);
-      color: var(--text-main);
-      padding: 0.5rem 0.6rem;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 0.78rem;
-      font-weight: 600;
-      text-align: left;
-    }}
-    .tool-btn.active {{
-      background: #fee2e2;
-      color: #dc2626;
-      border-color: #fca5a5;
-      font-weight: 700;
-    }}
-    .search-box-wrap {{
-      position: relative;
-      display: flex;
-      align-items: center;
-      margin-bottom: 0.6rem;
-    }}
-    .search-input {{
-      width: 100%;
-      padding: 0.5rem 2rem 0.5rem 0.75rem;
-      border: 1px solid var(--border-dark);
-      border-radius: 6px;
-      font-size: 0.86rem;
-      outline: none;
-    }}
-    .search-clear {{
-      position: absolute;
-      right: 10px;
-      color: #94a3b8;
-      cursor: pointer;
-      display: none;
-      font-size: 1.1rem;
-    }}
-    .search-results-list {{
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-    }}
-    .search-hit-item {{
-      padding: 0.5rem 0.65rem;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      background: #f8fafc;
-      cursor: pointer;
-    }}
-    .search-hit-top {{
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: #2563eb;
-      margin-bottom: 0.15rem;
-    }}
-    .search-hit-fr {{
-      font-family: 'Source Serif 4', serif;
-      font-size: 0.86rem;
-      font-weight: 600;
-      color: #0f172a;
-    }}
-    .search-hit-jp {{
-      font-size: 0.75rem;
-      color: #64748b;
-      margin-top: 0.1rem;
-    }}
-
-    /* ==========================================================================
-       FIXED BOTTOM DOCK: 1-LINE AUDIO BAR + THUMB NAVIGATION BAR
-       ========================================================================== */
-    .bottom-fixed-stack {{
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      z-index: 600;
-      background: #0f172a;
-      padding-bottom: var(--safe-bottom);
-      box-shadow: 0 -3px 14px rgba(0,0,0,0.22);
-    }}
-
-    /* 1-Line Compact Audio Player */
-    .player-dock {{
-      max-width: 640px;
-      margin: 0 auto;
-      padding: 0.35rem 0.65rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 0.4rem;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      color: white;
-    }}
-    .dock-now-playing {{
-      display: flex;
-      align-items: center;
-      gap: 0.45rem;
-      min-width: 0;
-      flex: 1;
-    }}
-    .dock-indicator {{
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #64748b;
-      flex-shrink: 0;
-    }}
-    .dock-indicator.live {{
-      background: #22c55e;
-      box-shadow: 0 0 8px #22c55e;
-    }}
-    .dock-info-title {{
-      font-size: 0.76rem;
-      font-weight: 700;
-      color: #f8fafc;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }}
-    .dock-info-sub {{
-      display: none;
-    }}
-    .dock-controls {{
-      display: flex;
-      align-items: center;
-      gap: 0.35rem;
-    }}
-    .dock-btn {{
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.2);
-      color: white;
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      font-size: 0.78rem;
-    }}
-    .dock-btn.main-play {{
-      background: #2563eb;
-      border-color: #3b82f6;
-      width: 34px;
-      height: 34px;
-      font-size: 0.9rem;
-    }}
-    .dock-settings {{
-      display: flex;
-      align-items: center;
-      gap: 0.25rem;
-    }}
-    .dock-select {{
-      background: #1e293b;
-      border: 1px solid #475569;
-      color: #f1f5f9;
-      padding: 0.18rem 0.3rem;
-      border-radius: 4px;
-      font-size: 0.7rem;
-      outline: none;
-    }}
-
-    /* 5-Button Thumb Navigation Bar */
-    .thumb-nav-bar {{
-      max-width: 640px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      background: #1e293b;
-      padding: 0.25rem 0.2rem;
-    }}
-    .thumb-tab {{
-      background: none;
-      border: none;
-      color: #cbd5e1;
-      padding: 0.25rem 0.1rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0.1rem;
-      cursor: pointer;
-      font-size: 0.68rem;
-      font-weight: 700;
-      user-select: none;
-    }}
-    .thumb-tab:active {{
-      color: #ffffff;
-      background: rgba(255,255,255,0.08);
-      border-radius: 6px;
-    }}
-    .thumb-tab.nav-arrow {{
-      color: #93c5fd;
-    }}
-    .thumb-icon {{
-      font-size: 1rem;
-      line-height: 1.1;
-    }}
-  </style>
+    """ + generate_daily_css() + """</style>
 </head>
 <body>
 
-  <!-- COMPACT HEADER -->
+  <!-- SUPER COMPACT HEADER (1-LINE INTEGRATED BAR) -->
   <header>
     <div class="header-inner">
-      <div class="logo-group" id="btn-home-top">
-        <div class="tricolor-flag">
-          <div class="flag-b"></div>
-          <div class="flag-w"></div>
-          <div class="flag-r"></div>
-        </div>
-        <h1>DUO Français <span class="badge-mobile">MOBILE</span></h1>
+      <div class="header-left" id="btn-open-sections-top">
+        <span id="current-sec-badge" class="sec-badge-pill">Sec.01</span>
+        <span id="current-sec-label" class="sec-title-text">信条・人間関係</span>
       </div>
-
-      <div class="top-quick-status">
-        <a href="index.html" class="btn-top-pill" style="text-decoration:none;">🖥️ PC版</a>
-        <button id="btn-filter-star" class="btn-top-pill">⭐ <span id="star-count">0</span></button>
-        <button id="btn-quick-mask-jp" class="btn-top-pill">🇯🇵 和訳隠</button>
-        <button id="btn-quick-mask-meaning" class="btn-top-pill">📖 意味隠</button>
+      <div class="header-right">
+        <button id="btn-filter-star" class="btn-top-mini" title="要復習のみ表示">⭐ <span id="star-count">0</span></button>
+        <button id="btn-quick-redsheet" class="btn-top-mini" title="赤シート（和訳・意味・解説を隠す）">🟥 赤シート</button>
+        <button id="btn-current-sec-opus" class="btn-top-mini" style="color:#34d399;" title="セクション通し音声">▶ 通し</button>
       </div>
     </div>
   </header>
 
-  <!-- SECTION & SWIPE PROGRESS STRIP -->
+  <!-- THIN PROGRESS STRIP -->
   <div class="mobile-nav-strip">
-    <div class="mobile-nav-inner">
-      <div class="sec-status-row">
-        <div id="current-sec-label" class="sec-current-label">Section 01</div>
-        <button id="btn-current-sec-opus" class="btn-sec-opus-mini" data-opus="audio_sections/section_01.opus" data-sec="1">▶ Sec通し音声</button>
-      </div>
-      <div class="sentence-progress-row">
-        <span id="swipe-counter" class="swipe-counter-text">No. 001 / 560</span>
-        <div class="progress-bar-wrap">
-          <div id="swipe-progress-fill" class="progress-bar-fill"></div>
-        </div>
-        <span class="swipe-hint">⇄ 左右スワイプで移動</span>
-      </div>
-    </div>
+    <div id="swipe-progress-fill" class="progress-bar-fill"></div>
   </div>
 
   <!-- MAIN SWIPE CONTAINER -->
@@ -1259,6 +1046,15 @@ def generate_mobile_html(sections_data, all_words_index, index_counts, total_sen
             </div>
 """)
 
+            is_last_sentence_of_sec = (s == sec["sentences"][-1])
+            quiz_banner_html = f'''
+          <!-- SECTION {sec_num:02d} COMPLETION & QUICK QUIZ BANNER -->
+          <div class="sec-quiz-banner">
+            <div class="sec-quiz-title">🎉 Section {sec_num:02d} 読了！</div>
+            <div class="sec-quiz-sub">このセクションの重要単語から5問の確認ミニクイズに挑戦してみよう</div>
+            <button class="btn-start-quiz" data-quiz-sec="{sec_num}">🎯 5問クイズに挑戦！</button>
+          </div>''' if is_last_sentence_of_sec else ''
+
             html_out.append(f"""
           </div>
 
@@ -1267,6 +1063,7 @@ def generate_mobile_html(sections_data, all_words_index, index_counts, total_sen
             <span class="translation-tag">和訳</span>
             <div class="japanese-translation">{jp_text}</div>
           </div>''' if jp_text else ''}
+          {quiz_banner_html}
         </article>
 """)
 
@@ -1274,6 +1071,9 @@ def generate_mobile_html(sections_data, all_words_index, index_counts, total_sen
       </div>
     </section>
 """)
+
+    # Append Everyday Vocabulary Themes (THEME 01 - 08, 336 words)
+    html_out.append(generate_daily_sections_html(daily_themes, is_mobile=True))
 
     html_out.append(f"""
   </main>
@@ -1300,6 +1100,7 @@ def generate_mobile_html(sections_data, all_words_index, index_counts, total_sen
 
     html_out.append(f"""
         </div>
+        """ + generate_daily_toc_html(daily_themes) + f"""
       </div>
     </div>
   </div>
@@ -1323,6 +1124,7 @@ def generate_mobile_html(sections_data, all_words_index, index_counts, total_sen
             <button class="az-type-btn" data-type="idiom">成句 ({index_counts['idiom']:,})</button>
             <button class="az-type-btn" data-type="syn">同意語 ({index_counts['syn']:,})</button>
             <button class="az-type-btn" data-type="ant">反意語 ({index_counts['ant']:,})</button>
+            <button class="az-type-btn" data-type="日常">日常語 ({len(get_daily_index_entries(daily_themes)):,})</button>
           </div>
           <div class="az-nav-tabs">
 """)
@@ -1351,12 +1153,18 @@ def generate_mobile_html(sections_data, all_words_index, index_counts, total_sen
       </div>
       <div class="modal-body">
         <div class="tools-section">
-          <div class="tools-section-title">暗記マスク (赤シート) ＆ 視覚サポート</div>
+          <div class="tools-section-title">暗記サポート設定</div>
           <div class="tools-grid">
-            <button id="tool-mask-jp" class="tool-btn">🇯🇵 日本語訳を隠す</button>
-            <button id="tool-mask-meaning" class="tool-btn">📖 単語の意味を隠す</button>
+            <button id="tool-mask-redsheet" class="tool-btn">🟥 赤シート (和訳＋意味)</button>
             <button id="tool-mask-cloze" class="tool-btn">✏️ 仏文穴埋めテスト</button>
             <button id="tool-highlight-gender" class="tool-btn">🚻 名詞の性を色強調</button>
+          </div>
+        </div>
+
+        <div class="tools-section">
+          <div class="tools-section-title">🌿 日常語パート (生活必須単語集)</div>
+          <div class="tools-grid">
+            <button id="btn-open-daily-tools" class="tool-btn" style="border-color:#10b981; background:#ecfdf5; color:#065f46; font-weight:700;" onclick="closeAllModals(); activateDailyTheme('section-daily-01');">🌿 日常生活単語集（全8テーマ・336語）</button>
           </div>
         </div>
 
@@ -1372,6 +1180,19 @@ def generate_mobile_html(sections_data, all_words_index, index_counts, total_sen
     </div>
   </div>
 
+  <!-- MODAL 4: SECTION QUICK QUIZ -->
+  <div id="modal-quiz" class="modal-overlay">
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <h3 id="quiz-header-title">🎯 Section 01 確認クイズ</h3>
+        <button class="modal-close" data-close="modal-quiz">×</button>
+      </div>
+      <div class="quiz-body" id="quiz-container">
+        <!-- Interactive Quiz Content injected by JS -->
+      </div>
+    </div>
+  </div>
+
   <!-- FIXED BOTTOM DOCK: 1-LINE AUDIO BAR + THUMB NAVIGATION -->
   <div class="bottom-fixed-stack">
     <div class="player-dock" id="player-dock">
@@ -1383,10 +1204,10 @@ def generate_mobile_html(sections_data, all_words_index, index_counts, total_sen
 
       <div class="dock-settings">
         <select id="dock-repeat" class="dock-select" title="リピートモード">
-          <option value="1">1回</option>
+          <option value="1" selected>1回</option>
           <option value="3">3回</option>
           <option value="loop">ループ</option>
-          <option value="seq" selected>連続</option>
+          <option value="seq">連続</option>
         </select>
         <select id="dock-speed" class="dock-select" title="再生速度">
           <option value="0.75">0.75x</option>
@@ -1402,13 +1223,14 @@ def generate_mobile_html(sections_data, all_words_index, index_counts, total_sen
         <button id="dock-prev-btn" class="dock-btn" title="前の文へ">⏮</button>
         <button id="dock-play-btn" class="dock-btn main-play" title="再生 / 一時停止">▶</button>
         <button id="dock-next-btn" class="dock-btn" title="次の文へ">⏭</button>
+        <button id="btn-dock-close" class="btn-dock-close" title="閉じる">✕</button>
       </div>
     </div>
 
     <nav class="thumb-nav-bar">
-      <button id="nav-prev-sentence" class="thumb-tab nav-arrow">
-        <span class="thumb-icon">◀</span>
-        <span>前文へ</span>
+      <button id="nav-prev-section" class="thumb-tab nav-arrow" title="前のセクションへ">
+        <span class="thumb-icon">⏮</span>
+        <span>前Sec</span>
       </button>
       <button id="btn-open-sections" class="thumb-tab">
         <span class="thumb-icon">📑</span>
@@ -1422,9 +1244,9 @@ def generate_mobile_html(sections_data, all_words_index, index_counts, total_sen
         <span class="thumb-icon">🔍</span>
         <span>検索・マスク</span>
       </button>
-      <button id="nav-next-sentence" class="thumb-tab nav-arrow">
-        <span class="thumb-icon">▶</span>
-        <span>次文へ</span>
+      <button id="nav-next-section" class="thumb-tab nav-arrow" title="次のセクションへ">
+        <span class="thumb-icon">⏭</span>
+        <span>次Sec</span>
       </button>
     </nav>
   </div>
@@ -1432,11 +1254,16 @@ def generate_mobile_html(sections_data, all_words_index, index_counts, total_sen
   <!-- EMBEDDED AUDIO ELEMENT -->
   <audio id="audio-engine" preload="none"></audio>
 
-  <!-- COMPACT JSON INDEX DATA -->
+  <!-- COMPACT JSON INDEX & QUIZ DATA -->
   <script>
     const INDEX_DATA = """)
 
     html_out.append(json_index_str)
+
+    html_out.append(""";
+    const SEC_QUIZ_DATA = """)
+
+    html_out.append(json_sec_quiz_str)
 
     html_out.append(""";
 
@@ -1501,8 +1328,8 @@ def generate_mobile_html(sections_data, all_words_index, index_counts, total_sen
       // =========================================================================
       // SENTENCE NAVIGATION & HORIZONTAL SWIPE ENGINE
       // =========================================================================
-      const swipeCounter = document.getElementById('swipe-counter');
       const swipeProgressFill = document.getElementById('swipe-progress-fill');
+      const currentSecBadge = document.getElementById('current-sec-badge');
       const currentSecLabel = document.getElementById('current-sec-label');
       const btnCurrentSecOpus = document.getElementById('btn-current-sec-opus');
 
@@ -1520,7 +1347,6 @@ def generate_mobile_html(sections_data, all_words_index, index_counts, total_sen
         currentIndex = newIndex;
         const targetCard = allCards[currentIndex];
         currentSentenceId = targetCard.dataset.id;
-        targetCard.style.setProperty('--slide-dir', slideDirection === 'prev' ? '-14px' : '14px');
 
         const targetSec = targetCard.closest('.section-container');
         if (targetSec) {
@@ -1529,16 +1355,18 @@ def generate_mobile_html(sections_data, all_words_index, index_counts, total_sen
           const secSub = targetSec.dataset.subtitle || '';
           const secOpus = targetSec.dataset.opus || '';
           currentSectionNum = secNum;
-          currentSecLabel.textContent = `Section ${String(secNum).padStart(2, '0')} — ${secSub}`;
-          btnCurrentSecOpus.dataset.opus = secOpus;
-          btnCurrentSecOpus.dataset.sec = secNum;
+          if (currentSecBadge) currentSecBadge.textContent = `Sec.${String(secNum).padStart(2, '0')}`;
+          if (currentSecLabel) currentSecLabel.textContent = secSub;
+          if (btnCurrentSecOpus) {
+            btnCurrentSecOpus.dataset.opus = secOpus;
+            btnCurrentSecOpus.dataset.sec = secNum;
+          }
         }
 
         targetCard.classList.add('active-card');
-        swipeCounter.textContent = `No. ${currentSentenceId} / ${totalCards}`;
-        swipeProgressFill.style.width = `${((currentIndex + 1) / totalCards) * 100}%`;
+        if (swipeProgressFill) swipeProgressFill.style.width = `${((currentIndex + 1) / totalCards) * 100}%`;
         if (!isPlaying) {
-          dockTitle.textContent = `No. ${currentSentenceId} 待機中`;
+          dockTitle.textContent = `No. ${currentSentenceId} / ${totalCards}`;
         }
         localStorage.setItem('duo_mobile_last_sid', currentSentenceId);
         window.scrollTo({ top: 0, behavior: 'instant' });
@@ -1566,9 +1394,32 @@ def generate_mobile_html(sections_data, all_words_index, index_counts, total_sen
         showSentenceByIndex(currentIndex + delta, delta > 0 ? 'next' : 'prev');
       }
 
-      document.getElementById('nav-prev-sentence').addEventListener('click', () => stepSentence(-1));
-      document.getElementById('nav-next-sentence').addEventListener('click', () => stepSentence(1));
-      document.getElementById('btn-home-top').addEventListener('click', () => showSentenceByIndex(0, 'prev'));
+      function stepSection(delta) {
+        let curSec = parseInt(currentSectionNum, 10) || 1;
+        let targetSec = curSec + delta;
+        if (targetSec < 1) targetSec = 1;
+        if (targetSec > 45) targetSec = 45;
+        const secEl = document.getElementById(`section-${String(targetSec).padStart(2, '0')}`);
+        if (secEl) {
+          const firstCard = secEl.querySelector('.duo-card');
+          if (firstCard && firstCard.dataset.id) {
+            showSentenceById(firstCard.dataset.id, delta > 0 ? 'next' : 'prev');
+          }
+        }
+      }
+
+      const navPrevSec = document.getElementById('nav-prev-section');
+      if (navPrevSec) navPrevSec.addEventListener('click', () => stepSection(-1));
+
+      const navNextSec = document.getElementById('nav-next-section');
+      if (navNextSec) navNextSec.addEventListener('click', () => stepSection(1));
+      const topSecBtn = document.getElementById('btn-open-sections-top');
+      if (topSecBtn) {
+        topSecBtn.addEventListener('click', () => {
+          closeAllModals();
+          modalSections.classList.add('open');
+        });
+      }
 
       // Touch Swipe Listener on Main Content
       const mainEl = document.getElementById('main-content');
@@ -1614,12 +1465,10 @@ def generate_mobile_html(sections_data, all_words_index, index_counts, total_sen
       });
 
       // =========================================================================
-      // STUDY TOOLS & MEMORIZATION MASKS
+      // STUDY TOOLS & INTEGRATED RED-SHEET MASK
       // =========================================================================
-      const btnQuickMaskJp = document.getElementById('btn-quick-mask-jp');
-      const btnQuickMaskMeaning = document.getElementById('btn-quick-mask-meaning');
-      const btnToolMaskJp = document.getElementById('tool-mask-jp');
-      const btnToolMaskMeaning = document.getElementById('tool-mask-meaning');
+      const btnQuickRedSheet = document.getElementById('btn-quick-redsheet');
+      const btnToolRedSheet = document.getElementById('tool-mask-redsheet');
       const btnToolMaskCloze = document.getElementById('tool-mask-cloze');
       const btnToolGender = document.getElementById('tool-highlight-gender');
 
@@ -1633,19 +1482,21 @@ def generate_mobile_html(sections_data, all_words_index, index_counts, total_sen
         });
       }
 
-      btnQuickMaskJp.addEventListener('click', () => toggleBodyMask('mask-jp', [btnQuickMaskJp, btnToolMaskJp]));
-      btnToolMaskJp.addEventListener('click', () => toggleBodyMask('mask-jp', [btnQuickMaskJp, btnToolMaskJp]));
-      btnQuickMaskMeaning.addEventListener('click', () => toggleBodyMask('mask-meaning', [btnQuickMaskMeaning, btnToolMaskMeaning]));
-      btnToolMaskMeaning.addEventListener('click', () => toggleBodyMask('mask-meaning', [btnQuickMaskMeaning, btnToolMaskMeaning]));
+      if (btnQuickRedSheet) {
+        btnQuickRedSheet.addEventListener('click', () => toggleBodyMask('mask-redsheet', [btnQuickRedSheet, btnToolRedSheet]));
+      }
+      if (btnToolRedSheet) {
+        btnToolRedSheet.addEventListener('click', () => toggleBodyMask('mask-redsheet', [btnQuickRedSheet, btnToolRedSheet]));
+      }
       btnToolMaskCloze.addEventListener('click', () => toggleBodyMask('mask-cloze', [btnToolMaskCloze]));
       btnToolGender.addEventListener('click', () => toggleBodyMask('highlight-gender', [btnToolGender]));
 
       // =========================================================================
       // AUDIO ENGINE
       // =========================================================================
-      function playSentence(sid, forceStart = true) {
+      function playSentence(sid, forceStart = true, mode = 'single') {
         showSentenceById(sid, 'next');
-        currentMode = 'single';
+        currentMode = mode;
         const mp3Path = `audio/sentence_${sid}.mp3`;
         const repMode = dockRepeat.value;
         if (repMode === '3' && forceStart) {
@@ -1661,6 +1512,7 @@ def generate_mobile_html(sections_data, all_words_index, index_counts, total_sen
 
       audio.addEventListener('play', () => {
         isPlaying = true;
+        document.body.classList.add('audio-open');
         dockPlayBtn.textContent = '⏸';
         dockIndicator.classList.add('live');
         document.querySelectorAll('.btn-play-single').forEach(b => {
@@ -1678,7 +1530,7 @@ def generate_mobile_html(sections_data, all_words_index, index_counts, total_sen
       audio.addEventListener('ended', () => {
         if (currentMode === 'opus') {
           btnCurrentSecOpus.classList.remove('playing');
-          btnCurrentSecOpus.textContent = '▶ Sec通し音声';
+          btnCurrentSecOpus.textContent = '▶ 通し';
           return;
         }
         const repMode = dockRepeat.value;
@@ -1689,10 +1541,10 @@ def generate_mobile_html(sections_data, all_words_index, index_counts, total_sen
           repeatCountRemaining--;
           audio.currentTime = 0;
           audio.play();
-        } else if (repMode === 'seq') {
+        } else if (repMode === 'seq' && currentMode === 'seq') {
           if (currentIndex + 1 < totalCards) {
             const nextSid = allCards[currentIndex + 1].dataset.id;
-            playSentence(nextSid, true);
+            playSentence(nextSid, true, 'seq');
           }
         }
       });
@@ -1704,8 +1556,13 @@ def generate_mobile_html(sections_data, all_words_index, index_counts, total_sen
           if (currentSentenceId === sid && isPlaying && currentMode === 'single') {
             audio.pause();
           } else {
-            playSentence(sid, true);
+            playSentence(sid, true, 'single');
           }
+          return;
+        }
+        const opusBtn = e.target.closest('.btn-section-opus');
+        if (opusBtn && btnCurrentSecOpus) {
+          btnCurrentSecOpus.click();
         }
       });
 
@@ -1715,7 +1572,7 @@ def generate_mobile_html(sections_data, all_words_index, index_counts, total_sen
         if (currentSectionNum === sec && isPlaying && currentMode === 'opus') {
           audio.pause();
           btnCurrentSecOpus.classList.remove('playing');
-          btnCurrentSecOpus.textContent = '▶ Sec通し音声';
+          btnCurrentSecOpus.textContent = '▶ 通し';
         } else {
           currentSectionNum = sec;
           currentMode = 'opus';
@@ -1728,23 +1585,42 @@ def generate_mobile_html(sections_data, all_words_index, index_counts, total_sen
         }
       });
 
+      const btnDockClose = document.getElementById('btn-dock-close');
+      if (btnDockClose) {
+        btnDockClose.addEventListener('click', () => {
+          audio.pause();
+          document.body.classList.remove('audio-open');
+        });
+      }
+
       dockPlayBtn.addEventListener('click', () => {
         if (!audio.src) {
-          playSentence(currentSentenceId, true);
+          const mode = dockRepeat.value === 'seq' ? 'seq' : 'single';
+          playSentence(currentSentenceId, true, mode);
           return;
         }
-        if (isPlaying) audio.pause();
-        else audio.play();
+        if (isPlaying) {
+          audio.pause();
+        } else {
+          if (dockRepeat.value === 'seq') currentMode = 'seq';
+          audio.play();
+        }
       });
 
       dockPrevBtn.addEventListener('click', () => {
         stepSentence(-1);
-        playSentence(currentSentenceId, true);
+        playSentence(currentSentenceId, true, currentMode);
       });
 
       dockNextBtn.addEventListener('click', () => {
         stepSentence(1);
-        playSentence(currentSentenceId, true);
+        playSentence(currentSentenceId, true, currentMode);
+      });
+
+      dockRepeat.addEventListener('change', () => {
+        if (currentMode !== 'opus') {
+          currentMode = dockRepeat.value === 'seq' ? 'seq' : 'single';
+        }
       });
 
       dockSpeed.addEventListener('change', () => {
@@ -1752,16 +1628,18 @@ def generate_mobile_html(sections_data, all_words_index, index_counts, total_sen
       });
 
       // =========================================================================
-      // MODALS (SECTIONS, INDEX, SEARCH/TOOLS)
+      // MODALS (SECTIONS, INDEX, SEARCH/TOOLS, QUIZ, OPD)
       // =========================================================================
       const modalSections = document.getElementById('modal-sections');
       const modalIndex = document.getElementById('modal-index');
       const modalTools = document.getElementById('modal-tools');
+      const modalQuiz = document.getElementById('modal-quiz');
 
       function closeAllModals() {
         modalSections.classList.remove('open');
         modalIndex.classList.remove('open');
         modalTools.classList.remove('open');
+        if (modalQuiz) modalQuiz.classList.remove('open');
       }
 
       document.getElementById('btn-open-sections').addEventListener('click', () => {
@@ -1796,13 +1674,27 @@ def generate_mobile_html(sections_data, all_words_index, index_counts, total_sen
           showSentenceById(secJump.dataset.jumpSid, 'next');
           return;
         }
+        const dailyJump = e.target.closest('[data-jump-daily]');
+        if (dailyJump) {
+          closeAllModals();
+          activateDailyTheme(dailyJump.dataset.jumpDaily);
+          return;
+        }
+
         const cardJump = e.target.closest('[data-jump]');
         if (cardJump) {
           const targetId = cardJump.dataset.jump;
+          if (targetId.startsWith('card-daily-')) {
+            const did = targetId.replace('card-daily-', '');
+            closeAllModals();
+            jumpToDailyWord(did);
+            return;
+          }
           if (targetId.startsWith('card-')) {
             const sid = targetId.replace('card-', '');
             closeAllModals();
             showSentenceById(sid, 'next');
+            return;
           }
         }
       });
@@ -1815,7 +1707,8 @@ def generate_mobile_html(sections_data, all_words_index, index_counts, total_sen
         'deriv': '派生',
         'idiom': '成句',
         'syn': '類義',
-        'ant': '反意'
+        'ant': '反意',
+        '日常': '日常'
       };
 
       function escapeHtml(str) {
@@ -1848,18 +1741,21 @@ def generate_mobile_html(sections_data, all_words_index, index_counts, total_sen
           const meaning = item[3];
           const sid = item[4];
 
-          const tLabel = typeLabels[type] || '語彙';
+          const isDaily = sid.startsWith('daily-');
+          const tLabel = typeLabels[type] || (isDaily ? '日常' : '語彙');
+          const isDailyClass = (type === '日常' || isDaily) ? ' tag-daily' : '';
+          const targetText = isDaily ? `生活語 #${sid.replace('daily-','')}` : `No. ${sid}`;
           const posText = pos ? `【${escapeHtml(pos)}】` : '';
 
           htmlBuffer.push(`
             <div class="index-entry" data-jump="card-${sid}">
               <div class="index-lemma-wrap">
-                <span class="index-tag-type">[${tLabel}]</span>
+                <span class="index-tag-type${isDailyClass}">[${tLabel}]</span>
                 <span class="index-lemma">${escapeHtml(word)}</span>
                 ${posText ? `<span class="index-tag-pos">${posText}</span>` : ''}
                 ${meaning ? `<span class="index-preview">${escapeHtml(meaning)}</span>` : ''}
               </div>
-              <span class="index-target-link">No. ${sid}</span>
+              <span class="index-target-link">${targetText}</span>
             </div>
           `);
         }
@@ -2027,6 +1923,172 @@ def generate_mobile_html(sections_data, all_words_index, index_counts, total_sen
         searchInput.focus();
       });
 
+      // =========================================================================
+      // SECTION QUICK 5-QUESTION QUIZ ENGINE
+      // =========================================================================
+      const quizHeaderTitle = document.getElementById('quiz-header-title');
+      const quizContainer = document.getElementById('quiz-container');
+
+      let activeQuizQuestions = [];
+      let activeQuizIndex = 0;
+      let activeQuizScore = 0;
+      let activeQuizSecNum = 1;
+
+      function shuffleArray(arr) {
+        const a = [...arr];
+        for (let i = a.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [a[i], a[j]] = [a[j], a[i]];
+        }
+        return a;
+      }
+
+      function startSectionQuiz(secNum) {
+        activeQuizSecNum = secNum;
+        const pool = (typeof SEC_QUIZ_DATA !== 'undefined' && SEC_QUIZ_DATA[secNum]) || [];
+        if (pool.length === 0) return;
+
+        // Collect distractor meanings from other words
+        const allMeanings = [];
+        Object.values(SEC_QUIZ_DATA).forEach(list => {
+          list.forEach(item => {
+            if (item[2] && !allMeanings.includes(item[2])) allMeanings.push(item[2]);
+          });
+        });
+
+        const selectedWords = shuffleArray(pool).slice(0, Math.min(5, pool.length));
+        activeQuizQuestions = selectedWords.map(target => {
+          const lemma = target[0];
+          const pos = target[1];
+          const correctMeaning = target[2];
+          const sid = target[3];
+
+          // Pick 3 distractors
+          const distractors = shuffleArray(allMeanings.filter(m => m !== correctMeaning)).slice(0, 3);
+          const choices = shuffleArray([correctMeaning, ...distractors]);
+
+          return { lemma, pos, correctMeaning, sid, choices };
+        });
+
+        activeQuizIndex = 0;
+        activeQuizScore = 0;
+        quizHeaderTitle.textContent = `🎯 Section ${String(secNum).padStart(2, '0')} 確認クイズ (全5問)`;
+        closeAllModals();
+        modalQuiz.classList.add('open');
+        renderQuizStep();
+      }
+
+      function renderQuizStep() {
+        if (activeQuizIndex >= activeQuizQuestions.length) {
+          renderQuizResult();
+          return;
+        }
+
+        const q = activeQuizQuestions[activeQuizIndex];
+        const stepNum = activeQuizIndex + 1;
+        const totalQ = activeQuizQuestions.length;
+
+        quizContainer.innerHTML = `
+          <div class="quiz-progress-text">
+            <span>第 ${stepNum} 問 / 全 ${totalQ} 問</span>
+            <span>スコア: ${activeQuizScore} 点</span>
+          </div>
+
+          <div class="quiz-question-box">
+            <div class="quiz-q-word">${escapeHtml(q.lemma)}</div>
+            ${q.pos ? `<div class="quiz-q-pos">【${escapeHtml(q.pos)}】</div>` : ''}
+          </div>
+
+          <div class="quiz-choices" id="quiz-choices-wrap">
+            ${q.choices.map((choice, idx) => `
+              <button class="quiz-choice-btn" data-choice="${escapeHtml(choice)}">
+                <span class="quiz-choice-num">${idx + 1}.</span>
+                <span>${escapeHtml(choice)}</span>
+              </button>
+            `).join('')}
+          </div>
+
+          <div id="quiz-feedback-box" class="quiz-feedback"></div>
+          <button id="btn-quiz-next" class="quiz-next-btn">次の問題へ ➔</button>
+        `;
+
+        const choicesWrap = document.getElementById('quiz-choices-wrap');
+        const feedbackBox = document.getElementById('quiz-feedback-box');
+        const nextBtn = document.getElementById('btn-quiz-next');
+        let answered = false;
+
+        choicesWrap.querySelectorAll('.quiz-choice-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            if (answered) return;
+            answered = true;
+            const chosen = btn.dataset.choice;
+            const isOk = (chosen === q.correctMeaning);
+
+            if (isOk) {
+              activeQuizScore++;
+              btn.classList.add('correct');
+              feedbackBox.className = 'quiz-feedback show ok';
+              feedbackBox.innerHTML = `正解！🎉<br><span style="font-size:0.75rem; color:#166534;">例文 No.${q.sid} に登場した重要語句です。</span>`;
+            } else {
+              btn.classList.add('incorrect');
+              // Highlight the correct one
+              choicesWrap.querySelectorAll('.quiz-choice-btn').forEach(b => {
+                if (b.dataset.choice === q.correctMeaning) b.classList.add('correct');
+              });
+              feedbackBox.className = 'quiz-feedback show ng';
+              feedbackBox.innerHTML = `不正解… 正解: <strong>${escapeHtml(q.correctMeaning)}</strong><br><span style="font-size:0.75rem; color:#991b1b;">例文 No.${q.sid} を復習してみよう！</span>`;
+            }
+
+            nextBtn.classList.add('show');
+            if (stepNum === totalQ) {
+              nextBtn.textContent = '結果を見る 🏆';
+            }
+          });
+        });
+
+        nextBtn.addEventListener('click', () => {
+          activeQuizIndex++;
+          renderQuizStep();
+        });
+      }
+
+      function renderQuizResult() {
+        const total = activeQuizQuestions.length;
+        const perfect = (activeQuizScore === total);
+        let msg = 'よく頑張りました！間違えた単語をカードでチェックしよう。';
+        if (perfect) msg = '全問正解！素晴らしい！このセクションは完璧です！🎉';
+        else if (activeQuizScore >= 3) msg = '合格ライン突破！要復習の単語を☆マークしておこう。';
+
+        quizContainer.innerHTML = `
+          <div class="quiz-result-box">
+            <div style="font-size:2.4rem;">${perfect ? '🏆' : (activeQuizScore >= 3 ? '👏' : '💪')}</div>
+            <div class="quiz-result-score">${activeQuizScore} / ${total}</div>
+            <div class="quiz-result-msg">${msg}</div>
+            <div class="quiz-result-actions">
+              <button id="btn-quiz-retry" class="quiz-result-btn">もう一度挑戦 🔄</button>
+              <button id="btn-quiz-finish" class="quiz-result-btn primary">学習に戻る 📖</button>
+            </div>
+          </div>
+        `;
+
+        document.getElementById('btn-quiz-retry').addEventListener('click', () => {
+          startSectionQuiz(activeQuizSecNum);
+        });
+        document.getElementById('btn-quiz-finish').addEventListener('click', () => {
+          closeAllModals();
+        });
+      }
+
+      // Delegate click for section quiz banner button
+      document.addEventListener('click', (e) => {
+        const btn = e.target.closest('[data-quiz-sec]');
+        if (btn) {
+          const sec = parseInt(btn.dataset.quizSec, 10);
+          if (sec) startSectionQuiz(sec);
+        }
+      });
+
+      """ + generate_daily_js() + """
       // Restore last viewed sentence on load
       updateStarUI();
       const savedSid = localStorage.getItem('duo_mobile_last_sid');
