@@ -312,6 +312,23 @@ def generate_daily_css():
       color: #059669;
       letter-spacing: 0.5px;
     }
+    .daily-toc-divider-sub {
+      font-size: 11px;
+      font-weight: 700;
+      color: #065f46;
+    }
+    .daily-toc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+      gap: 0.55rem;
+      margin-top: 0.6rem;
+    }
+    @media (min-width: 768px) {
+      .daily-toc-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 0.85rem;
+      }
+    }
 
     /* Index tag for daily vocabulary */
     .index-tag-type.tag-daily {
@@ -430,13 +447,15 @@ def generate_daily_sections_html(themes, is_mobile=False):
     return "".join(html_buffer)
 
 def generate_daily_toc_html(themes):
-    """Generates the Table of Contents block for Daily Vocabulary in modal-sections."""
-    html_buffer = ["""
+    """Generates the Table of Contents block for Daily Vocabulary in modal-sections (3-column grid)."""
+    total_vocab = sum(sum(len(g["words"]) for g in t["groups"]) for t in themes)
+    html_buffer = [f"""
           <!-- DAILY VOCABULARY TOC DIVIDER & GRID -->
           <div class="daily-toc-divider">
-            <span class="daily-toc-divider-title">🌿 日常語・生活必須単語集（全8テーマ・336語）</span>
-            <span style="font-size:11px; font-weight:700; color:#065f46;">本編未登場の生活単語を完全網羅</span>
+            <span class="daily-toc-divider-title">🌿 日常語・生活必須単語集（全8テーマ・{total_vocab}語）</span>
+            <span class="daily-toc-divider-sub">本編未登場の生活単語を完全網羅</span>
           </div>
+          <div class="sections-grid daily-toc-grid">
 """]
     for t in themes:
         num = t["num"]
@@ -445,26 +464,32 @@ def generate_daily_toc_html(themes):
         sec_id = f"section-daily-{num:02d}"
 
         html_buffer.append(f"""
-          <div class="sec-jump-card daily-jump-card" data-jump-daily="{sec_id}">
-            <div class="daily-jump-badge">THEME {num:02d}</div>
-            <div class="sec-jump-num" style="color:#065f46;">{t['title_ja']} ({total_w}語)</div>
-            <div class="sec-jump-sub">{sub_desc}</div>
-          </div>
+            <div class="sec-jump-card daily-jump-card" data-jump-daily="{sec_id}">
+              <div class="daily-jump-badge">THEME {num:02d}</div>
+              <div class="sec-jump-num" style="color:#065f46;">{t['title_ja']} ({total_w}語)</div>
+              <div class="sec-jump-sub">{sub_desc}</div>
+            </div>
 """)
+    html_buffer.append("""          </div>\n""")
     return "".join(html_buffer)
 
 def generate_daily_js():
     """Generates JS logic for speech, sequential audio, checks, and jumps."""
     return """
     // =========================================================================
-    // DAILY VOCABULARY ENGINE (336 WORDS CONTIGUOUS JUMPS & AUDIO)
+    // DAILY VOCABULARY ENGINE (CONTIGUOUS JUMPS, WINDOW BINDINGS & SPEECH AUDIO)
     // =========================================================================
     function playDailyWord(text) {
-      if (!window.speechSynthesis) return;
+      if (!('speechSynthesis' in window)) return;
       window.speechSynthesis.cancel();
       const u = new SpeechSynthesisUtterance(text);
       u.lang = 'fr-FR';
-      u.rate = 0.95;
+      u.rate = 0.92;
+      const voices = window.speechSynthesis.getVoices();
+      if (voices && voices.length > 0) {
+        const frVoice = voices.find(v => v.lang && (v.lang === 'fr-FR' || v.lang.startsWith('fr')));
+        if (frVoice) u.voice = frVoice;
+      }
       window.speechSynthesis.speak(u);
     }
 
@@ -473,10 +498,11 @@ def generate_daily_js():
       if (!groupEl) return;
       const rows = groupEl.querySelectorAll('.daily-word-row');
       for (const row of rows) {
-        const fr = row.querySelector('.daily-french').innerText.split('/')[0].trim();
+        const btn = row.querySelector('.daily-btn-audio');
+        const fr = (btn && btn.dataset.speak) || row.querySelector('.daily-french').innerText.split('/')[0].trim();
         playDailyWord(fr);
         row.classList.add('flash-highlight');
-        await new Promise(r => setTimeout(r, 1500));
+        await new Promise(r => setTimeout(r, 1600));
         row.classList.remove('flash-highlight');
       }
     }
@@ -509,6 +535,7 @@ def generate_daily_js():
 
     function onDailyCheckChange(cb) {
       const row = cb.closest('.daily-word-row');
+      if (!row) return;
       const did = row.dataset.did;
       const setObj = getDailyMasterySet();
       if (cb.checked) {
@@ -565,9 +592,446 @@ def generate_daily_js():
       sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
+    // Expose functions globally to window for inline onclick handlers
+    window.playDailyWord = playDailyWord;
+    window.playDailyGroupAudio = playDailyGroupAudio;
+    window.onDailyCheckChange = onDailyCheckChange;
+    window.jumpToDailyWord = jumpToDailyWord;
+    window.activateDailyTheme = activateDailyTheme;
+    window.initDailyMasteryUI = initDailyMasteryUI;
+
+    // Document-level event delegation backup for audio clicks
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.daily-btn-audio');
+      if (btn && btn.dataset.speak) {
+        playDailyWord(btn.dataset.speak);
+      }
+    });
+
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', initDailyMasteryUI);
     } else {
       initDailyMasteryUI();
     }
     """
+
+
+def generate_app_ui_css(is_mobile=False):
+    """
+    Generates CSS for the A-Z Index modal, Player Dock, and Mobile Thumb Nav Bar.
+    Fixes unstyled native buttons and ensures polished modern UI on both mobile and desktop.
+    """
+    common_css = """
+    /* ==========================================================================
+       A-Z COMPREHENSIVE INDEX MODAL & VIRTUAL CARDS STYLING
+       ========================================================================== */
+    .index-toolbar {
+      padding: 0.75rem 1rem 0.5rem;
+      background: #f8fafc;
+      border-bottom: 1px solid #e2e8f0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .index-search-row {
+      width: 100%;
+    }
+
+    .az-search-input {
+      width: 100%;
+      padding: 0.55rem 0.85rem;
+      font-size: 0.88rem;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 8px;
+      background: #ffffff;
+      color: #0f172a;
+      outline: none;
+      transition: all 0.15s ease;
+      box-sizing: border-box;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    }
+    .az-search-input:focus {
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+    }
+
+    .az-type-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+
+    .az-type-btn {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      color: #475569;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      line-height: 1.3;
+    }
+    .az-type-btn:hover {
+      background: #f1f5f9;
+      border-color: #94a3b8;
+    }
+    .az-type-btn.active {
+      background: #2563eb;
+      color: #ffffff;
+      border-color: #2563eb;
+      box-shadow: 0 1px 3px rgba(37, 99, 235, 0.25);
+    }
+    .az-type-btn[data-type="日常"].active {
+      background: #059669;
+      border-color: #059669;
+    }
+
+    .az-nav-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem;
+      padding-top: 0.15rem;
+    }
+
+    .az-tab {
+      width: 25px;
+      height: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 5px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: #334155;
+      cursor: pointer;
+      transition: all 0.1s ease;
+    }
+    .az-tab:hover {
+      background: #e2e8f0;
+    }
+    .az-tab.active {
+      background: #0f172a;
+      color: #ffffff;
+      border-color: #0f172a;
+    }
+
+    .index-content-wrap {
+      padding: 0.6rem 0.85rem 1.5rem;
+      overflow-y: auto;
+    }
+
+    .index-status-bar {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #64748b;
+      margin-bottom: 0.6rem;
+      padding-bottom: 0.35rem;
+      border-bottom: 1px solid #f1f5f9;
+    }
+
+    /* Index Entry Row */
+    .index-entry {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 0.55rem 0.75rem;
+      margin-bottom: 0.45rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.65rem;
+      cursor: pointer;
+      transition: all 0.12s ease;
+    }
+    .index-entry:hover {
+      background: #f8fafc;
+      border-color: #94a3b8;
+      transform: translateX(2px);
+    }
+
+    .index-lemma-wrap {
+      display: flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .index-tag-type {
+      font-size: 0.68rem;
+      font-weight: 800;
+      padding: 1px 5px;
+      border-radius: 4px;
+      background: #e2e8f0;
+      color: #475569;
+    }
+    .index-tag-type.tag-daily {
+      background: #a7f3d0 !important;
+      color: #065f46 !important;
+    }
+
+    .index-lemma {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .index-tag-pos {
+      font-size: 0.72rem;
+      color: #64748b;
+      font-weight: 600;
+    }
+
+    .index-preview {
+      font-size: 0.8rem;
+      color: #334155;
+      font-weight: 500;
+    }
+
+    .index-target-link {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #2563eb;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 5px;
+      padding: 2px 7px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .btn-more-results {
+      width: 100%;
+      padding: 0.65rem;
+      margin-top: 0.75rem;
+      background: #f8fafc;
+      border: 1.5px dashed #cbd5e1;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #2563eb;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .btn-more-results:hover {
+      background: #eff6ff;
+      border-color: #3b82f6;
+    }
+
+    /* ==========================================================================
+       AUDIO PLAYER DOCK & BUTTONS
+       ========================================================================== */
+    .player-dock {
+      background: #ffffff;
+      padding: 0.45rem 0.85rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    .dock-now-playing {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      min-width: 0;
+      flex: 1;
+    }
+
+    .dock-indicator {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #94a3b8;
+      flex-shrink: 0;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .dock-indicator.playing {
+      background: #10b981;
+      transform: scale(1.25);
+      box-shadow: 0 0 6px rgba(16, 185, 129, 0.6);
+    }
+
+    .dock-info-title {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #0f172a;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .dock-info-sub { display: none; }
+
+    .dock-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .dock-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid #cbd5e1;
+      background: #ffffff;
+      color: #1e293b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: all 0.15s ease;
+    }
+    .dock-btn:hover {
+      background: #f1f5f9;
+      border-color: #94a3b8;
+    }
+    .dock-btn.main-play {
+      background: #2563eb;
+      color: #ffffff;
+      border-color: #2563eb;
+      width: 36px;
+      height: 36px;
+      font-size: 0.95rem;
+      box-shadow: 0 2px 6px rgba(37, 99, 235, 0.3);
+    }
+    .dock-btn.main-play:hover {
+      background: #1d4ed8;
+      transform: scale(1.05);
+    }
+
+    .dock-settings {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .dock-select {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      padding: 0.25rem 0.4rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: #334155;
+      cursor: pointer;
+      outline: none;
+    }
+    .dock-select:focus {
+      border-color: #3b82f6;
+    }
+
+    .btn-dock-close {
+      background: none;
+      border: none;
+      color: #94a3b8;
+      font-size: 0.9rem;
+      cursor: pointer;
+      padding: 0 0.2rem;
+      line-height: 1;
+    }
+    .btn-dock-close:hover {
+      color: #475569;
+    }
+    """
+
+    if is_mobile:
+        return common_css + """
+    /* ==========================================================================
+       MOBILE BOTTOM FIXED STACK & THUMB NAVIGATION
+       ========================================================================== */
+    body {
+      padding-bottom: 95px !important;
+    }
+
+    .bottom-fixed-stack {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 900;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 -2px 14px rgba(15, 23, 42, 0.09);
+      background: #ffffff;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    .thumb-nav-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      background: #ffffff;
+      padding: 0.35rem 0.4rem 0.55rem;
+      border-top: 1px solid #f1f5f9;
+    }
+
+    .thumb-tab {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: none;
+      border: none;
+      color: #475569;
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.25rem 0.45rem;
+      border-radius: 8px;
+      cursor: pointer;
+      gap: 2px;
+      transition: all 0.15s ease;
+      min-width: 52px;
+    }
+    .thumb-tab:hover {
+      background: #f1f5f9;
+      color: #0f172a;
+    }
+    .thumb-tab.active {
+      color: #2563eb;
+      background: #eff6ff;
+    }
+    .thumb-tab .thumb-icon {
+      font-size: 1.15rem;
+      line-height: 1;
+    }
+    .thumb-tab.nav-arrow {
+      color: #2563eb;
+      background: #f0f7ff;
+      border: 1px solid #dbeafe;
+    }
+    .thumb-tab.nav-arrow:hover {
+      background: #dbeafe;
+    }
+    """
+    else:
+        return common_css + """
+    /* ==========================================================================
+       DESKTOP FLOATING PILL AUDIO DOCK
+       ========================================================================== */
+    .player-dock {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 850;
+      max-width: 660px;
+      width: calc(100% - 32px);
+      border-radius: 40px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.15), 0 1px 3px rgba(0,0,0,0.06);
+      border: 1px solid #cbd5e1;
+      padding: 0.5rem 1.1rem;
+    }
+    """
+

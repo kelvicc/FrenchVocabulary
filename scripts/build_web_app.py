@@ -17,7 +17,7 @@ import re
 import sys
 import json
 import html
-from daily_vocab_builder import load_daily_vocab_data, get_daily_index_entries, generate_daily_css, generate_daily_sections_html, generate_daily_toc_html, generate_daily_js
+from daily_vocab_builder import load_daily_vocab_data, get_daily_index_entries, generate_daily_css, generate_daily_sections_html, generate_daily_toc_html, generate_daily_js, generate_app_ui_css
 import unicodedata
 from collections import defaultdict
 
@@ -1348,7 +1348,7 @@ def generate_html(sections_data, all_words_index, index_counts, total_sentences,
       line-height: 1.35;
     }}
 
-    """ + generate_daily_css() + """</style>
+    """ + generate_app_ui_css(is_mobile=False) + generate_daily_css() + """</style>
 </head>
 <body>
 
@@ -2071,14 +2071,50 @@ def generate_html(sections_data, all_words_index, index_counts, total_sentences,
         updateLoadMoreButton();
       }
 
-      function updateIndexResults() {
+            function updateIndexResults() {
         const q = currentQuery.toLowerCase().trim();
 
         if (q) {
-          currentMatchingPool = INDEX_DATA.filter(item => {
-            if (currentType !== 'all' && item[1] !== currentType) return false;
-            return item[0].toLowerCase().includes(q) || item[3].toLowerCase().includes(q);
+          const isAscii = /^[\x00-\x7F]+$/.test(q);
+          const escapedQ = q.replace(/[\-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+          const regexWordStart = new RegExp('(?:^|[\\s\\-\'’])' + escapedQ);
+
+          let scored = [];
+          for (let i = 0; i < INDEX_DATA.length; i++) {
+            const item = INDEX_DATA[i];
+            if (currentType !== 'all' && item[1] !== currentType) continue;
+
+            const w = item[0].toLowerCase();
+            const m = item[3].toLowerCase();
+
+            let score = 0;
+            if (w === q) {
+              score = 100; // Exact match on French word
+            } else if (w.startsWith(q)) {
+              score = 80;  // Prefix match on French word (e.g. "gant" -> "gants")
+            } else if (regexWordStart.test(w)) {
+              score = 70;  // Word component prefix match (e.g. "boîte à gants")
+            } else if (m === q) {
+              score = 60;  // Exact match on Japanese meaning
+            } else if (m.startsWith(q) || m.includes('、' + q) || m.includes('(' + q) || m.includes('（' + q)) {
+              score = 50;  // Japanese component match
+            } else if (!isAscii && m.includes(q)) {
+              score = 30;  // Japanese partial match (only for Japanese search query)
+            }
+
+            if (score > 0) {
+              scored.push({ score, item });
+            }
+          }
+
+          // Sort: highest score first, then shorter word length, then alphabetical
+          scored.sort((a, b) => {
+            if (b.score !== a.score) return b.score - a.score;
+            if (a.item[0].length !== b.item[0].length) return a.item[0].length - b.item[0].length;
+            return a.item[0].localeCompare(b.item[0]);
           });
+
+          currentMatchingPool = scored.map(s => s.item);
           azStatusBar.textContent = `「${escapeHtml(q)}」の検索結果: 全 ${currentMatchingPool.length.toLocaleString()} 件`;
         } else {
           currentMatchingPool = INDEX_DATA.filter(item => {
@@ -2093,7 +2129,6 @@ def generate_html(sections_data, all_words_index, index_counts, total_sentences,
         updateLoadMoreButton();
       }
 
-      // Infinite scroll on index modal body
       if (modalIndexBody) {
         modalIndexBody.addEventListener('scroll', () => {
           if (currentRenderedCount >= currentMatchingPool.length) return;
